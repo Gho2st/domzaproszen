@@ -5,7 +5,16 @@ const TIKTOK_URL = "https://www.tiktok.com/@domzaproszen.pl";
 
 function IconEnvelope() {
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      width="22"
+      height="22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="5" width="18" height="14" rx="1.5" />
       <path d="M3.5 6.5 12 13l8.5-6.5" />
     </svg>
@@ -14,7 +23,16 @@ function IconEnvelope() {
 
 function IconTag() {
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      width="22"
+      height="22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 3H5a2 2 0 0 0-2 2v7l9.5 9.5a2 2 0 0 0 2.8 0l6.2-6.2a2 2 0 0 0 0-2.8L12 3Z" />
       <circle cx="8" cy="8" r="1.3" />
     </svg>
@@ -23,7 +41,16 @@ function IconTag() {
 
 function IconCard() {
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      width="22"
+      height="22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="4.5" width="18" height="15" rx="1.5" />
       <path d="M7 9.5h6M7 13h4" />
       <path d="M14.5 15.5 16.3 17.3 20 13.5" />
@@ -33,7 +60,16 @@ function IconCard() {
 
 function IconRibbon() {
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      width="22"
+      height="22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 12c-2-3-6-4-8-2s0 6 3 6 4-2 5-4Z" />
       <path d="M12 12c2-3 6-4 8-2s0 6-3 6-4-2-5-4Z" />
       <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none" />
@@ -43,7 +79,16 @@ function IconRibbon() {
 
 function IconArrow() {
   return (
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>
   );
@@ -51,7 +96,16 @@ function IconArrow() {
 
 function IconInstagram() {
   return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="3" width="18" height="18" rx="5" />
       <circle cx="12" cy="12" r="4.2" />
       <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none" />
@@ -61,7 +115,16 @@ function IconInstagram() {
 
 function IconTiktok() {
   return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M14 4v10.5a3.5 3.5 0 1 1-3-3.46" />
       <path d="M14 4c.7 2.2 2.4 3.7 4.6 4" />
     </svg>
@@ -160,12 +223,19 @@ export default function Home() {
       {/* NAV */}
       <header className="sticky top-0 z-40 border-b border-line/70 bg-ivory/90 backdrop-blur">
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4 sm:px-10">
-          <a href="#top" className="font-display text-xl font-semibold tracking-wide text-ink">
+          <a
+            href="#top"
+            className="font-display text-xl font-semibold tracking-wide text-ink"
+          >
             Dom Zaproszeń
           </a>
           <div className="hidden items-center gap-8 text-sm text-ink-soft md:flex">
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="transition-colors hover:text-accent">
+              <a
+                key={l.href}
+                href={l.href}
+                className="transition-colors hover:text-accent"
+              >
                 {l.label}
               </a>
             ))}
@@ -194,8 +264,8 @@ export default function Home() {
               Więcej niż zaproszenia.
             </h1>
             <p className="max-w-md text-lg leading-relaxed text-ink-soft">
-              Projektujemy zaproszenia, winietki, menu i dodatki, w których każdy
-              detal — kolor wstążki, faktura papieru, odcisk pieczęci —
+              Projektujemy zaproszenia, winietki, menu i dodatki, w których
+              każdy detal — kolor wstążki, faktura papieru, odcisk pieczęci —
               opowiada Waszą historię.
             </p>
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
@@ -230,7 +300,7 @@ export default function Home() {
             </div>
             <div className="absolute -bottom-6 -left-6 hidden max-w-[220px] rounded-2xl border border-line bg-ivory px-5 py-4 shadow-lg sm:block">
               <p className="font-display text-base leading-snug text-ink">
-                Prawdziwa realizacja Dom Zaproszeń
+                Realizacja
               </p>
             </div>
           </div>
@@ -252,7 +322,10 @@ export default function Home() {
         </section>
 
         {/* OFFER */}
-        <section id="oferta" className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
+        <section
+          id="oferta"
+          className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28"
+        >
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
               Co tworzymy
@@ -325,7 +398,10 @@ export default function Home() {
         </section>
 
         {/* PROCESS */}
-        <section id="jak-to-dziala" className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
+        <section
+          id="jak-to-dziala"
+          className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28"
+        >
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
               Jak to wygląda
