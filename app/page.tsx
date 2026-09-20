@@ -1,135 +1,24 @@
 import Image from "next/image";
-
-const INSTAGRAM_URL = "https://www.instagram.com/domzaproszen.pl/";
-const TIKTOK_URL = "https://www.tiktok.com/@domzaproszen.pl";
-
-function IconEnvelope() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="22"
-      height="22"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="3" y="5" width="18" height="14" rx="1.5" />
-      <path d="M3.5 6.5 12 13l8.5-6.5" />
-    </svg>
-  );
-}
-
-function IconTag() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="22"
-      height="22"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 3H5a2 2 0 0 0-2 2v7l9.5 9.5a2 2 0 0 0 2.8 0l6.2-6.2a2 2 0 0 0 0-2.8L12 3Z" />
-      <circle cx="8" cy="8" r="1.3" />
-    </svg>
-  );
-}
-
-function IconCard() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="22"
-      height="22"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="3" y="4.5" width="18" height="15" rx="1.5" />
-      <path d="M7 9.5h6M7 13h4" />
-      <path d="M14.5 15.5 16.3 17.3 20 13.5" />
-    </svg>
-  );
-}
-
-function IconRibbon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="22"
-      height="22"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 12c-2-3-6-4-8-2s0 6 3 6 4-2 5-4Z" />
-      <path d="M12 12c2-3 6-4 8-2s0 6-3 6-4-2-5-4Z" />
-      <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function IconArrow() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="16"
-      height="16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
-function IconInstagram() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4.2" />
-      <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function IconTiktok() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M14 4v10.5a3.5 3.5 0 1 1-3-3.46" />
-      <path d="M14 4c.7 2.2 2.4 3.7 4.6 4" />
-    </svg>
-  );
-}
+import Link from "next/link";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import {
+  IconArrow,
+  IconCard,
+  IconCheckCircle,
+  IconEnvelope,
+  IconInstagram,
+  IconRibbon,
+  IconTag,
+  IconTiktok,
+} from "@/components/icons";
+import {
+  DEMO_PATH,
+  DEMO_WEDDING,
+  INSTAGRAM_URL,
+  TIKTOK_URL,
+  daysUntil,
+} from "@/lib/site";
 
 const offer = [
   {
@@ -211,47 +100,17 @@ const proces = [
   },
 ];
 
-const navLinks = [
-  { href: "#oferta", label: "Oferta" },
-  { href: "#realizacje", label: "Realizacje" },
-  { href: "#jak-to-dziala", label: "Jak to działa" },
+const wwwHighlights = [
+  "Odliczanie do dnia ślubu i harmonogram godzina po godzinie",
+  "RSVP online — potwierdzenia, menu i noclegi spływają do jednej tabeli",
+  "Dojazd, parking i nocleg w jednym miejscu, zamiast w dziesięciu wiadomościach",
+  "Ten sam papier, ta sama typografia — strona wygląda jak Wasze zaproszenie",
 ];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1">
-      {/* NAV */}
-      <header className="sticky top-0 z-40 border-b border-line/70 bg-ivory/90 backdrop-blur">
-        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4 sm:px-10">
-          <a
-            href="#top"
-            className="font-display text-xl font-semibold tracking-wide text-ink"
-          >
-            Dom Zaproszeń
-          </a>
-          <div className="hidden items-center gap-8 text-sm text-ink-soft md:flex">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="transition-colors hover:text-accent"
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-ivory transition-colors hover:bg-accent-deep sm:px-5"
-          >
-            <IconInstagram />
-            <span className="hidden sm:inline">Napisz na Instagramie</span>
-            <span className="sm:hidden">DM</span>
-          </a>
-        </nav>
-      </header>
+    <div className="flex flex-1 flex-col">
+      <SiteHeader />
 
       <main id="top" className="flex-1">
         {/* HERO */}
@@ -266,7 +125,8 @@ export default function Home() {
             <p className="max-w-md text-lg leading-relaxed text-ink-soft">
               Projektujemy zaproszenia, winietki, menu i dodatki, w których
               każdy detal — kolor wstążki, faktura papieru, odcisk pieczęci —
-              opowiada Waszą historię.
+              opowiada Waszą historię. A od teraz także strony weselne, które
+              wyglądają jak ich przedłużenie.
             </p>
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
               <a
@@ -397,33 +257,86 @@ export default function Home() {
           </div>
         </section>
 
+        {/* NOWOŚĆ: STRONY WESELNE */}
+        <section
+          id="strony-weselne"
+          className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28"
+        >
+          <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+            <div className="flex flex-col items-start gap-6">
+              <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                Nowość w ofercie
+              </span>
+              <h2 className="font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
+                Strona weselna, która wygląda jak Wasze zaproszenie
+              </h2>
+              <p className="max-w-md text-base leading-relaxed text-ink-soft">
+                Papier robi pierwsze wrażenie, strona odpowiada na wszystko, co
+                wydarzy się później. Jeden adres, który goście mają pod ręką
+                przez cały rok przygotowań — i RSVP, które spływa do Was samo.
+              </p>
+              <ul className="flex flex-col gap-3 pt-1">
+                {wwwHighlights.map((h) => (
+                  <li key={h} className="flex items-start gap-3">
+                    <span className="mt-0.5 text-accent">
+                      <IconCheckCircle size={18} />
+                    </span>
+                    <span className="text-sm leading-relaxed text-ink-soft">
+                      {h}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-col gap-4 pt-3 sm:flex-row sm:items-center">
+                <Link
+                  href="/strony-weselne"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-accent-deep"
+                >
+                  Poznaj szczegóły
+                  <IconArrow />
+                </Link>
+                <Link
+                  href={DEMO_PATH}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+                >
+                  Zobacz demo na żywo
+                </Link>
+              </div>
+            </div>
+
+            <BrowserPreview />
+          </div>
+        </section>
+
         {/* PROCESS */}
         <section
           id="jak-to-dziala"
-          className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28"
+          className="border-y border-line bg-ivory-deep"
         >
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-              Jak to wygląda
-            </span>
-            <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
-              Od wiadomości do gotowej papeterii
-            </h2>
-          </div>
-          <div className="mt-14 grid grid-cols-1 gap-12 sm:grid-cols-3">
-            {proces.map((step) => (
-              <div key={step.n} className="flex flex-col gap-3">
-                <span className="font-display text-5xl font-semibold text-accent/25">
-                  {step.n}
-                </span>
-                <h3 className="font-display text-xl font-semibold text-ink">
-                  {step.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-ink-soft">
-                  {step.text}
-                </p>
-              </div>
-            ))}
+          <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                Jak to wygląda
+              </span>
+              <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
+                Od wiadomości do gotowej papeterii
+              </h2>
+            </div>
+            <div className="mt-14 grid grid-cols-1 gap-12 sm:grid-cols-3">
+              {proces.map((step) => (
+                <div key={step.n} className="flex flex-col gap-3">
+                  <span className="font-display text-5xl font-semibold text-accent/25">
+                    {step.n}
+                  </span>
+                  <h3 className="font-display text-xl font-semibold text-ink">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-ink-soft">
+                    {step.text}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -461,42 +374,83 @@ export default function Home() {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-ink">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 border-t border-ivory/10 px-6 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-10">
-          <div>
-            <p className="font-display text-lg font-semibold text-ivory">
-              Dom Zaproszeń
-            </p>
-            <p className="mt-1 text-sm text-ivory/60">
-              Więcej niż zaproszenia — papeteria i dodatki na wyjątkowe okazje.
-            </p>
+      <SiteFooter />
+    </div>
+  );
+}
+
+/* Statyczna makieta okna przeglądarki z miniaturą strony weselnej */
+function BrowserPreview() {
+  return (
+    <div className="relative">
+      <div className="overflow-hidden rounded-[1.5rem] border border-line bg-ivory shadow-[0_30px_60px_-25px_rgba(42,36,32,0.35)]">
+        <div className="flex items-center gap-3 border-b border-line bg-ivory-deep px-4 py-3">
+          <div className="flex gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
+            <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
+            <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
           </div>
-          <div className="flex items-center gap-5">
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram Dom Zaproszeń"
-              className="text-ivory/70 transition-colors hover:text-ivory"
-            >
-              <IconInstagram />
-            </a>
-            <a
-              href={TIKTOK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="TikTok Dom Zaproszeń"
-              className="text-ivory/70 transition-colors hover:text-ivory"
-            >
-              <IconTiktok />
-            </a>
+          <div className="flex-1 truncate rounded-full bg-ivory px-3 py-1.5 text-center text-[0.7rem] text-ink-soft">
+            {DEMO_WEDDING.hostname}
           </div>
-          <p className="text-xs text-ivory/40">
-            © {new Date().getFullYear()} Dom Zaproszeń
-          </p>
         </div>
-      </footer>
+
+        <div className="relative aspect-[4/3]">
+          <Image
+            src="/images/post3.jpg"
+            alt=""
+            fill
+            sizes="(max-width: 1024px) 90vw, 45vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-ink/45" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-ivory">
+            <span className="text-[0.65rem] uppercase tracking-[0.28em] text-ivory/80">
+              Pobieramy się
+            </span>
+            <p className="mt-3 font-display text-4xl font-semibold sm:text-5xl">
+              {DEMO_WEDDING.bride} &amp; {DEMO_WEDDING.groom}
+            </p>
+            <p className="mt-2 text-sm tracking-[0.2em] text-ivory/80">
+              {DEMO_WEDDING.dateShort}
+            </p>
+            <div className="mt-6 flex gap-3">
+              {[
+                { v: String(daysUntil(DEMO_WEDDING.dateISO)), l: "dni" },
+                { v: "04", l: "godz." },
+                { v: "38", l: "min" },
+              ].map((c) => (
+                <div
+                  key={c.l}
+                  className="w-16 rounded-xl border border-ivory/25 bg-ink/25 py-2 backdrop-blur-sm"
+                >
+                  <p className="font-display text-xl font-semibold">{c.v}</p>
+                  <p className="text-[0.6rem] uppercase tracking-[0.16em] text-ivory/70">
+                    {c.l}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 divide-x divide-line border-t border-line text-center">
+          {["Harmonogram", "RSVP", "Dojazd"].map((t) => (
+            <div key={t} className="px-2 py-4 text-[0.7rem] text-ink-soft">
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="absolute -bottom-6 -left-4 hidden rounded-2xl border border-line bg-ivory px-5 py-4 shadow-lg sm:block">
+        <p className="text-xs uppercase tracking-[0.16em] text-accent">
+          Potwierdzenia
+        </p>
+        <p className="mt-1 font-display text-2xl font-semibold text-ink">
+          86 / 104
+        </p>
+      </div>
     </div>
   );
 }

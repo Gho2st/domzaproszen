@@ -15,9 +15,12 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Dom Zaproszeń — więcej niż zaproszenia",
+  title: {
+    default: "Dom Zaproszeń — więcej niż zaproszenia",
+    template: "%s",
+  },
   description:
-    "Dom Zaproszeń to pracownia papeterii ślubnej — zaproszenia, winietki, menu weselne i dodatki projektowane indywidualnie dla każdej pary.",
+    "Dom Zaproszeń to pracownia papeterii ślubnej — zaproszenia, winietki, menu weselne, dodatki i strony weselne projektowane indywidualnie dla każdej pary.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
