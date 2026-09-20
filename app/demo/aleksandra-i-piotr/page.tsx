@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Countdown } from "@/components/wedding/countdown";
 import { DemoNav } from "@/components/wedding/demo-nav";
 import { RsvpForm } from "@/components/wedding/rsvp-form";
+import { AlbumGosci } from "@/components/wedding/album-gosci";
 import {
   IconArrow,
   IconBed,
@@ -584,12 +585,6 @@ export default function DemoWeddingSite() {
                       </p>
                     </div>
                   </div>
-                  <a
-                    href={`tel:${n.phone.replace(/\s/g, "")}`}
-                    className="shrink-0 text-sm font-medium text-ink transition-colors hover:text-accent sm:pl-4"
-                  >
-                    {n.phone}
-                  </a>
                 </div>
               ))}
             </div>
@@ -655,9 +650,17 @@ export default function DemoWeddingSite() {
         >
           <Naglowek eyebrow="Galeria" title="Zanim powiemy „tak”">
             <p className="mt-5 text-sm leading-relaxed text-ink-soft">
-              Tutaj pojawi się nasza sesja narzeczeńska, a po weselu — wspólny
-              album, do którego będziecie mogli dodać własne kadry.
+              Tutaj pojawi się nasza sesja narzeczeńska, a zdjęcia z samego
+              wesela zbieramy niżej — we wspólnym albumie, do którego dorzucicie
+              własne kadry.
             </p>
+            <a
+              href="#album"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent underline underline-offset-4 transition-colors hover:text-accent-deep"
+            >
+              Przejdź do albumu gości
+              <IconArrow size={15} />
+            </a>
           </Naglowek>
 
           {/* Wszystkie kadry w jednej proporcji — inaczej rzędy się rozjeżdżają */}
@@ -676,6 +679,21 @@ export default function DemoWeddingSite() {
                 </figcaption>
               </figure>
             ))}
+          </div>
+        </section>
+
+        {/* ALBUM GOŚCI — działająca makieta: zdjęcia zostają w przeglądarce */}
+        <section id="album" className="border-y border-line bg-ivory-deep">
+          <div className="mx-auto max-w-4xl px-6 py-20 sm:px-10 sm:py-28">
+            <Naglowek eyebrow="Album gości" title="Wesele Waszymi oczami">
+              <p className="mt-5 text-sm leading-relaxed text-ink-soft">
+                Na każdym stole stoi tabliczka z kodem QR. Skanujecie,
+                wybieracie zdjęcia z telefonu i po chwili są tutaj — razem z
+                kadrami reszty gości.
+              </p>
+            </Naglowek>
+
+            <AlbumGosci />
           </div>
         </section>
 

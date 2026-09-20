@@ -79,8 +79,8 @@ const funkcje = [
   },
   {
     icon: IconCamera,
-    title: "Galeria zdjęć",
-    text: "Sesja narzeczeńska przed ślubem, a po weselu — wspólny album, do którego zdjęcia wrzucają też goście.",
+    title: "Galeria i album gości",
+    text: "Sesja narzeczeńska przed ślubem, a w dniu wesela wspólny album: goście skanują kod QR ze stołu i wrzucają swoje kadry prosto z telefonu.",
   },
   {
     icon: IconGlobe,
@@ -92,6 +92,35 @@ const funkcje = [
     title: "Kod QR na zaproszenie",
     text: "Drukujemy go na wkładce lub zaproszeniu — gość skanuje telefonem i od razu jest na stronie.",
   },
+];
+
+const album = [
+  {
+    n: "01",
+    icon: IconQr,
+    title: "Kod QR staje na stołach",
+    text: "Drukujemy go na tabliczce, winietce albo menu — w tej samej oprawie co reszta papeterii, więc nie psuje dekoracji stołu.",
+  },
+  {
+    n: "02",
+    icon: IconPhone,
+    title: "Gość skanuje i wrzuca",
+    text: "Bez aplikacji i bez zakładania konta. Telefon otwiera stronę, gość wybiera zdjęcia z galerii i po chwili są u Was.",
+  },
+  {
+    n: "03",
+    icon: IconCamera,
+    title: "Album rośnie na żywo",
+    text: "Kadry lądują w galerii na Waszej stronie — jeszcze w trakcie wesela możecie puścić je na ekranie na sali.",
+  },
+];
+
+const albumKorzysci = [
+  "Zdjęcia z perspektywy gości: stoły, parkiet, kadry, których fotograf nie widział",
+  "Wszystko w jednym miejscu, zamiast w kilkunastu wątkach na WhatsAppie",
+  "Pobranie całego albumu jednym kliknięciem, w oryginalnej jakości",
+  "Podgląd przed publikacją — nietrafione kadry ukrywacie jednym kliknięciem",
+  "Album zostaje na stronie jako pamiątka przez rok po weselu",
 ];
 
 // Ceny orientacyjne — do ustalenia przed publikacją.
@@ -326,6 +355,91 @@ export default function StronyWeselne() {
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* ALBUM GOŚCI */}
+        <section
+          id="album-gosci"
+          className="border-y border-line bg-ivory-deep"
+        >
+          <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                Dodatek do każdego pakietu
+              </span>
+              <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
+                Wspólny album gości
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-ink-soft">
+                Wasi goście zrobią tego dnia kilkaset zdjęć, których nigdy nie
+                zobaczycie — utkną w ich telefonach. Album zbiera je w jednym
+                miejscu, jeszcze zanim skończy się wesele.
+              </p>
+            </div>
+
+            <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+              {album.map((a) => {
+                const Icon = a.icon;
+                return (
+                  <div
+                    key={a.title}
+                    className="flex flex-col gap-4 rounded-2xl border border-line bg-ivory p-8"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent">
+                        <Icon />
+                      </span>
+                      <span className="font-display text-2xl font-semibold text-accent">
+                        {a.n}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-ink">
+                      {a.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-ink-soft">
+                      {a.text}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-8 rounded-2xl border border-line bg-ivory p-8 sm:p-10 lg:grid-cols-[1.1fr_0.9fr]">
+              <div>
+                <h3 className="font-display text-2xl font-semibold text-ink">
+                  Co z tego macie
+                </h3>
+                <ul className="mt-5 flex flex-col gap-3">
+                  {albumKorzysci.map((k) => (
+                    <li key={k} className="flex gap-3 text-sm leading-relaxed text-ink-soft">
+                      <span className="mt-0.5 shrink-0 text-accent">
+                        <IconCheckCircle size={18} />
+                      </span>
+                      {k}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex flex-col justify-center gap-4 rounded-xl bg-ivory-deep p-7">
+                <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                  W komplecie
+                </span>
+                <p className="text-sm leading-relaxed text-ink-soft">
+                  Do albumu drukujemy tabliczki z kodem QR na stoły — w tej
+                  samej oprawie co winietki i menu. Gość nie musi szukać
+                  linku: skanuje to, co i tak stoi przed nim.
+                </p>
+                <Link
+                  href={DEMO_PATH}
+                  className="inline-flex w-fit items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+                >
+                  Zobacz galerię w demo
+                  <IconArrow size={15} />
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
