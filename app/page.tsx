@@ -4,10 +4,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import {
   IconArrow,
+  IconCamera,
   IconCard,
   IconCheckCircle,
   IconEnvelope,
   IconInstagram,
+  IconQr,
   IconRibbon,
   IconTag,
   IconTiktok,
@@ -97,6 +99,24 @@ const proces = [
     n: "03",
     title: "Odbieracie gotowy komplet",
     text: "Papeteria trafia w Wasze ręce dopracowana w każdym detalu, gotowa, by trafić do gości.",
+  },
+];
+
+const albumKroki = [
+  {
+    n: "01",
+    title: "Tabliczka z QR na każdym stole",
+    text: "Drukujemy ją w tej samej oprawie co winietki i menu — stoi przy dekoracji, nie psuje stołu.",
+  },
+  {
+    n: "02",
+    title: "Gość skanuje telefonem",
+    text: "Bez aplikacji, bez zakładania konta. Wybiera zdjęcia z galerii i wysyła jednym tapnięciem.",
+  },
+  {
+    n: "03",
+    title: "Album rośnie w trakcie wesela",
+    text: "Kadry lądują na Waszej stronie od razu — można je puścić na ekranie na sali.",
   },
 ];
 
@@ -308,6 +328,61 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ALBUM GOŚCI */}
+        <section id="album-gosci" className="bg-ink">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 py-20 sm:px-10 sm:py-28 lg:grid-cols-2">
+            <div className="flex flex-col items-start gap-6">
+              <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                Album gości
+              </span>
+              <h2 className="font-display text-4xl font-semibold leading-tight text-ivory sm:text-5xl">
+                Zdjęcia, których nigdy byście nie zobaczyli
+              </h2>
+              <p className="max-w-md text-base leading-relaxed text-ivory/70">
+                Wasi goście zrobią tego dnia kilkaset zdjęć — i prawie wszystkie
+                utkną w ich telefonach. Album zbiera je w jednym miejscu, jeszcze
+                zanim skończy się wesele. Jest w każdym pakiecie strony.
+              </p>
+
+              <ol className="flex flex-col gap-5 pt-1">
+                {albumKroki.map((k) => (
+                  <li key={k.n} className="flex gap-4">
+                    <span className="font-display text-xl font-semibold text-accent">
+                      {k.n}
+                    </span>
+                    <div>
+                      <h3 className="font-display text-lg font-semibold text-ivory">
+                        {k.title}
+                      </h3>
+                      <p className="mt-1 max-w-sm text-sm leading-relaxed text-ivory/65">
+                        {k.text}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="flex flex-col gap-4 pt-3 sm:flex-row sm:items-center">
+                <Link
+                  href={`${DEMO_PATH}#album`}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-accent-deep"
+                >
+                  Wypróbujcie album w demo
+                  <IconArrow />
+                </Link>
+                <Link
+                  href="/strony-weselne#album-gosci"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-ivory/25 px-6 py-3.5 text-sm font-medium text-ivory transition-colors hover:border-ivory"
+                >
+                  Co dostajecie
+                </Link>
+              </div>
+            </div>
+
+            <AlbumPreview />
+          </div>
+        </section>
+
         {/* PROCESS */}
         <section
           id="jak-to-dziala"
@@ -375,6 +450,60 @@ export default function Home() {
       </main>
 
       <SiteFooter />
+    </div>
+  );
+}
+
+/* Makieta albumu: kadry od gości i tabliczka z kodem QR ze stołu */
+function AlbumPreview() {
+  const kadry = [
+    "/demo/aleksandra-i-piotr/hero.jpg",
+    "/images/post4.jpg",
+    "/images/post0.jpg",
+  ];
+
+  return (
+    <div className="relative pb-16 sm:pb-20">
+      <div className="grid grid-cols-2 gap-4">
+        {kadry.map((src) => (
+          <div
+            key={src}
+            className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-ivory/10"
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 45vw, 22vw"
+              className="object-cover"
+            />
+          </div>
+        ))}
+
+        <div className="flex aspect-[4/5] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-ivory/25 px-4 text-center">
+          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-ivory/10 text-ivory/70">
+            <IconCamera size={20} />
+          </span>
+          <span className="text-[0.65rem] uppercase tracking-[0.16em] text-ivory/55">
+            Miejsce na Wasz kadr
+          </span>
+        </div>
+      </div>
+
+      {/* tabliczka ze stołu */}
+      <div className="absolute -bottom-1 left-1/2 flex w-[17rem] -translate-x-1/2 items-center gap-4 rounded-2xl border border-line bg-ivory px-5 py-4 shadow-[0_25px_50px_-20px_rgba(10,14,11,0.8)] sm:-bottom-2 sm:w-80">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-line text-accent">
+          <IconQr size={28} />
+        </span>
+        <div className="text-left">
+          <p className="text-[0.62rem] uppercase tracking-[0.18em] text-accent">
+            Tabliczka na stole
+          </p>
+          <p className="mt-1 font-display text-lg font-semibold leading-snug text-ink">
+            Skanuj i dorzuć swoje zdjęcia
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

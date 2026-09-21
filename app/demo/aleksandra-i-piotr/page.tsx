@@ -143,11 +143,8 @@ const noclegi = [
 /** Ramki na zdjęcia pary — w demo puste, na gotowej stronie wypełnione sesją. */
 const galeria = [
   "Sesja narzeczeńska",
-  "Detale i papeteria",
-  "Ceremonia",
-  "Pierwszy taniec",
-  "Przyjęcie w ogrodzie",
-  "Album od gości",
+  "Sesja narzeczeńska",
+  "Sesja narzeczeńska",
 ];
 
 const pytania = [

@@ -123,17 +123,17 @@ const albumKorzysci = [
   "Album zostaje na stronie jako pamiątka przez rok po weselu",
 ];
 
-// Ceny orientacyjne — do ustalenia przed publikacją.
 const pakiety = [
   {
     name: "Wizytówka",
-    price: "od 690 zł",
+    price: "od 499 zł",
     tagline: "Najważniejsze informacje w jednym miejscu.",
     features: [
       "Strona jednoekranowa (one page)",
       "Odliczanie do dnia ślubu",
       "Harmonogram i miejsce z mapą",
       "Dress code i informacje dla gości",
+      "Album gości — zdjęcia zbierane przez kod QR",
       "Adres w domenie domzaproszen.pl",
       "Hosting i certyfikat SSL na rok",
     ],
@@ -142,7 +142,7 @@ const pakiety = [
   },
   {
     name: "Komplet z RSVP",
-    price: "od 1 290 zł",
+    price: "od 899 zł",
     tagline: "Najczęściej wybierany — strona plus zbieranie potwierdzeń.",
     features: [
       "Wszystko z pakietu Wizytówka",
@@ -152,13 +152,14 @@ const pakiety = [
       "Galeria zdjęć (do 30 fotografii)",
       "Sekcja FAQ i noclegi w okolicy",
       "Kod QR dopasowany do papeterii",
+      "Tabliczki z QR do albumu na każdy stół",
     ],
     cta: "Zapytaj o wycenę",
     featured: true,
   },
   {
     name: "Premium",
-    price: "od 1 990 zł",
+    price: "od 1 299 zł",
     tagline: "Dla par, które chcą czegoś zupełnie własnego.",
     features: [
       "Wszystko z pakietu Komplet z RSVP",
@@ -166,7 +167,7 @@ const pakiety = [
       "Indywidualne ilustracje i animacje",
       "Wersja dwujęzyczna PL / EN",
       "Nasza historia i strefa gości weselnych",
-      "Galeria poweselna ze zdjęciami od gości",
+      "Album gości aktywny rok po weselu",
       "Opieka nad stroną do roku po weselu",
     ],
     cta: "Zapytaj o wycenę",
@@ -267,8 +268,8 @@ export default function StronyWeselne() {
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-4 text-xs text-ink-soft">
                 {[
                   "Gotowe w 7–14 dni",
+                  "Album gości w każdym pakiecie",
                   "Hosting na rok w cenie",
-                  "Kod QR na zaproszenia",
                 ].map((t) => (
                   <span key={t} className="inline-flex items-center gap-2">
                     <span className="text-accent">
@@ -366,7 +367,7 @@ export default function StronyWeselne() {
           <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
             <div className="mx-auto max-w-2xl text-center">
               <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-                Dodatek do każdego pakietu
+                W każdym pakiecie
               </span>
               <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
                 Wspólny album gości
@@ -576,6 +577,27 @@ export default function StronyWeselne() {
                 </a>
               </div>
             ))}
+          </div>
+
+          <div className="mx-auto mt-10 flex max-w-3xl flex-col items-start gap-4 rounded-2xl border border-line bg-ivory-deep p-7 sm:flex-row sm:items-center sm:gap-7">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
+              <IconCamera size={22} />
+            </span>
+            <p className="text-sm leading-relaxed text-ink-soft">
+              <span className="font-medium text-ink">
+                Album gości jest w każdym pakiecie — także w tym najtańszym.
+              </span>{" "}
+              Różni się tylko to, co dokładamy dookoła: od Kompletu drukujemy
+              tabliczki z kodem QR na każdy stół, w oprawie Waszych winietek,
+              a w Premium album zostaje aktywny rok po weselu.{" "}
+              <a
+                href="#album-gosci"
+                className="font-medium text-accent underline underline-offset-4 transition-colors hover:text-accent-deep"
+              >
+                Zobaczcie, jak działa
+              </a>
+              .
+            </p>
           </div>
         </section>
 
