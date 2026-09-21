@@ -2,6 +2,9 @@ export const INSTAGRAM_URL = "https://www.instagram.com/domzaproszen.pl/";
 export const TIKTOK_URL = "https://www.tiktok.com/@domzaproszen.pl";
 export const DEMO_PATH = "/demo/aleksandra-i-piotr";
 
+/** Adres produkcyjny — podstawa metadanych i adresu w kodzie QR. */
+export const SITE_URL = "https://domzaproszen.pl";
+
 /** Fikcyjna para z demo strony weselnej. */
 export const DEMO_WEDDING = {
   bride: "Aleksandra",
@@ -13,6 +16,9 @@ export const DEMO_WEDDING = {
   dateUpper: "11 LIPCA 2027",
   hostname: "aleksandra-i-piotr.domzaproszen.pl",
 };
+
+/** Cel kodu QR z tabliczki na stole — album gości w demo. */
+export const ALBUM_URL = `${SITE_URL}${DEMO_PATH}#album`;
 
 /** Pełne dni do podanej daty — do statycznych makiet odliczania. */
 export function daysUntil(iso: string) {

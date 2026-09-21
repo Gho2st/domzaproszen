@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Great_Vibes } from "next/font/google";
 import Image from "next/image";
+import heroFoto from "@/public/demo/aleksandra-i-piotr/hero.jpg";
 import Link from "next/link";
 import { Countdown } from "@/components/wedding/countdown";
 import { DemoNav } from "@/components/wedding/demo-nav";
@@ -16,7 +17,8 @@ import {
   IconMapPin,
   IconSparkle,
 } from "@/components/icons";
-import { DEMO_WEDDING, INSTAGRAM_URL } from "@/lib/site";
+import QRCode from "qrcode";
+import { ALBUM_URL, DEMO_WEDDING, INSTAGRAM_URL } from "@/lib/site";
 
 /** Kaligrafia do imion — ładowana tylko na tej stronie. */
 const vibes = Great_Vibes({
@@ -27,11 +29,19 @@ const vibes = Great_Vibes({
 /** Skrót: kaligrafia + typowe ustawienia optyczne. */
 const kaligrafia = `${vibes.className} font-normal`;
 
+const OPIS_DEMO =
+  "Przykładowa strona weselna przygotowana przez Dom Zaproszeń: odliczanie, harmonogram, dojazd, noclegi, album gości i formularz RSVP.";
+
 export const metadata: Metadata = {
   title: "Aleksandra & Piotr — 11 lipca 2027 | przykładowa strona weselna",
-  description:
-    "Przykładowa strona weselna przygotowana przez Dom Zaproszeń: odliczanie, harmonogram, dojazd, noclegi i formularz RSVP.",
+  description: OPIS_DEMO,
   robots: { index: false, follow: true },
+  // Strona nie jest indeksowana, ale link krąży po Instagramie i Messengerze —
+  // podgląd ma pokazywać parę, nie nazwę pracowni.
+  openGraph: {
+    title: "Aleksandra & Piotr — 11 lipca 2027",
+    description: OPIS_DEMO,
+  },
 };
 
 const historia = [
@@ -297,8 +307,22 @@ function Naglowek({
   );
 }
 
-export default function DemoWeddingSite() {
+export default async function DemoWeddingSite() {
   const { bride, groom, dateISO, dateLabel, dateUpper } = DEMO_WEDDING;
+
+  // Kod QR powstaje przy buildzie z adresu w lib/site.ts, więc nie rozjedzie
+  // się z realnym linkiem do albumu.
+  const kodQr = (
+    await QRCode.toString(ALBUM_URL, {
+      type: "svg",
+      margin: 0,
+      errorCorrectionLevel: "M",
+      color: { dark: "#28322c", light: "#0000" },
+    })
+  )
+    // biblioteka zwraca SVG bez wymiarów — bez tego kod renderuje się
+    // w domyślnym rozmiarze zamiast wypełnić ramkę tabliczki
+    .replace("<svg", '<svg width="100%" height="100%"');
 
   return (
     <div className="motyw-eukaliptus flex flex-1 flex-col overflow-x-clip bg-ivory text-ink">
@@ -323,10 +347,11 @@ export default function DemoWeddingSite() {
             ramka, typografia) zostaje bez zmian. */}
         <section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-ink">
           <Image
-            src="/demo/aleksandra-i-piotr/hero.jpg"
+            src={heroFoto}
             alt="Aleksandra i Piotr podczas sesji plenerowej"
             fill
             priority
+            placeholder="blur"
             sizes="100vw"
             className="-z-30 object-cover object-[60%_center] sm:object-center"
           />
@@ -400,7 +425,6 @@ export default function DemoWeddingSite() {
               patrzeć razem w tym samym kierunku”.
             </p>
 
-            {/* Szczegóły z druku są na grafice — tu tylko to, czego na niej nie ma */}
             <p className="mt-6 text-sm leading-relaxed text-ink-soft">
               Zaraz po ceremonii zapraszamy Was na przyjęcie w Dworku Pod Lipami
               w Jerzmanowicach — bawimy się do białego rana, a nazajutrz
@@ -689,6 +713,29 @@ export default function DemoWeddingSite() {
                 kadrami reszty gości.
               </p>
             </Naglowek>
+
+            {/* Tabliczka, która na weselu stoi na stole — kod prowadzi
+                do tej samej sekcji, więc można go zeskanować z ekranu */}
+            <figure className="papier relative mx-auto mt-12 flex w-full max-w-sm flex-col items-center gap-5 rounded-[3px] border border-line bg-ivory px-8 py-10 text-center shadow-[0_35px_70px_-45px_rgba(30,40,33,0.6)]">
+              <span className="pointer-events-none absolute inset-2.5 rounded-[2px] border border-line" />
+              <Galazka className="pointer-events-none absolute -left-3 top-5 w-20 -rotate-[22deg] text-sage" />
+
+              <span className="text-[0.6rem] uppercase tracking-[0.3em] text-ink-soft">
+                Album gości
+              </span>
+
+              <div
+                className="h-44 w-44"
+                dangerouslySetInnerHTML={{ __html: kodQr }}
+              />
+
+              <figcaption className="font-display text-xl font-semibold text-ink">
+                Zeskanuj i dorzuć swoje zdjęcia
+              </figcaption>
+              <p className="text-xs leading-relaxed text-ink-soft">
+                Aparat w telefonie wystarczy — nie trzeba żadnej aplikacji.
+              </p>
+            </figure>
 
             <AlbumGosci />
           </div>
