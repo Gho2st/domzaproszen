@@ -450,7 +450,7 @@ export default function StronyWeselne() {
 
                 <p className="mt-7 flex items-baseline gap-2">
                   <span className="label text-ink-3">od</span>
-                  <span className="display num text-[2.35rem] font-semibold leading-none">
+                  <span className="display num text-[2rem] font-semibold leading-none">
                     {p.price}
                   </span>
                   <span className="display text-d4 font-semibold text-ink-3">
@@ -502,7 +502,7 @@ export default function StronyWeselne() {
                   key={k.title}
                   className="border-t border-rule pt-6 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0 lg:first:border-l-0 lg:first:pl-0"
                 >
-                  <span className="display num block text-[2.1rem] font-semibold leading-none text-accent">
+                  <span className="display num block text-[1.8rem] font-semibold leading-none text-accent">
                     {nr(i)}
                   </span>
                   <h3 className="display mt-5 text-d3 font-semibold">
@@ -584,7 +584,7 @@ function PhoneMockup() {
 
           <div className="absolute inset-x-0 top-[14%] px-6 text-center text-paper">
             <span className="label text-paper/75">Pobieramy się</span>
-            <p className="display mt-4 text-[2.25rem] font-semibold leading-[0.98]">
+            <p className="display mt-4 text-[1.95rem] font-semibold leading-[0.98]">
               {DEMO_WEDDING.bride}
               <br />
               <em className="font-normal">&amp;</em> {DEMO_WEDDING.groom}

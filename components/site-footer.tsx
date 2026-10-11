@@ -75,7 +75,7 @@ export function SiteFooter() {
         <div className="border-t border-paper/15 py-10">
           <p
             aria-hidden="true"
-            className="display select-none text-[clamp(2.2rem,9.5vw,6rem)] font-semibold leading-none tracking-[-0.03em] text-paper/10"
+            className="display select-none text-[clamp(1.9rem,8.2vw,5.2rem)] font-semibold leading-none tracking-[-0.03em] text-paper/10"
           >
             Dom Zaproszeń
           </p>

@@ -50,7 +50,7 @@ export function Countdown({
     >
       {UNITS.map((label, i) => (
         <div key={label} className="px-1 py-4 text-center sm:py-5">
-          <p className="display num text-[1.65rem] font-semibold leading-none sm:text-[2.15rem]">
+          <p className="display num text-[1.45rem] font-semibold leading-none sm:text-[1.85rem]">
             {parts ? parts[i] : "––"}
           </p>
           <p

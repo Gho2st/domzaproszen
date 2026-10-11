@@ -159,7 +159,7 @@ export default async function Home() {
                 </p>
 
                 {/* Kursywa w akcencie niesie uwagę — nie sam rozmiar liter */}
-                <h1 className="display rise mt-7 text-[clamp(2.7rem,7.6vw,5rem)] font-semibold leading-[0.95] tracking-[-0.03em]">
+                <h1 className="display rise mt-7 text-[clamp(2.3rem,6.5vw,4.25rem)] font-semibold leading-[0.95] tracking-[-0.03em]">
                   Więcej niż
                   <br />
                   <em className="text-accent">zaproszenia</em>
@@ -211,7 +211,7 @@ export default async function Home() {
                 </div>
                 <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-rule pt-3">
                   <span className="label text-accent">Realizacja</span>
-                  <span className="text-[0.9375rem] text-ink-2">
+                  <span className="text-sm text-ink-2">
                     Nowoczesna elegancja
                   </span>
                 </figcaption>
@@ -267,7 +267,7 @@ export default async function Home() {
                 </div>
                 <figcaption className="flex items-baseline gap-4 px-5 py-4 sm:px-6">
                   <span className="label num text-ink-3">{nr(i)}</span>
-                  <span className="text-[0.9375rem] text-ink-2">{r.title}</span>
+                  <span className="text-sm text-ink-2">{r.title}</span>
                 </figcaption>
               </figure>
             ))}
@@ -475,7 +475,7 @@ export default async function Home() {
                   key={step.title}
                   className="border-t border-rule pt-6 sm:border-t-0 sm:border-l sm:pl-8 sm:pt-0 sm:first:border-l-0 sm:first:pl-0"
                 >
-                  <span className="display num block text-[2.1rem] font-semibold leading-none text-accent">
+                  <span className="display num block text-[1.8rem] font-semibold leading-none text-accent">
                     {nr(i)}
                   </span>
                   <h3 className="display mt-5 text-d3 font-semibold">

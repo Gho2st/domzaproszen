@@ -18,23 +18,23 @@
   --font-body: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
 
   /* Płynna skala nagłówków — bez skoków między breakpointami */
-  --text-d1: clamp(2.5rem, 1.15rem + 5.2vw, 4.75rem);
+  --text-d1: clamp(2.15rem, 1.05rem + 4.4vw, 4rem);
   --text-d1--line-height: 0.95;
   --text-d1--letter-spacing: -0.025em;
 
-  --text-d2: clamp(1.8rem, 1.3rem + 2.1vw, 2.85rem);
+  --text-d2: clamp(1.6rem, 1.22rem + 1.7vw, 2.4rem);
   --text-d2--line-height: 1.04;
   --text-d2--letter-spacing: -0.02em;
 
-  --text-d3: clamp(1.3rem, 1.12rem + 0.8vw, 1.7rem);
+  --text-d3: clamp(1.18rem, 1.05rem + 0.6vw, 1.5rem);
   --text-d3--line-height: 1.15;
   --text-d3--letter-spacing: -0.015em;
 
-  --text-d4: 1.1rem;
+  --text-d4: 1.0625rem;
   --text-d4--line-height: 1.32;
   --text-d4--letter-spacing: -0.01em;
 
-  --text-lede: clamp(1rem, 0.96rem + 0.28vw, 1.15rem);
+  --text-lede: clamp(0.95rem, 0.92rem + 0.2vw, 1.0625rem);
   --text-lede--line-height: 1.62;
 }
 
@@ -81,8 +81,8 @@
     background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-body);
-    font-size: 1rem;
-    line-height: 1.66;
+    font-size: 0.9375rem;
+    line-height: 1.65;
   }
 
   /* Sticky nagłówek nie może zasłaniać sekcji przy skoku po kotwicy */
@@ -130,7 +130,7 @@
   border-radius: 0;
   padding: 0.55rem 0 0.6rem;
   font: inherit;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   color: var(--color-ink);
   transition: border-color 0.2s;
 }

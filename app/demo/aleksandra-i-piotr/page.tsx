@@ -380,10 +380,10 @@ export default async function DemoWeddingSite() {
               </span>
 
               <h1
-                className={`${kaligrafia} rise mt-4 text-[clamp(2.3rem,11.5vw,5.25rem)] leading-[1.05] text-paper sm:mt-6`}
+                className={`${kaligrafia} rise mt-4 text-[clamp(2rem,10vw,4.5rem)] leading-[1.05] text-paper sm:mt-6`}
               >
                 {bride}
-                <span className="my-1 block display text-2xl font-normal text-sage sm:text-4xl">
+                <span className="my-1 block display text-xl font-normal text-sage sm:text-3xl">
                   &amp;
                 </span>
                 {groom}
@@ -401,7 +401,7 @@ export default async function DemoWeddingSite() {
 
               <a
                 href="#rsvp"
-                className="inline-flex items-center gap-2 rounded-[2px] border border-paper/40 bg-paper/10 px-7 py-3.5 text-[0.9375rem] font-medium text-paper backdrop-blur-sm transition-colors hover:bg-paper hover:text-ink"
+                className="inline-flex items-center gap-2 rounded-[2px] border border-paper/40 bg-paper/10 px-7 py-3.5 text-sm font-medium text-paper backdrop-blur-sm transition-colors hover:bg-paper hover:text-ink"
               >
                 Potwierdź obecność
                 <IconArrow />
@@ -439,10 +439,10 @@ export default async function DemoWeddingSite() {
               spotykamy się jeszcze na poprawinach.
             </p>
             <p
-              className={`${kaligrafia} mt-8 text-[clamp(2rem,9vw,2.65rem)] leading-snug text-accent`}
+              className={`${kaligrafia} mt-8 text-[clamp(1.75rem,8vw,2.3rem)] leading-snug text-accent`}
             >
               {bride}
-              <span className="mx-4 display text-3xl">&amp;</span>
+              <span className="mx-4 display text-2xl">&amp;</span>
               {groom}
             </p>
           </div>
@@ -461,10 +461,10 @@ export default async function DemoWeddingSite() {
                 <Galazka className="pointer-events-none absolute -right-4 bottom-10 w-24 rotate-[158deg] text-sage sm:w-32" />
 
                 <p
-                  className={`${kaligrafia} text-[clamp(3rem,15vw,6rem)] leading-none text-ink`}
+                  className={`${kaligrafia} text-[clamp(2.6rem,13vw,5.2rem)] leading-none text-ink`}
                 >
                   {bride.charAt(0)}
-                  <span className="mx-3 display text-4xl text-accent">
+                  <span className="mx-3 display text-3xl text-accent">
                     &amp;
                   </span>
                   {groom.charAt(0)}
@@ -791,10 +791,10 @@ export default async function DemoWeddingSite() {
           <div className="mx-auto flex max-w-2xl flex-col items-center px-6 py-20 text-center sm:px-10 sm:py-28">
             <Pieczec size={64} />
             <p
-              className={`${kaligrafia} mt-8 text-[2.4rem] leading-snug text-paper sm:text-5xl`}
+              className={`${kaligrafia} mt-8 text-[2.1rem] leading-snug text-paper sm:text-4xl`}
             >
               {bride}
-              <span className="mx-4 display text-3xl">&amp;</span>
+              <span className="mx-4 display text-2xl">&amp;</span>
               {groom}
             </p>
             <p className="mt-6 label text-paper/70">
@@ -822,7 +822,7 @@ export default async function DemoWeddingSite() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
               href="/strony-weselne"
-              className="inline-flex items-center justify-center gap-2 rounded-[2px] bg-paper px-6 py-3.5 text-center text-[0.9375rem] font-medium text-ink transition-colors hover:bg-sage hover:text-ink"
+              className="inline-flex items-center justify-center gap-2 rounded-[2px] bg-paper px-6 py-3.5 text-center text-sm font-medium text-ink transition-colors hover:bg-sage hover:text-ink"
             >
               Zobacz ofertę
               <IconArrow />
@@ -831,7 +831,7 @@ export default async function DemoWeddingSite() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-paper/30 px-6 py-3.5 text-[0.9375rem] font-medium text-paper transition-colors hover:border-paper hover:bg-paper/10"
+              className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-paper/30 px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:border-paper hover:bg-paper/10"
             >
               Napisz do nas
             </a>

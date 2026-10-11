@@ -235,7 +235,7 @@ export function RsvpForm() {
 
       <button
         type="submit"
-        className="inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-ink px-6 py-4 text-[0.9375rem] font-medium text-paper transition-colors hover:bg-accent"
+        className="inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-ink px-6 py-4 text-sm font-medium text-paper transition-colors hover:bg-accent"
       >
         Wyślij potwierdzenie
         <IconArrow />

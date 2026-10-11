@@ -107,7 +107,7 @@ export function MobileMenu({
       className="fade-in fixed inset-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-ink text-paper lg:hidden"
     >
       <div className="flex items-center justify-between gap-6 border-b border-paper/15 px-6 py-4 sm:px-10">
-        <span className="display text-[1.3rem] font-semibold leading-none">
+        <span className="display text-[1.15rem] font-semibold leading-none">
           {brand}
         </span>
         <button
@@ -136,7 +136,7 @@ export function MobileMenu({
                 <span className="label num text-paper/45" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="display text-[clamp(1.75rem,7vw,2.35rem)] font-semibold leading-none">
+                <span className="display text-[clamp(1.3rem,5vw,1.7rem)] font-semibold leading-none">
                   {l.label}
                 </span>
               </a>

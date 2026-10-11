@@ -23,7 +23,7 @@ export function SiteHeader() {
         <div className={shell}>
           <nav className="flex items-center justify-between gap-8 py-4">
             <Link href="/" className="flex items-baseline gap-3">
-              <span className="display text-[1.3rem] font-semibold leading-none tracking-[-0.02em]">
+              <span className="display text-[1.15rem] font-semibold leading-none tracking-[-0.02em]">
                 Dom Zaproszeń
               </span>
               <span className="label hidden text-ink-3 sm:block">
@@ -36,7 +36,7 @@ export function SiteHeader() {
                 <a
                   key={l.href}
                   href={l.href}
-                  className="text-[0.9375rem] text-ink-2 decoration-ink/30 underline-offset-[6px] transition-colors hover:text-ink hover:underline"
+                  className="text-sm text-ink-2 decoration-ink/30 underline-offset-[6px] transition-colors hover:text-ink hover:underline"
                 >
                   {l.label}
                 </a>
@@ -45,7 +45,7 @@ export function SiteHeader() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-[2px] bg-ink px-5 py-2.5 text-[0.9375rem] font-medium text-paper transition-colors hover:bg-accent"
+                className="rounded-[2px] bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-accent"
               >
                 Napisz do nas
               </a>

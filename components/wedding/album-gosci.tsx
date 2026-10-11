@@ -193,7 +193,7 @@ export function AlbumGosci() {
           <IconCamera size={22} />
         </span>
 
-        <p className="display text-d4 font-semibold text-ink sm:text-2xl">
+        <p className="display text-d4 font-semibold text-ink sm:text-d3">
           Dorzućcie swoje kadry
         </p>
         <p className="max-w-sm text-ink-2">
@@ -205,7 +205,7 @@ export function AlbumGosci() {
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="inline-flex items-center gap-2 rounded-[2px] bg-ink px-6 py-3.5 text-[0.9375rem] font-medium text-paper transition-colors hover:bg-accent"
+            className="inline-flex items-center gap-2 rounded-[2px] bg-ink px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent"
           >
             Dodaj zdjęcia
           </button>
@@ -214,7 +214,7 @@ export function AlbumGosci() {
             type="button"
             onClick={otworzPokaz}
             disabled={kadry.length === 0}
-            className="inline-flex items-center gap-2 rounded-[2px] border border-ink/30 px-6 py-3.5 text-[0.9375rem] font-medium text-ink transition-colors hover:border-ink hover:bg-ink/[0.04] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-rule disabled:hover:text-ink"
+            className="inline-flex items-center gap-2 rounded-[2px] border border-ink/30 px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink hover:bg-ink/[0.04] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-rule disabled:hover:text-ink"
           >
             <IconSparkle size={17} />
             Pokaz slajdów

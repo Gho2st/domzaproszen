@@ -22,7 +22,7 @@ export function DemoNav({ monogram }: { monogram: string }) {
         <nav className="mx-auto flex w-full max-w-[1180px] items-center justify-between gap-4 px-6 py-4 sm:px-10">
           <a
             href="#gora"
-            className="display text-[1.15rem] font-semibold tracking-[0.12em] text-ink"
+            className="display text-[1.05rem] font-semibold tracking-[0.12em] text-ink"
           >
             {monogram}
           </a>
@@ -32,7 +32,7 @@ export function DemoNav({ monogram }: { monogram: string }) {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-[0.9375rem] text-ink-2 decoration-ink/30 underline-offset-[6px] transition-colors hover:text-ink hover:underline"
+                className="text-sm text-ink-2 decoration-ink/30 underline-offset-[6px] transition-colors hover:text-ink hover:underline"
               >
                 {l.label}
               </a>
@@ -42,7 +42,7 @@ export function DemoNav({ monogram }: { monogram: string }) {
           <div className="flex items-center gap-4">
             <a
               href="#rsvp"
-              className="rounded-[2px] bg-ink px-5 py-2.5 text-[0.9375rem] font-medium text-paper transition-colors hover:bg-accent"
+              className="rounded-[2px] bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-accent"
             >
               <span className="sm:hidden">RSVP</span>
               <span className="hidden sm:inline">Potwierdź obecność</span>

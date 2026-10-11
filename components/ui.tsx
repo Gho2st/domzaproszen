@@ -2,16 +2,16 @@ import type { ReactNode } from "react";
 
 /* Przyciski: prostokątne, bez cieni i gradientów — bliżej druku niż aplikacji */
 export const btnSolid =
-  "inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-ink px-6 py-3.5 text-[0.9375rem] font-medium text-paper transition-colors hover:bg-accent";
+  "inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-ink px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent";
 
 export const btnOutline =
-  "inline-flex items-center justify-center gap-2.5 rounded-[2px] border border-ink/30 px-6 py-3.5 text-[0.9375rem] font-medium text-ink transition-colors hover:border-ink hover:bg-ink/[0.04]";
+  "inline-flex items-center justify-center gap-2.5 rounded-[2px] border border-ink/30 px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink hover:bg-ink/[0.04]";
 
 export const btnSolidInverse =
-  "inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-paper px-6 py-3.5 text-[0.9375rem] font-medium text-ink transition-colors hover:bg-accent hover:text-paper";
+  "inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-paper px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-accent hover:text-paper";
 
 export const btnOutlineInverse =
-  "inline-flex items-center justify-center gap-2.5 rounded-[2px] border border-paper/30 px-6 py-3.5 text-[0.9375rem] font-medium text-paper transition-colors hover:border-paper hover:bg-paper/10";
+  "inline-flex items-center justify-center gap-2.5 rounded-[2px] border border-paper/30 px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:border-paper hover:bg-paper/10";
 
 export const linkQuiet =
   "text-accent underline decoration-accent/35 underline-offset-[5px] transition-colors hover:decoration-accent";
