@@ -11,8 +11,8 @@ export const contentType = "image/png";
 const kaligrafia = await readFile(
   join(process.cwd(), "assets/fonts/GreatVibes-Regular.ttf"),
 );
-const antykwa = await readFile(
-  join(process.cwd(), "assets/fonts/CormorantGaramond-SemiBold.ttf"),
+const grotesk = await readFile(
+  join(process.cwd(), "assets/fonts/InstrumentSans-Medium.ttf"),
 );
 const tlo = await readFile(join(process.cwd(), "assets/og/hero-1200x630.jpg"));
 
@@ -64,9 +64,9 @@ export default async function Image() {
         >
           <div
             style={{
-              fontFamily: "Cormorant",
-              fontSize: 26,
-              letterSpacing: 10,
+              fontFamily: "Instrument",
+              fontSize: 19,
+              letterSpacing: 6,
               color: "#c8d6c2",
             }}
           >
@@ -93,7 +93,7 @@ export default async function Image() {
           <div
             style={{
               marginTop: 34,
-              fontFamily: "Cormorant",
+              fontFamily: "Instrument",
               fontSize: 30,
               letterSpacing: 8,
               color: "#f9f8f4",
@@ -105,7 +105,7 @@ export default async function Image() {
           <div
             style={{
               marginTop: 14,
-              fontFamily: "Cormorant",
+              fontFamily: "Instrument",
               fontSize: 22,
               letterSpacing: 5,
               color: "#c8d6c2",
@@ -120,7 +120,7 @@ export default async function Image() {
       ...size,
       fonts: [
         { name: "Great Vibes", data: kaligrafia, style: "normal", weight: 400 },
-        { name: "Cormorant", data: antykwa, style: "normal", weight: 600 },
+        { name: "Instrument", data: grotesk, style: "normal", weight: 500 },
       ],
     },
   );

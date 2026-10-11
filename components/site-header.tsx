@@ -3,100 +3,89 @@
 import Link from "next/link";
 import { useState } from "react";
 import { INSTAGRAM_URL } from "@/lib/site";
-import { IconInstagram } from "./icons";
+import { shell } from "./ui";
 
 const navLinks = [
   { href: "/#oferta", label: "Oferta" },
   { href: "/#realizacje", label: "Realizacje" },
-  { href: "/strony-weselne", label: "Strony weselne", badge: "Nowość" },
-  { href: "/#jak-to-dziala", label: "Jak to działa" },
+  { href: "/strony-weselne", label: "Strony weselne" },
+  { href: "/#jak-to-dziala", label: "Jak pracujemy" },
+  { href: "/#kontakt", label: "Kontakt" },
 ];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-ivory/90 backdrop-blur">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4 sm:px-10">
-        <Link
-          href="/"
-          className="font-display text-xl font-semibold tracking-wide text-ink"
-        >
-          Dom Zaproszeń
-        </Link>
+    <header className="sticky top-0 z-40 border-b border-rule bg-paper">
+      <div className={shell}>
+        <nav className="flex items-center justify-between gap-8 py-4">
+          <Link href="/" className="group flex items-baseline gap-3">
+            <span className="display text-[1.3rem] font-semibold leading-none tracking-[-0.02em]">
+              Dom Zaproszeń
+            </span>
+            <span className="label hidden text-ink-3 sm:block">
+              Pracownia papeterii
+            </span>
+          </Link>
 
-        <div className="hidden items-center gap-8 text-sm text-ink-soft lg:flex">
-          {navLinks.map((l) => (
+          <div className="hidden items-center gap-7 lg:flex">
+            {navLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-[0.9375rem] text-ink-2 decoration-ink/30 underline-offset-[6px] transition-colors hover:text-ink hover:underline"
+              >
+                {l.label}
+              </a>
+            ))}
             <a
-              key={l.href}
-              href={l.href}
-              className="inline-flex items-center gap-2 transition-colors hover:text-accent"
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-[2px] bg-ink px-5 py-2.5 text-[0.9375rem] font-medium text-paper transition-colors hover:bg-accent"
             >
-              {l.label}
-              {l.badge ? (
-                <span className="rounded-full bg-accent/12 px-2 py-0.5 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-accent">
-                  {l.badge}
-                </span>
-              ) : null}
+              Napisz do nas
             </a>
-          ))}
-        </div>
+          </div>
 
-        <div className="flex items-center gap-2">
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-ivory transition-colors hover:bg-accent-deep sm:px-5"
-          >
-            <IconInstagram />
-            <span className="hidden sm:inline">Napisz na Instagramie</span>
-            <span className="sm:hidden">DM</span>
-          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            aria-label={open ? "Zamknij menu" : "Otwórz menu"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent lg:hidden"
+            className="label flex items-center gap-2.5 py-2 text-ink lg:hidden"
           >
-            <svg
-              viewBox="0 0 24 24"
-              width="18"
-              height="18"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-            >
-              {open ? (
-                <path d="m6 6 12 12M18 6 6 18" />
-              ) : (
-                <path d="M4 8h16M4 16h16" />
-              )}
-            </svg>
+            {open ? "Zamknij" : "Menu"}
+            <span aria-hidden="true" className="flex flex-col gap-[3px]">
+              <span className="block h-px w-5 bg-ink" />
+              <span className="block h-px w-5 bg-ink" />
+            </span>
           </button>
-        </div>
-      </nav>
+        </nav>
+      </div>
 
       {open ? (
-        <div className="border-t border-line/70 lg:hidden">
-          <div className="mx-auto flex w-full max-w-6xl flex-col px-6 py-2 sm:px-10">
+        <div className="border-t border-rule lg:hidden">
+          <div className={shell}>
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 border-b border-line/50 py-3.5 text-sm text-ink-soft last:border-0 transition-colors hover:text-accent"
+                className="block border-b border-rule/60 py-4 text-ink-2 transition-colors last:border-0 hover:text-ink"
               >
                 {l.label}
-                {l.badge ? (
-                  <span className="rounded-full bg-accent/12 px-2 py-0.5 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-accent">
-                    {l.badge}
-                  </span>
-                ) : null}
               </a>
             ))}
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="my-5 block rounded-[2px] bg-ink px-5 py-3.5 text-center font-medium text-paper"
+            >
+              Napisz na Instagramie
+            </a>
           </div>
         </div>
       ) : null}

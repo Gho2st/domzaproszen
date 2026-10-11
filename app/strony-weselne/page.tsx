@@ -4,22 +4,14 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import {
-  IconArrow,
-  IconBed,
-  IconCamera,
-  IconCheckCircle,
-  IconChevronDown,
-  IconClock,
-  IconEnvelope,
-  IconGift,
-  IconGlobe,
-  IconInstagram,
-  IconMapPin,
-  IconPhone,
-  IconQr,
-  IconSparkle,
-  IconUsers,
-} from "@/components/icons";
+  Question,
+  SectionHead,
+  btnOutline,
+  btnOutlineInverse,
+  btnSolid,
+  btnSolidInverse,
+  shell,
+} from "@/components/ui";
 import { DEMO_PATH, DEMO_WEDDING, INSTAGRAM_URL, daysUntil } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -30,17 +22,14 @@ export const metadata: Metadata = {
 
 const powody = [
   {
-    icon: IconPhone,
     title: "Koniec z tłumaczeniem po raz setny",
     text: "Godzina błogosławieństwa, adres sali, parking, nocleg — goście sprawdzają sami, o każdej porze, zamiast pisać do Was o 23:00.",
   },
   {
-    icon: IconCheckCircle,
     title: "RSVP, które zbiera się samo",
     text: "Potwierdzenia, wybór menu, diety, nocleg i transport spływają do jednej tabeli. Widzicie na bieżąco, kto się odezwał.",
   },
   {
-    icon: IconSparkle,
     title: "Spójność z papeterią",
     text: "Te same kolory, ta sama typografia, te same detale co na zaproszeniu. Strona jest przedłużeniem projektu, nie osobnym bytem.",
   },
@@ -48,47 +37,38 @@ const powody = [
 
 const funkcje = [
   {
-    icon: IconClock,
     title: "Odliczanie i harmonogram",
     text: "Licznik do dnia ślubu oraz oś czasu: ceremonia, obiad, pierwszy taniec, oczepiny, poprawiny.",
   },
   {
-    icon: IconCheckCircle,
     title: "Formularz RSVP",
     text: "Imiona, liczba osób, dzieci, menu, dieta, nocleg, transport — pytamy dokładnie o to, co potrzebne.",
   },
   {
-    icon: IconUsers,
     title: "Lista gości dla Was",
     text: "Odpowiedzi w arkuszu gotowym do sortowania, plus powiadomienie mailem przy każdym nowym potwierdzeniu.",
   },
   {
-    icon: IconMapPin,
     title: "Dojazd i mapa",
     text: "Kościół, sala, parking — z linkiem do nawigacji jednym tapnięciem i wskazówkami dla gości spoza miasta.",
   },
   {
-    icon: IconBed,
     title: "Noclegi w okolicy",
     text: "Lista hoteli i pensjonatów z kontaktem oraz hasłem do rezerwacji przy Waszej rezerwacji grupowej.",
   },
   {
-    icon: IconGift,
     title: "Prezenty i dress code",
     text: "Delikatnie sformułowane informacje o prezentach, kolorystyce i stylu ubioru — bez niezręczności.",
   },
   {
-    icon: IconCamera,
     title: "Galeria i album gości",
     text: "Sesja narzeczeńska przed ślubem, a w dniu wesela wspólny album: goście skanują kod QR ze stołu i wrzucają swoje kadry prosto z telefonu.",
   },
   {
-    icon: IconGlobe,
     title: "Własny adres",
     text: "aleksandra-i-piotr.domzaproszen.pl albo Wasza własna domena. Hosting i certyfikat na rok w cenie.",
   },
   {
-    icon: IconQr,
     title: "Kod QR na zaproszenie",
     text: "Drukujemy go na wkładce lub zaproszeniu — gość skanuje telefonem i od razu jest na stronie.",
   },
@@ -96,20 +76,14 @@ const funkcje = [
 
 const album = [
   {
-    n: "01",
-    icon: IconQr,
     title: "Kod QR staje na stołach",
     text: "Drukujemy go na tabliczce, winietce albo menu — w tej samej oprawie co reszta papeterii, więc nie psuje dekoracji stołu.",
   },
   {
-    n: "02",
-    icon: IconPhone,
     title: "Gość skanuje i wrzuca",
     text: "Bez aplikacji i bez zakładania konta. Telefon otwiera stronę, gość wybiera zdjęcia z galerii i po chwili są u Was.",
   },
   {
-    n: "03",
-    icon: IconCamera,
     title: "Album rośnie na żywo",
     text: "Kadry lądują w galerii na Waszej stronie — jeszcze w trakcie wesela możecie puścić je na ekranie na sali.",
   },
@@ -126,7 +100,7 @@ const albumKorzysci = [
 const pakiety = [
   {
     name: "Wizytówka",
-    price: "od 499 zł",
+    price: "od 499 zł",
     tagline: "Najważniejsze informacje w jednym miejscu.",
     features: [
       "Strona jednoekranowa (one page)",
@@ -137,12 +111,11 @@ const pakiety = [
       "Adres w domenie domzaproszen.pl",
       "Hosting i certyfikat SSL na rok",
     ],
-    cta: "Zapytaj o wycenę",
     featured: false,
   },
   {
     name: "Komplet z RSVP",
-    price: "od 899 zł",
+    price: "od 899 zł",
     tagline: "Najczęściej wybierany — strona plus zbieranie potwierdzeń.",
     features: [
       "Wszystko z pakietu Wizytówka",
@@ -154,12 +127,11 @@ const pakiety = [
       "Kod QR dopasowany do papeterii",
       "Tabliczki z QR do albumu na każdy stół",
     ],
-    cta: "Zapytaj o wycenę",
     featured: true,
   },
   {
     name: "Premium",
-    price: "od 1 299 zł",
+    price: "od 1 299 zł",
     tagline: "Dla par, które chcą czegoś zupełnie własnego.",
     features: [
       "Wszystko z pakietu Komplet z RSVP",
@@ -170,29 +142,24 @@ const pakiety = [
       "Album gości aktywny rok po weselu",
       "Opieka nad stroną do roku po weselu",
     ],
-    cta: "Zapytaj o wycenę",
     featured: false,
   },
 ];
 
 const kroki = [
   {
-    n: "01",
     title: "Rozmowa i brief",
     text: "Opowiadacie o ślubie, terminie i tym, co goście muszą wiedzieć. Podpowiadamy, co warto umieścić na stronie.",
   },
   {
-    n: "02",
     title: "Projekt i treści",
     text: "Dostajecie prosty formularz do uzupełnienia treści, a my przygotowujemy projekt w stylu Waszej papeterii.",
   },
   {
-    n: "03",
     title: "Podgląd i poprawki",
     text: "Oglądacie stronę na żywo pod prywatnym linkiem. Dwie rundy poprawek są w cenie każdego pakietu.",
   },
   {
-    n: "04",
     title: "Publikacja i QR",
     text: "Strona rusza pod Waszym adresem, a kod QR trafia na zaproszenia lub wkładki drukowane u nas.",
   },
@@ -225,339 +192,275 @@ const faq = [
   },
 ];
 
+const fakty = [
+  { label: "Gotowe w", value: "7–14 dni" },
+  { label: "W cenie", value: "Hosting i SSL na rok" },
+  { label: "Na zaproszeniu", value: "Kod QR do strony" },
+];
+
+const nr = (i: number) => String(i + 1).padStart(2, "0");
+
 export default function StronyWeselne() {
   return (
     <div className="flex flex-1 flex-col">
       <SiteHeader />
 
       <main className="flex-1">
-        {/* HERO */}
-        <section className="relative overflow-hidden">
-          <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-6 py-16 sm:px-10 sm:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
-            <div className="flex flex-col items-start gap-6 rise">
-              <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                <IconSparkle size={14} />
-                Nowość w Domu Zaproszeń
-              </span>
-              <h1 className="font-display text-5xl font-semibold leading-[1.05] text-ink sm:text-6xl">
-                Wasze wesele
-                <br />
-                pod jednym adresem.
+        {/* MASTHEAD */}
+        <section className={`${shell} pb-16 pt-12 sm:pb-20 sm:pt-16`}>
+          <p className="label text-accent">Nowość w Domu Zaproszeń</p>
+
+          <div className="mt-9 grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+            <div>
+              <h1 className="display max-w-[16ch] text-balance text-d1 font-semibold">
+                Wasze wesele pod jednym adresem<span className="text-accent">.</span>
               </h1>
-              <p className="max-w-lg text-lg leading-relaxed text-ink-soft">
+
+              <p className="mt-10 max-w-[56ch] text-pretty text-lede text-ink-2">
                 Strona weselna to miejsce, w którym goście znajdą wszystko:
                 godziny, dojazd, nocleg, dress code — i gdzie jednym kliknięciem
                 potwierdzą obecność. Projektujemy ją w tym samym stylu, co Wasze
                 zaproszenia.
               </p>
-              <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
-                <Link
-                  href={DEMO_PATH}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-accent-deep"
-                >
+
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Link href={DEMO_PATH} className={btnSolid}>
                   Zobacz przykładową stronę
-                  <IconArrow />
                 </Link>
-                <a
-                  href="#pakiety"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
-                >
+                <a href="#pakiety" className={btnOutline}>
                   Pakiety i ceny
                 </a>
               </div>
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-4 text-xs text-ink-soft">
-                {[
-                  "Gotowe w 7–14 dni",
-                  "Album gości w każdym pakiecie",
-                  "Hosting na rok w cenie",
-                ].map((t) => (
-                  <span key={t} className="inline-flex items-center gap-2">
-                    <span className="text-accent">
-                      <IconCheckCircle size={15} />
-                    </span>
-                    {t}
-                  </span>
+
+              <dl className="mt-12 grid gap-x-10 gap-y-5 border-t border-rule pt-7 sm:grid-cols-3">
+                {fakty.map((f) => (
+                  <div key={f.label}>
+                    <dt className="label text-ink-3">{f.label}</dt>
+                    <dd className="mt-1.5 text-ink">{f.value}</dd>
+                  </div>
                 ))}
-              </div>
+              </dl>
             </div>
 
             <PhoneMockup />
           </div>
         </section>
 
-        {/* DLACZEGO */}
-        <section className="border-y border-line bg-ivory-deep">
-          <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-24">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-                Po co Wam strona
-              </span>
-              <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
-                Trzy rzeczy, które załatwia za Was
-              </h2>
-            </div>
-            <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-              {powody.map((p) => {
-                const Icon = p.icon;
-                return (
-                  <div
-                    key={p.title}
-                    className="flex flex-col gap-4 rounded-2xl border border-line bg-ivory p-8"
-                  >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent">
-                      <Icon />
-                    </div>
-                    <h3 className="font-display text-xl font-semibold text-ink">
-                      {p.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-ink-soft">
+        {/* PO CO */}
+        <section className="border-y border-rule bg-paper-2 py-16 sm:py-24">
+          <div className={shell}>
+            <SectionHead
+              index="01"
+              label="Po co Wam strona"
+              title="Trzy rzeczy, które załatwia za Was"
+            />
+
+            <ol className="mt-12 border-t border-rule">
+              {powody.map((p, i) => (
+                <li key={p.title} className="border-b border-rule">
+                  <div className="grid gap-x-10 gap-y-3 py-8 md:grid-cols-[auto_minmax(0,24ch)_1fr] md:items-baseline">
+                    <span className="label num text-ink-3">{nr(i)}</span>
+                    <h3 className="display text-d3 font-semibold">{p.title}</h3>
+                    <p className="max-w-[62ch] text-pretty text-ink-2">
                       {p.text}
                     </p>
                   </div>
-                );
-              })}
-            </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
         {/* FUNKCJE */}
-        <section
-          id="co-zawiera"
-          className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28"
-        >
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-              Co znajdzie się na stronie
-            </span>
-            <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
-              Wszystko, o co goście i tak zapytają
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-ink-soft">
-              Sekcje dobieramy razem z Wami — bierzecie tyle, ile potrzebujecie,
-              w kolejności, która ma sens dla Waszego dnia.
-            </p>
-          </div>
-          <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            {funkcje.map((f) => {
-              const Icon = f.icon;
-              return (
-                <div key={f.title} className="flex gap-4">
-                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-accent">
-                    <Icon size={19} />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg font-semibold text-ink">
-                      {f.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-                      {f.text}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+        <section id="co-zawiera" className={`${shell} py-16 sm:py-24`}>
+          <SectionHead
+            index="02"
+            label="Co znajdzie się na stronie"
+            title="Wszystko, o co goście i tak zapytają"
+            lede="Sekcje dobieramy razem z Wami — bierzecie tyle, ile potrzebujecie, w kolejności, która ma sens dla Waszego dnia."
+          />
+
+          <div className="mt-12 grid gap-x-10 border-t border-rule sm:grid-cols-2 lg:grid-cols-3">
+            {funkcje.map((f, i) => (
+              <div
+                key={f.title}
+                className="border-b border-rule py-7 lg:border-r lg:pr-8 lg:[&:nth-child(3n)]:border-r-0"
+              >
+                <span className="label num text-ink-3">{nr(i)}</span>
+                <h3 className="display mt-4 text-d4 font-semibold">
+                  {f.title}
+                </h3>
+                <p className="mt-2.5 max-w-[42ch] text-pretty text-ink-2">
+                  {f.text}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* ALBUM GOŚCI */}
         <section
           id="album-gosci"
-          className="border-y border-line bg-ivory-deep"
+          className="border-y border-rule bg-paper-2 py-16 sm:py-24"
         >
-          <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-                W każdym pakiecie
-              </span>
-              <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
-                Wspólny album gości
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-ink-soft">
-                Wasi goście zrobią tego dnia kilkaset zdjęć, których nigdy nie
-                zobaczycie — utkną w ich telefonach. Album zbiera je w jednym
-                miejscu, jeszcze zanim skończy się wesele.
-              </p>
-            </div>
+          <div className={shell}>
+            <SectionHead
+              index="03"
+              label="Album gości · w każdym pakiecie"
+              title="Wspólny album gości"
+              lede="Wasi goście zrobią tego dnia kilkaset zdjęć, których nigdy nie zobaczycie — utkną w ich telefonach. Album zbiera je w jednym miejscu, jeszcze zanim skończy się wesele."
+            />
 
-            <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-              {album.map((a) => {
-                const Icon = a.icon;
-                return (
-                  <div
-                    key={a.title}
-                    className="flex flex-col gap-4 rounded-2xl border border-line bg-ivory p-8"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent">
-                        <Icon />
+            <div className="mt-12 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+              <ol className="border-t border-rule">
+                {album.map((a, i) => (
+                  <li key={a.title} className="border-b border-rule py-7">
+                    <div className="flex gap-6">
+                      <span className="label num shrink-0 text-ink-3">
+                        {nr(i)}
                       </span>
-                      <span className="font-display text-2xl font-semibold text-accent">
-                        {a.n}
-                      </span>
+                      <div>
+                        <h3 className="display text-d3 font-semibold">
+                          {a.title}
+                        </h3>
+                        <p className="mt-2.5 max-w-[52ch] text-pretty text-ink-2">
+                          {a.text}
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="font-display text-xl font-semibold text-ink">
-                      {a.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-ink-soft">
-                      {a.text}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+                  </li>
+                ))}
+              </ol>
 
-            <div className="mt-10 grid grid-cols-1 gap-8 rounded-2xl border border-line bg-ivory p-8 sm:p-10 lg:grid-cols-[1.1fr_0.9fr]">
               <div>
-                <h3 className="font-display text-2xl font-semibold text-ink">
-                  Co z tego macie
-                </h3>
-                <ul className="mt-5 flex flex-col gap-3">
+                <p className="label text-ink-3">Co z tego macie</p>
+                <ul className="mt-6 flex flex-col gap-4">
                   {albumKorzysci.map((k) => (
-                    <li key={k} className="flex gap-3 text-sm leading-relaxed text-ink-soft">
-                      <span className="mt-0.5 shrink-0 text-accent">
-                        <IconCheckCircle size={18} />
+                    <li key={k} className="flex gap-4 text-pretty text-ink-2">
+                      <span aria-hidden="true" className="text-accent">
+                        —
                       </span>
                       {k}
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              <div className="flex flex-col justify-center gap-4 rounded-xl bg-ivory-deep p-7">
-                <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                  W komplecie
-                </span>
-                <p className="text-sm leading-relaxed text-ink-soft">
-                  Do albumu drukujemy tabliczki z kodem QR na stoły — w tej
-                  samej oprawie co winietki i menu. Gość nie musi szukać
-                  linku: skanuje to, co i tak stoi przed nim.
-                </p>
-                <Link
-                  href={DEMO_PATH}
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
-                >
-                  Zobacz galerię w demo
-                  <IconArrow size={15} />
-                </Link>
+                <div className="mt-10 border-t border-rule pt-7">
+                  <p className="label text-ink-3">W komplecie</p>
+                  <p className="mt-4 max-w-[48ch] text-pretty text-ink-2">
+                    Do albumu drukujemy tabliczki z kodem QR na stoły — w tej
+                    samej oprawie co winietki i menu. Gość nie musi szukać
+                    linku: skanuje to, co i tak stoi przed nim.
+                  </p>
+                  <Link
+                    href={`${DEMO_PATH}#album`}
+                    className={`${btnOutline} mt-7`}
+                  >
+                    Zobacz galerię w demo
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* PODGLĄD DEMO */}
-        <section className="bg-ink">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 py-20 sm:px-10 sm:py-28 lg:grid-cols-2">
-            <div className="flex flex-col items-start gap-6">
-              <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-                Przykładowa realizacja
-              </span>
-              <h2 className="font-display text-4xl font-semibold leading-tight text-ivory sm:text-5xl">
-                Zobaczcie, jak to działa na żywo
-              </h2>
-              <p className="max-w-md text-base leading-relaxed text-ivory/70">
-                Przygotowaliśmy pełną, działającą stronę dla fikcyjnej pary —
-                Aleksandry i Piotra. Możecie kliknąć wszystko: odliczanie,
-                harmonogram, mapę i formularz RSVP. Wasza będzie wyglądać
-                inaczej, bo powstanie na bazie Waszej papeterii.
-              </p>
-              <Link
-                href={DEMO_PATH}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-accent-deep"
-              >
-                Otwórz demo
-                <IconArrow />
+        <section className="bg-ink py-20 text-paper sm:py-28">
+          <div className={shell}>
+            <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-20">
+              <div>
+                <SectionHead
+                  index="04"
+                  label="Przykładowa realizacja"
+                  title="Zobaczcie, jak to działa na żywo"
+                  lede="Przygotowaliśmy pełną, działającą stronę dla fikcyjnej pary — Aleksandry i Piotra. Możecie kliknąć wszystko: odliczanie, harmonogram, mapę i formularz RSVP. Wasza będzie wyglądać inaczej, bo powstanie na bazie Waszej papeterii."
+                  inverse
+                />
+                <Link href={DEMO_PATH} className={`${btnSolidInverse} mt-10`}>
+                  Otwórz demo
+                </Link>
+              </div>
+
+              <Link href={DEMO_PATH} className="group block">
+                <div className="border border-paper/20 bg-paper">
+                  <div className="flex items-center gap-3 border-b border-rule px-4 py-3">
+                    <span className="flex gap-1.5" aria-hidden="true">
+                      <span className="h-2 w-2 rounded-full bg-ink/15" />
+                      <span className="h-2 w-2 rounded-full bg-ink/15" />
+                      <span className="h-2 w-2 rounded-full bg-ink/15" />
+                    </span>
+                    <span className="num flex-1 truncate border border-rule px-3 py-1.5 text-center text-xs text-ink-3">
+                      {DEMO_WEDDING.hostname}
+                    </span>
+                  </div>
+                  <div className="relative aspect-[16/11] overflow-hidden">
+                    <Image
+                      src="/images/post5.jpg"
+                      alt="Podgląd przykładowej strony weselnej Aleksandry i Piotra"
+                      fill
+                      sizes="(max-width: 1024px) 90vw, 45vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-ink/50" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-paper">
+                      <span className="label text-paper/75">Pobieramy się</span>
+                      <p className="display mt-4 text-d2 font-semibold">
+                        {DEMO_WEDDING.bride}
+                        <em className="mx-2 font-normal">&amp;</em>
+                        {DEMO_WEDDING.groom}
+                      </p>
+                      <p className="num mt-3 text-sm tracking-[0.2em] text-paper/80">
+                        {DEMO_WEDDING.dateShort}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </Link>
             </div>
-
-            <Link href={DEMO_PATH} className="group block">
-              <div className="overflow-hidden rounded-[1.5rem] border border-ivory/15 bg-ivory shadow-[0_40px_80px_-40px_rgba(0,0,0,0.6)]">
-                <div className="flex items-center gap-3 border-b border-line bg-ivory-deep px-4 py-3">
-                  <div className="flex gap-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-                  </div>
-                  <div className="flex-1 truncate rounded-full bg-ivory px-3 py-1.5 text-center text-[0.7rem] text-ink-soft">
-                    {DEMO_WEDDING.hostname}
-                  </div>
-                </div>
-                <div className="relative aspect-[16/11]">
-                  <Image
-                    src="/images/post5.jpg"
-                    alt="Podgląd przykładowej strony weselnej Ani i Piotra"
-                    fill
-                    sizes="(max-width: 1024px) 90vw, 45vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-ink/45" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-ivory">
-                    <span className="text-[0.65rem] uppercase tracking-[0.3em] text-ivory/80">
-                      Pobieramy się
-                    </span>
-                    <p className="mt-3 font-display text-4xl font-semibold sm:text-5xl">
-                      Aleksandra &amp; Piotr
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Link>
           </div>
         </section>
 
         {/* PAKIETY */}
-        <section
-          id="pakiety"
-          className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28"
-        >
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-              Pakiety
-            </span>
-            <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
-              Wybierzcie zakres, my zajmiemy się resztą
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-ink-soft">
-              Ceny orientacyjne — ostateczną wycenę przygotowujemy po krótkiej
-              rozmowie. Przy zamówieniu razem z papeterią strona jest tańsza o
-              15%.
-            </p>
-          </div>
+        <section id="pakiety" className={`${shell} py-16 sm:py-24`}>
+          <SectionHead
+            index="05"
+            label="Pakiety"
+            title="Wybierzcie zakres, my zajmiemy się resztą"
+            lede="Ceny orientacyjne — ostateczną wycenę przygotowujemy po krótkiej rozmowie. Przy zamówieniu razem z papeterią strona jest tańsza o 15%."
+          />
 
-          <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="mt-12 grid border-t border-rule lg:grid-cols-3">
             {pakiety.map((p) => (
               <div
                 key={p.name}
-                className={`relative flex flex-col rounded-2xl border p-8 ${
-                  p.featured
-                    ? "border-accent bg-ivory-deep shadow-[0_24px_48px_-28px_rgba(42,36,32,0.45)]"
-                    : "border-line bg-ivory"
+                className={`flex flex-col border-b border-rule py-9 lg:border-r lg:px-8 lg:first:pl-0 lg:last:border-r-0 ${
+                  p.featured ? "bg-paper-2 px-6 lg:px-8" : "px-0"
                 }`}
               >
-                {p.featured ? (
-                  <span className="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ivory">
-                    Najczęściej wybierany
-                  </span>
-                ) : null}
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="display text-d3 font-semibold">{p.name}</h3>
+                  {p.featured ? (
+                    <span className="label shrink-0 text-accent">
+                      Najczęściej wybierany
+                    </span>
+                  ) : null}
+                </div>
 
-                <h3 className="font-display text-2xl font-semibold text-ink">
-                  {p.name}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+                <p className="mt-3 max-w-[34ch] text-pretty text-ink-2">
                   {p.tagline}
                 </p>
-                <p className="mt-6 font-display text-3xl font-semibold text-accent">
+
+                <p className="display num mt-7 text-d2 font-semibold text-accent">
                   {p.price}
                 </p>
 
-                <ul className="mt-6 flex flex-1 flex-col gap-3 border-t border-line pt-6">
+                <ul className="mt-7 flex flex-1 flex-col gap-3 border-t border-rule pt-7">
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3">
-                      <span className="mt-0.5 shrink-0 text-accent">
-                        <IconCheckCircle size={17} />
+                    <li key={f} className="flex gap-3.5 text-ink-2">
+                      <span aria-hidden="true" className="text-ink-3">
+                        —
                       </span>
-                      <span className="text-sm leading-relaxed text-ink-soft">
-                        {f}
-                      </span>
+                      <span className="text-pretty">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -566,62 +469,37 @@ export default function StronyWeselne() {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-colors ${
-                    p.featured
-                      ? "bg-accent text-ivory hover:bg-accent-deep"
-                      : "border border-line text-ink hover:border-accent hover:text-accent"
-                  }`}
+                  className={`${p.featured ? btnSolid : btnOutline} mt-9`}
                 >
-                  {p.cta}
-                  <IconArrow />
+                  Zapytaj o wycenę
                 </a>
               </div>
             ))}
           </div>
-
-          <div className="mx-auto mt-10 flex max-w-3xl flex-col items-start gap-4 rounded-2xl border border-line bg-ivory-deep p-7 sm:flex-row sm:items-center sm:gap-7">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
-              <IconCamera size={22} />
-            </span>
-            <p className="text-sm leading-relaxed text-ink-soft">
-              <span className="font-medium text-ink">
-                Album gości jest w każdym pakiecie — także w tym najtańszym.
-              </span>{" "}
-              Różni się tylko to, co dokładamy dookoła: od Kompletu drukujemy
-              tabliczki z kodem QR na każdy stół, w oprawie Waszych winietek,
-              a w Premium album zostaje aktywny rok po weselu.{" "}
-              <a
-                href="#album-gosci"
-                className="font-medium text-accent underline underline-offset-4 transition-colors hover:text-accent-deep"
-              >
-                Zobaczcie, jak działa
-              </a>
-              .
-            </p>
-          </div>
         </section>
 
         {/* PROCES */}
-        <section className="border-y border-line bg-ivory-deep">
-          <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-                Jak pracujemy
-              </span>
-              <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
-                Cztery kroki do własnego adresu
-              </h2>
-            </div>
-            <div className="mt-14 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
-              {kroki.map((k) => (
-                <div key={k.n} className="flex flex-col gap-3">
-                  <span className="font-display text-5xl font-semibold text-accent/25">
-                    {k.n}
+        <section className="border-y border-rule bg-paper-2 py-16 sm:py-24">
+          <div className={shell}>
+            <SectionHead
+              index="06"
+              label="Jak pracujemy"
+              title="Cztery kroki do własnego adresu"
+            />
+
+            <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+              {kroki.map((k, i) => (
+                <div
+                  key={k.title}
+                  className="border-t border-rule pt-6 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0 lg:first:border-l-0 lg:first:pl-0"
+                >
+                  <span className="display num block text-[2.1rem] font-semibold leading-none text-accent">
+                    {nr(i)}
                   </span>
-                  <h3 className="font-display text-xl font-semibold text-ink">
+                  <h3 className="display mt-5 text-d3 font-semibold">
                     {k.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-3 max-w-[38ch] text-pretty text-ink-2">
                     {k.text}
                   </p>
                 </div>
@@ -631,62 +509,44 @@ export default function StronyWeselne() {
         </section>
 
         {/* FAQ */}
-        <section
-          id="faq"
-          className="mx-auto max-w-3xl px-6 py-20 sm:px-10 sm:py-28"
-        >
-          <div className="text-center">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-              Pytania
-            </span>
-            <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
-              Najczęściej pytacie o to
-            </h2>
-          </div>
-          <div className="mt-12 divide-y divide-line border-y border-line">
-            {faq.map((item) => (
-              <details key={item.q} className="group">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-left font-display text-lg font-semibold text-ink transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
-                  {item.q}
-                  <span className="shrink-0 text-accent transition-transform duration-300 group-open:rotate-180">
-                    <IconChevronDown />
-                  </span>
-                </summary>
-                <p className="pb-6 text-sm leading-relaxed text-ink-soft">
-                  {item.a}
-                </p>
-              </details>
-            ))}
+        <section id="faq" className={`${shell} py-16 sm:py-24`}>
+          <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+            <SectionHead index="07" label="Pytania" title="Najczęściej pytacie o to" />
+
+            <div className="divide-y divide-rule border-y border-rule">
+              {faq.map((item) => (
+                <Question key={item.q} q={item.q} a={item.a} />
+              ))}
+            </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="bg-ink">
-          <div className="mx-auto max-w-3xl px-6 py-20 text-center sm:px-10 sm:py-28">
-            <h2 className="font-display text-4xl font-semibold text-ivory sm:text-5xl">
-              Zróbmy Wam stronę, którą goście zapiszą w telefonie
-            </h2>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ivory/70">
-              Napiszcie do nas datę ślubu i dwa zdania o tym, jaki ma być Wasz
-              dzień. Odpowiemy z propozycją zakresu i wyceną.
-            </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-accent-deep"
-              >
-                <IconInstagram />
-                Napisz na Instagramie
-              </a>
-              <Link
-                href={DEMO_PATH}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-ivory/25 px-6 py-3.5 text-sm font-medium text-ivory transition-colors hover:border-ivory"
-              >
-                <IconEnvelope size={18} />
-                Najpierw zobacz demo
-              </Link>
+        <section className="bg-ink py-20 text-paper sm:py-28">
+          <div className={shell}>
+            <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:gap-20">
+              <h2 className="display max-w-[24ch] text-balance text-d1 font-semibold">
+                Zróbmy Wam stronę, którą goście zapiszą w telefonie
+              </h2>
+              <div className="self-end">
+                <p className="max-w-[46ch] text-pretty text-lede text-paper/70">
+                  Napiszcie do nas datę ślubu i dwa zdania o tym, jaki ma być
+                  Wasz dzień. Odpowiemy z propozycją zakresu i wyceną.
+                </p>
+                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={btnSolidInverse}
+                  >
+                    Napisz na Instagramie
+                  </a>
+                  <Link href={DEMO_PATH} className={btnOutlineInverse}>
+                    Najpierw zobacz demo
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -700,78 +560,56 @@ export default function StronyWeselne() {
 /* Makieta telefonu z miniaturą strony weselnej */
 function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-[300px] rise sm:max-w-[330px]">
-      <div className="relative overflow-hidden rounded-[2.5rem] border-[10px] border-ink bg-ink shadow-[0_40px_70px_-30px_rgba(42,36,32,0.55)]">
-        <div className="relative aspect-[9/19] overflow-hidden rounded-[1.8rem] bg-ivory">
+    <div className="mx-auto w-full max-w-[320px] lg:sticky lg:top-28">
+      <div className="border-[7px] border-ink bg-ink">
+        <div className="relative aspect-[9/18] overflow-hidden bg-paper">
           <Image
             src="/images/post3.jpg"
             alt="Przykładowa strona weselna otwarta na telefonie"
             fill
-            sizes="330px"
+            sizes="320px"
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/25 to-ink/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/25 to-ink/85" />
 
-          <div className="absolute inset-x-0 top-0 flex justify-center pt-3">
-            <span className="h-1.5 w-16 rounded-full bg-ivory/40" />
-          </div>
-
-          <div className="absolute inset-x-0 top-[16%] px-6 text-center text-ivory">
-            <span className="text-[0.6rem] uppercase tracking-[0.3em] text-ivory/80">
-              Pobieramy się
-            </span>
-            <p className="mt-3 font-display text-4xl font-semibold leading-tight">
-              Aleksandra
+          <div className="absolute inset-x-0 top-[14%] px-6 text-center text-paper">
+            <span className="label text-paper/75">Pobieramy się</span>
+            <p className="display mt-4 text-[2.25rem] font-semibold leading-[0.98]">
+              {DEMO_WEDDING.bride}
               <br />
-              &amp; Piotr
+              <em className="font-normal">&amp;</em> {DEMO_WEDDING.groom}
+            </p>
+            <p className="num mt-4 text-xs tracking-[0.22em] text-paper/85">
+              {DEMO_WEDDING.dateUpper}
             </p>
           </div>
 
-          <div className="absolute inset-x-5 bottom-24 grid grid-cols-4 gap-2 text-center text-ivory">
+          <div className="absolute inset-x-5 bottom-20 grid grid-cols-4 divide-x divide-paper/25 border-y border-paper/25 text-center text-paper">
             {[
               { v: String(daysUntil(DEMO_WEDDING.dateISO)), l: "dni" },
               { v: "04", l: "godz" },
               { v: "38", l: "min" },
               { v: "12", l: "sek" },
             ].map((c) => (
-              <div
-                key={c.l}
-                className="rounded-xl border border-ivory/20 bg-ink/30 py-2 backdrop-blur-sm"
-              >
-                <p className="font-display text-base font-semibold">{c.v}</p>
-                <p className="text-[0.5rem] uppercase tracking-[0.14em] text-ivory/70">
-                  {c.l}
-                </p>
+              <div key={c.l} className="px-1 py-2.5">
+                <p className="display num text-base font-semibold">{c.v}</p>
+                <p className="label mt-1 text-[0.5rem] text-paper/70">{c.l}</p>
               </div>
             ))}
           </div>
 
-          <div className="absolute inset-x-5 bottom-8">
-            <div className="rounded-full bg-accent py-3 text-center text-xs font-medium text-ivory">
+          <div className="absolute inset-x-5 bottom-6">
+            <div className="bg-paper py-3 text-center text-sm font-medium text-ink">
               Potwierdź obecność
             </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute -right-4 top-14 hidden rounded-2xl border border-line bg-ivory px-4 py-3 shadow-lg sm:block">
-        <p className="text-[0.65rem] uppercase tracking-[0.16em] text-accent">
-          Nowe RSVP
-        </p>
-        <p className="mt-0.5 font-display text-lg font-semibold text-ink">
-          Kasia + 1
-        </p>
-      </div>
-
-      <div className="absolute -left-6 bottom-20 hidden rounded-2xl border border-line bg-ivory px-4 py-3 shadow-lg sm:block">
-        <p className="text-[0.65rem] uppercase tracking-[0.16em] text-sage">
-          Potwierdzeni
-        </p>
-        <p className="mt-0.5 font-display text-lg font-semibold text-ink">
-          86 gości
-        </p>
-      </div>
+      <p className="label mt-4 text-center text-ink-3">
+        {DEMO_WEDDING.hostname}
+      </p>
     </div>
   );
 }

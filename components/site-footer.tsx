@@ -1,71 +1,89 @@
 import Link from "next/link";
 import { DEMO_PATH, INSTAGRAM_URL, TIKTOK_URL } from "@/lib/site";
-import { IconInstagram, IconTiktok } from "./icons";
+import { shell } from "./ui";
+
+const kolumny = [
+  {
+    label: "Pracownia",
+    links: [
+      { href: "/#oferta", label: "Oferta" },
+      { href: "/#realizacje", label: "Realizacje" },
+      { href: "/#jak-to-dziala", label: "Jak pracujemy" },
+    ],
+  },
+  {
+    label: "Strony weselne",
+    links: [
+      { href: "/strony-weselne", label: "Co zawiera strona" },
+      { href: "/strony-weselne#pakiety", label: "Pakiety i ceny" },
+      { href: DEMO_PATH, label: "Przykładowa strona" },
+    ],
+  },
+];
 
 export function SiteFooter() {
   return (
-    <footer className="bg-ink">
-      <div className="mx-auto w-full max-w-6xl border-t border-ivory/10 px-6 py-12 sm:px-10">
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
-          <div className="max-w-sm">
-            <p className="font-display text-lg font-semibold text-ivory">
-              Dom Zaproszeń
+    <footer className="bg-ink text-paper">
+      <div className={shell}>
+        <div className="grid gap-12 border-t border-paper/15 py-16 md:grid-cols-[1.4fr_1fr_1fr] md:gap-16">
+          <div>
+            <p className="display text-d3 font-semibold">Dom Zaproszeń</p>
+            <p className="mt-4 max-w-[34ch] text-pretty text-paper/65">
+              Pracownia papeterii ślubnej. Zaproszenia, winietki, menu, dodatki
+              i strony weselne — projektowane od zera dla każdej pary.
             </p>
-            <p className="mt-1 text-sm leading-relaxed text-ivory/60">
-              Więcej niż zaproszenia — papeteria, dodatki i strony weselne na
-              wyjątkowe okazje.
-            </p>
+            <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-paper/80 underline decoration-paper/30 underline-offset-[5px] transition-colors hover:text-paper"
+              >
+                Instagram
+              </a>
+              <a
+                href={TIKTOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-paper/80 underline decoration-paper/30 underline-offset-[5px] transition-colors hover:text-paper"
+              >
+                TikTok
+              </a>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-3 text-sm text-ivory/60">
-            <Link className="transition-colors hover:text-ivory" href="/#oferta">
-              Oferta
-            </Link>
-            <Link
-              className="transition-colors hover:text-ivory"
-              href="/#realizacje"
-            >
-              Realizacje
-            </Link>
-            <Link
-              className="transition-colors hover:text-ivory"
-              href="/strony-weselne"
-            >
-              Strony weselne
-            </Link>
-            <Link
-              className="transition-colors hover:text-ivory"
-              href={DEMO_PATH}
-            >
-              Demo strony weselnej
-            </Link>
-          </div>
-
-          <div className="flex items-center gap-5">
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram Dom Zaproszeń"
-              className="text-ivory/70 transition-colors hover:text-ivory"
-            >
-              <IconInstagram />
-            </a>
-            <a
-              href={TIKTOK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="TikTok Dom Zaproszeń"
-              className="text-ivory/70 transition-colors hover:text-ivory"
-            >
-              <IconTiktok />
-            </a>
-          </div>
+          {kolumny.map((kol) => (
+            <nav key={kol.label}>
+              <p className="label text-paper/60">{kol.label}</p>
+              <ul className="mt-5 flex flex-col gap-3">
+                {kol.links.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="text-paper/70 transition-colors hover:text-paper"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
 
-        <p className="mt-10 text-xs text-ivory/40">
-          © {new Date().getFullYear()} Dom Zaproszeń
-        </p>
+        {/* Powiększony znak słowny — stopka zamyka stronę, zamiast ją urywać */}
+        <div className="border-t border-paper/15 py-10">
+          <p
+            aria-hidden="true"
+            className="display select-none text-[clamp(2.2rem,9.5vw,6rem)] font-semibold leading-none tracking-[-0.03em] text-paper/10"
+          >
+            Dom Zaproszeń
+          </p>
+          <div className="mt-8 flex flex-col gap-2 text-sm text-paper/60 sm:flex-row sm:justify-between">
+            <p>© {new Date().getFullYear()} Dom Zaproszeń</p>
+            <p>Kraków · papeteria i strony weselne</p>
+          </div>
+        </div>
       </div>
     </footer>
   );

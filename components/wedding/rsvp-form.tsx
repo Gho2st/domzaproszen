@@ -5,10 +5,10 @@ import { IconArrow, IconCheckCircle, IconHeart } from "@/components/icons";
 
 const MENU = ["Mięsne", "Wegetariańskie", "Wegańskie", "Bezglutenowe"];
 
-const fieldClass =
-  "w-full rounded-xl border border-line bg-ivory px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink-soft/60 focus:border-accent";
-const labelClass =
-  "mb-2 block text-xs font-medium uppercase tracking-[0.14em] text-ink-soft";
+/* Pola to podkreślone linie (.field w globals.css) — bliżej formularza
+   na papierze niż pudełek z aplikacji. */
+const fieldClass = "field";
+const labelClass = "label mb-2 block text-ink-3";
 
 export function RsvpForm() {
   const [attending, setAttending] = useState<"yes" | "no">("yes");
@@ -16,28 +16,28 @@ export function RsvpForm() {
 
   if (sent) {
     return (
-      <div className="rounded-2xl border border-line bg-ivory p-10 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-accent">
+      <div className="border border-rule bg-paper p-8 text-center sm:p-12">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center border border-rule text-accent">
           {attending === "yes" ? <IconHeart size={26} /> : <IconCheckCircle size={26} />}
         </div>
-        <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
+        <h3 className="mt-6 display text-d3 font-semibold text-ink">
           {attending === "yes"
             ? "Dziękujemy! Nie możemy się doczekać"
             : "Dziękujemy za informację"}
         </h3>
-        <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-ink-soft">
+        <p className="mx-auto mt-3 max-w-sm text-ink-2">
           {attending === "yes"
             ? "Potwierdzenie trafiło do nas. Bliżej terminu wyślemy przypomnienie z harmonogramem dnia."
             : "Będzie nam Was brakowało — dziękujemy, że daliście znać."}
         </p>
-        <p className="mx-auto mt-6 max-w-sm rounded-xl bg-ivory-deep px-4 py-3 text-xs leading-relaxed text-ink-soft">
+        <p className="mx-auto mt-7 max-w-sm border-l-2 border-accent bg-paper-2 px-5 py-4 text-left text-sm text-ink-2">
           To strona pokazowa — formularz nie wysyła żadnych danych. Na prawdziwej
           stronie odpowiedź trafia do arkusza pary młodej i na ich maila.
         </p>
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-6 text-sm font-medium text-accent underline underline-offset-4 transition-colors hover:text-accent-deep"
+          className="mt-7 font-medium text-accent underline underline-offset-[5px] transition-colors hover:text-accent-2"
         >
           Wypełnij jeszcze raz
         </button>
@@ -51,7 +51,7 @@ export function RsvpForm() {
         e.preventDefault();
         setSent(true);
       }}
-      className="flex flex-col gap-6 rounded-2xl border border-line bg-ivory p-7 sm:p-10"
+      className="flex flex-col gap-7 border border-rule bg-paper p-7 sm:p-10"
     >
       <div>
         <label className={labelClass} htmlFor="rsvp-name">
@@ -88,10 +88,10 @@ export function RsvpForm() {
           ].map((o) => (
             <label
               key={o.value}
-              className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-sm transition-colors ${
+              className={`flex cursor-pointer items-center gap-3 rounded-[2px] border px-4 py-3.5 transition-colors ${
                 attending === o.value
                   ? "border-accent bg-accent/8 text-ink"
-                  : "border-line text-ink-soft hover:border-accent/50"
+                  : "border-rule text-ink-2 hover:border-accent/50"
               }`}
             >
               <input
@@ -104,7 +104,7 @@ export function RsvpForm() {
               />
               <span
                 className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border ${
-                  attending === o.value ? "border-accent" : "border-line"
+                  attending === o.value ? "border-accent" : "border-rule"
                 }`}
               >
                 {attending === o.value ? (
@@ -235,13 +235,13 @@ export function RsvpForm() {
 
       <button
         type="submit"
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-accent-deep"
+        className="inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-ink px-6 py-4 text-[0.9375rem] font-medium text-paper transition-colors hover:bg-accent"
       >
         Wyślij potwierdzenie
         <IconArrow />
       </button>
 
-      <p className="text-center text-xs leading-relaxed text-ink-soft">
+      <p className="text-center text-sm text-ink-2">
         Prosimy o odpowiedź do 30 kwietnia 2027.
       </p>
     </form>

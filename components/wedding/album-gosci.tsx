@@ -186,17 +186,17 @@ export function AlbumGosci() {
           dodaj(e.dataTransfer.files);
         }}
         className={`flex flex-col items-center gap-4 rounded-[3px] border border-dashed p-8 text-center transition-colors sm:p-10 ${
-          przeciagane ? "border-accent bg-accent/5" : "border-line bg-ivory"
+          przeciagane ? "border-accent bg-accent/5" : "border-rule bg-paper"
         }`}
       >
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent">
+        <span className="flex h-12 w-12 items-center justify-center border border-rule text-accent">
           <IconCamera size={22} />
         </span>
 
-        <p className="font-display text-xl font-semibold text-ink sm:text-2xl">
+        <p className="display text-d4 font-semibold text-ink sm:text-2xl">
           Dorzućcie swoje kadry
         </p>
-        <p className="max-w-sm text-sm leading-relaxed text-ink-soft">
+        <p className="max-w-sm text-ink-2">
           Wybierzcie zdjęcia z telefonu — pojawią się w albumie od razu, obok
           kadrów innych gości.
         </p>
@@ -205,7 +205,7 @@ export function AlbumGosci() {
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-ivory transition-colors hover:bg-accent-deep"
+            className="inline-flex items-center gap-2 rounded-[2px] bg-ink px-6 py-3.5 text-[0.9375rem] font-medium text-paper transition-colors hover:bg-accent"
           >
             Dodaj zdjęcia
           </button>
@@ -214,7 +214,7 @@ export function AlbumGosci() {
             type="button"
             onClick={otworzPokaz}
             disabled={kadry.length === 0}
-            className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-line disabled:hover:text-ink"
+            className="inline-flex items-center gap-2 rounded-[2px] border border-ink/30 px-6 py-3.5 text-[0.9375rem] font-medium text-ink transition-colors hover:border-ink hover:bg-ink/[0.04] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-rule disabled:hover:text-ink"
           >
             <IconSparkle size={17} />
             Pokaz slajdów
@@ -233,21 +233,21 @@ export function AlbumGosci() {
           }}
         />
 
-        <p className="text-xs leading-relaxed text-ink-soft">
+        <p className="text-sm text-ink-2">
           {kadry.length > 0
             ? `W albumie: ${kadry.length} ${zdjec(kadry.length)}`
             : "Na komputerze możecie też przeciągnąć pliki w to miejsce"}
         </p>
 
         {info ? (
-          <p className="flex items-center gap-2 text-xs font-medium text-accent">
+          <p className="flex items-center gap-2 text-sm font-medium text-accent">
             <IconCheckCircle size={15} />
             {info}
           </p>
         ) : null}
       </div>
 
-      <p className="mt-4 text-center text-xs leading-relaxed text-ink-soft">
+      <p className="mt-5 text-center text-sm text-ink-2">
         To strona pokazowa — zdjęcia zostają w Waszej przeglądarce i nie trafiają
         na żaden serwer. Na gotowej stronie lądują w albumie pary młodej.
       </p>
@@ -256,7 +256,7 @@ export function AlbumGosci() {
         {kadry.map((k) => (
           <figure
             key={k.id}
-            className="group relative aspect-[4/5] overflow-hidden rounded-[3px] border border-line bg-ivory-deep"
+            className="group relative aspect-[4/5] overflow-hidden rounded-[3px] border border-rule bg-paper-2"
           >
             {/* obiekt URL z pliku gościa — next/image go nie obsłuży */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -268,7 +268,7 @@ export function AlbumGosci() {
             <button
               type="button"
               onClick={() => usun(k.id)}
-              className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-ink/70 text-ivory opacity-0 transition-opacity hover:bg-ink focus-visible:opacity-100 group-hover:opacity-100"
+              className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-ink/70 text-paper opacity-0 transition-opacity hover:bg-ink focus-visible:opacity-100 group-hover:opacity-100"
               aria-label="Usuń zdjęcie z albumu"
             >
               <svg
@@ -289,10 +289,10 @@ export function AlbumGosci() {
         {Array.from({ length: puste }).map((_, i) => (
           <div
             key={`ramka-${i}`}
-            className="papier relative flex aspect-[4/5] items-center justify-center rounded-[3px] border border-line bg-ivory"
+            className="papier relative flex aspect-[4/5] items-center justify-center rounded-[3px] border border-rule bg-paper"
           >
-            <span className="pointer-events-none absolute inset-2.5 rounded-[2px] border border-line sm:inset-3" />
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent sm:h-11 sm:w-11">
+            <span className="pointer-events-none absolute inset-2.5 rounded-[2px] border border-rule sm:inset-3" />
+            <span className="flex h-10 w-10 items-center justify-center border border-rule text-accent sm:h-11 sm:w-11">
               <IconCamera size={18} />
             </span>
           </div>
@@ -308,8 +308,8 @@ export function AlbumGosci() {
           aria-label="Pokaz slajdów albumu gości"
           className="fixed inset-0 z-50 flex flex-col bg-ink"
         >
-          <div className="flex items-center justify-between px-5 py-4 text-ivory/70 sm:px-8">
-            <span className="text-xs uppercase tracking-[0.24em]">
+          <div className="flex items-center justify-between px-5 py-4 text-paper/70 sm:px-8">
+            <span className="label">
               Album gości · {indeks + 1} / {kadry.length}
             </span>
             <button
@@ -317,7 +317,7 @@ export function AlbumGosci() {
               type="button"
               onClick={zamknijPokaz}
               aria-label="Zamknij pokaz slajdów"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ivory/25 transition-colors hover:border-ivory hover:text-ivory"
+              className="flex h-10 w-10 items-center justify-center rounded-[2px] border border-paper/25 transition-colors hover:border-paper hover:text-paper"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -344,12 +344,12 @@ export function AlbumGosci() {
             />
           </div>
 
-          <div className="flex items-center justify-center gap-4 pb-8 text-ivory">
+          <div className="flex items-center justify-center gap-4 pb-8 text-paper">
             <button
               type="button"
               onClick={() => przesun(-1)}
               aria-label="Poprzednie zdjęcie"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-ivory/25 transition-colors hover:border-ivory"
+              className="flex h-12 w-12 items-center justify-center rounded-[2px] border border-paper/25 transition-colors hover:border-paper"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -366,14 +366,14 @@ export function AlbumGosci() {
             </button>
 
             {mniejRuchu ? (
-              <span className="min-w-40 text-center text-xs uppercase tracking-[0.2em] text-ivory/60">
+              <span className="label min-w-40 text-center text-paper/60">
                 Przewijaj strzałkami
               </span>
             ) : (
               <button
                 type="button"
                 onClick={() => setGra((v) => !v)}
-                className="min-w-40 rounded-full border border-ivory/25 px-5 py-3 text-xs uppercase tracking-[0.2em] text-ivory/80 transition-colors hover:border-ivory hover:text-ivory"
+                className="label min-w-40 rounded-[2px] border border-paper/30 px-5 py-3.5 text-paper/80 transition-colors hover:border-paper hover:bg-paper/10 hover:text-paper"
               >
                 {gra ? "Zatrzymaj" : "Wznów"}
               </button>
@@ -383,7 +383,7 @@ export function AlbumGosci() {
               type="button"
               onClick={() => przesun(1)}
               aria-label="Następne zdjęcie"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-ivory/25 transition-colors hover:border-ivory"
+              className="flex h-12 w-12 items-center justify-center rounded-[2px] border border-paper/25 transition-colors hover:border-paper"
             >
               <svg
                 viewBox="0 0 24 24"

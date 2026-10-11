@@ -1,51 +1,39 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
-import { SITE_URL } from "@/lib/site";
+import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+/* Fraunces — wariacyjny krój o wyraźnym charakterze (osie SOFT i WONK).
+   latin-ext jest konieczny: bez niego ł, ą, ę, ś, ż renderują się zastępczym krojem. */
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "latin-ext"],
+  axes: ["SOFT", "WONK"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+const instrument = Instrument_Sans({
+  variable: "--font-instrument",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
 });
-
-const OPIS =
-  "Dom Zaproszeń to pracownia papeterii ślubnej — zaproszenia, winietki, menu weselne, dodatki i strony weselne projektowane indywidualnie dla każdej pary.";
 
 export const metadata: Metadata = {
-  // Bez metadataBase adresy obrazków w podglądzie linku są względne,
-  // a scrapery Instagrama czy Messengera ich nie odczytają.
-  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Dom Zaproszeń — więcej niż zaproszenia",
+    default: "Dom Zaproszeń — pracownia papeterii ślubnej",
     template: "%s",
   },
-  description: OPIS,
-  openGraph: {
-    type: "website",
-    locale: "pl_PL",
-    siteName: "Dom Zaproszeń",
-    title: "Dom Zaproszeń — więcej niż zaproszenia",
-    description: OPIS,
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
+  description:
+    "Pracownia papeterii ślubnej: zaproszenia, winietki, menu, dodatki i strony weselne projektowane indywidualnie dla każdej pary.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pl"
-      className={`${cormorant.variable} ${jost.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${instrument.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-body bg-ivory text-ink">
+      <body className="flex min-h-full flex-col bg-paper font-body text-ink">
         {children}
       </body>
     </html>

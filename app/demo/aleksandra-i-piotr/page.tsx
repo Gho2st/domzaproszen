@@ -7,6 +7,7 @@ import { Countdown } from "@/components/wedding/countdown";
 import { DemoNav } from "@/components/wedding/demo-nav";
 import { RsvpForm } from "@/components/wedding/rsvp-form";
 import { AlbumGosci } from "@/components/wedding/album-gosci";
+import { Question } from "@/components/ui";
 import {
   IconArrow,
   IconBed,
@@ -283,7 +284,7 @@ function Pieczec({ size = 74 }: { size?: number }) {
   );
 }
 
-/** Nagłówek sekcji z gałązką — powtarzalny rytm całej strony. */
+/** Nagłówek sekcji: gałązka na linii, tytuł, etykieta pod nim. */
 function Naglowek({
   eyebrow,
   title,
@@ -294,14 +295,21 @@ function Naglowek({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="mx-auto max-w-2xl text-center">
-      <span className="text-xs font-medium uppercase tracking-[0.24em] text-accent">
-        {eyebrow}
-      </span>
-      <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
+    <div className="mx-auto max-w-[46ch] text-center">
+      {/* Etykieta wpisana w linię, między gałązkami — zamiast nadpisu nad tytułem */}
+      <div className="flex items-center justify-center gap-3 sm:gap-4">
+        <span aria-hidden="true" className="h-px flex-1 bg-rule" />
+        <Galazka aria-hidden="true" className="hidden w-12 text-sage sm:block" />
+        <span className="label shrink-0 text-ink-3">{eyebrow}</span>
+        <Galazka
+          aria-hidden="true"
+          className="hidden w-12 rotate-180 text-sage sm:block"
+        />
+        <span aria-hidden="true" className="h-px flex-1 bg-rule" />
+      </div>
+      <h2 className="display mt-7 text-balance text-d2 font-semibold text-ink">
         {title}
       </h2>
-      <Galazka className="mx-auto mt-5 w-28 text-sage" />
       {children}
     </div>
   );
@@ -325,14 +333,14 @@ export default async function DemoWeddingSite() {
     .replace("<svg", '<svg width="100%" height="100%"');
 
   return (
-    <div className="motyw-eukaliptus flex flex-1 flex-col overflow-x-clip bg-ivory text-ink">
+    <div className="motyw-eukaliptus flex flex-1 flex-col overflow-x-clip bg-paper text-ink">
       {/* PASEK DEMO */}
-      <div className="bg-ink px-6 py-3 text-center text-xs text-ivory/75 sm:px-10">
-        <span className="font-medium text-ivory">To strona pokazowa.</span> Tak
+      <div className="bg-ink px-6 py-3 text-center text-xs text-paper/75 sm:px-10">
+        <span className="font-medium text-paper">To strona pokazowa.</span> Tak
         może wyglądać Wasza strona weselna od Domu Zaproszeń.{" "}
         <Link
           href="/strony-weselne"
-          className="inline-flex items-center gap-1 font-medium text-sage underline underline-offset-4 transition-colors hover:text-ivory"
+          className="inline-flex items-center gap-1 font-medium text-sage underline underline-offset-4 transition-colors hover:text-paper"
         >
           Chcemy taką
           <IconArrow size={13} />
@@ -361,21 +369,21 @@ export default async function DemoWeddingSite() {
           <div className="absolute inset-0 -z-20 bg-gradient-to-b from-ink/75 via-ink/15 to-ink/75" />
           <div className="absolute inset-0 -z-20 hidden bg-gradient-to-r from-ink/55 via-transparent to-transparent sm:block" />
 
-          <span className="pointer-events-none absolute inset-2 -z-10 rounded-[2px] border border-ivory/20 sm:inset-5" />
+          <span className="pointer-events-none absolute inset-2 -z-10 rounded-[2px] border border-paper/20 sm:inset-5" />
           <Galazka className="pointer-events-none absolute -left-12 top-24 -z-10 w-52 rotate-[10deg] text-sage/15 sm:w-80" />
           <Galazka className="pointer-events-none absolute -right-12 bottom-28 -z-10 w-52 rotate-[190deg] text-sage/15 sm:w-80" />
 
           <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-between px-6 pb-14 pt-10 text-center sm:px-12 sm:pb-16 sm:pt-14 sm:text-left">
             <div className="flex flex-col items-center sm:max-w-xl sm:items-start">
-              <span className="rise text-[0.6rem] uppercase tracking-[0.3em] text-ivory/75 sm:text-xs sm:tracking-[0.34em]">
+              <span className="rise label text-paper/75">
                 Pobieramy się
               </span>
 
               <h1
-                className={`${kaligrafia} rise mt-4 text-[clamp(2.6rem,13vw,6rem)] leading-[1.05] text-ivory sm:mt-6`}
+                className={`${kaligrafia} rise mt-4 text-[clamp(2.3rem,11.5vw,5.25rem)] leading-[1.05] text-paper sm:mt-6`}
               >
                 {bride}
-                <span className="my-1 block font-display text-2xl font-normal text-sage sm:text-4xl">
+                <span className="my-1 block display text-2xl font-normal text-sage sm:text-4xl">
                   &amp;
                 </span>
                 {groom}
@@ -383,7 +391,7 @@ export default async function DemoWeddingSite() {
             </div>
 
             <div className="flex flex-col items-center gap-6 sm:max-w-lg sm:items-start sm:gap-7">
-              <p className="rise text-[0.6rem] uppercase tracking-[0.26em] text-ivory/85 sm:text-xs sm:tracking-[0.32em]">
+              <p className="rise label text-paper/85">
                 {dateUpper} · Tyniec
               </p>
 
@@ -393,7 +401,7 @@ export default async function DemoWeddingSite() {
 
               <a
                 href="#rsvp"
-                className="inline-flex items-center gap-2 rounded-full border border-sage/50 bg-sage/15 px-6 py-3 text-sm font-medium tracking-[0.06em] text-ivory backdrop-blur-sm transition-colors hover:bg-sage/30 sm:px-7 sm:py-3.5"
+                className="inline-flex items-center gap-2 rounded-[2px] border border-paper/40 bg-paper/10 px-7 py-3.5 text-[0.9375rem] font-medium text-paper backdrop-blur-sm transition-colors hover:bg-paper hover:text-ink"
               >
                 Potwierdź obecność
                 <IconArrow />
@@ -404,7 +412,7 @@ export default async function DemoWeddingSite() {
           <a
             href="#zaproszenie"
             aria-label="Przejdź dalej"
-            className="absolute inset-x-0 bottom-5 mx-auto flex w-10 justify-center text-ivory/60 transition-colors hover:text-ivory"
+            className="absolute inset-x-0 bottom-5 mx-auto flex w-10 justify-center text-paper/60 transition-colors hover:text-paper"
           >
             <IconChevronDown size={24} />
           </a>
@@ -413,58 +421,58 @@ export default async function DemoWeddingSite() {
         {/* ZAPROSZENIE */}
         <section
           id="zaproszenie"
-          className="border-b border-line bg-ivory-deep"
+          className="border-b border-rule bg-paper-2"
         >
           <div className="mx-auto max-w-2xl px-6 py-16 text-center sm:px-10 sm:py-24">
-            <span className="text-xs font-medium uppercase tracking-[0.24em] text-accent">
+            <span className="label text-accent">
               Zaproszenie
             </span>
             <Galazka className="mx-auto mt-5 w-28 text-sage" />
-            <p className="mt-7 font-display text-xl leading-relaxed text-ink sm:text-3xl">
+            <p className="mt-7 display text-d3 text-ink">
               „Miłość nie polega na tym, by patrzeć na siebie nawzajem, lecz by
               patrzeć razem w tym samym kierunku”.
             </p>
 
-            <p className="mt-6 text-sm leading-relaxed text-ink-soft">
+            <p className="mt-6 text-ink-2">
               Zaraz po ceremonii zapraszamy Was na przyjęcie w Dworku Pod Lipami
               w Jerzmanowicach — bawimy się do białego rana, a nazajutrz
               spotykamy się jeszcze na poprawinach.
             </p>
             <p
-              className={`${kaligrafia} mt-8 text-[clamp(2.25rem,10vw,3rem)] leading-snug text-accent`}
+              className={`${kaligrafia} mt-8 text-[clamp(2rem,9vw,2.65rem)] leading-snug text-accent`}
             >
               {bride}
-              <span className="mx-4 font-display text-3xl">&amp;</span>
+              <span className="mx-4 display text-3xl">&amp;</span>
               {groom}
             </p>
           </div>
         </section>
 
         {/* NASZA HISTORIA */}
-        <section id="historia" className="bg-ivory-deep">
+        <section id="historia" className="bg-paper-2">
           <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
             <Naglowek eyebrow="O nas" title="Jak się tu znaleźliśmy" />
 
-            <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               {/* Karta z monogramem — miejsce na zdjęcie pary, gdy będzie */}
-              <div className="papier relative flex aspect-[4/5] flex-col items-center justify-center overflow-hidden rounded-[3px] bg-ivory p-8 text-center shadow-[0_35px_70px_-40px_rgba(30,40,33,0.6)] sm:p-10">
-                <span className="pointer-events-none absolute inset-4 rounded-[2px] border border-line" />
+              <div className="papier relative flex aspect-[4/5] flex-col items-center justify-center overflow-hidden rounded-[3px] bg-paper p-8 text-center shadow-[0_35px_70px_-40px_rgba(30,40,33,0.6)] sm:p-10">
+                <span className="pointer-events-none absolute inset-4 rounded-[2px] border border-rule" />
                 <Galazka className="pointer-events-none absolute -left-4 top-10 w-24 -rotate-[22deg] text-sage sm:w-32" />
                 <Galazka className="pointer-events-none absolute -right-4 bottom-10 w-24 rotate-[158deg] text-sage sm:w-32" />
 
                 <p
-                  className={`${kaligrafia} text-[clamp(3.5rem,17vw,7rem)] leading-none text-ink`}
+                  className={`${kaligrafia} text-[clamp(3rem,15vw,6rem)] leading-none text-ink`}
                 >
                   {bride.charAt(0)}
-                  <span className="mx-3 font-display text-4xl text-accent">
+                  <span className="mx-3 display text-4xl text-accent">
                     &amp;
                   </span>
                   {groom.charAt(0)}
                 </p>
-                <p className="mt-8 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
+                <p className="mt-8 label text-ink-2">
                   {dateUpper}
                 </p>
-                <p className="mt-2 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
+                <p className="mt-2 label text-ink-2">
                   Tyniec
                 </p>
                 <div className="mt-8">
@@ -472,19 +480,19 @@ export default async function DemoWeddingSite() {
                 </div>
               </div>
 
-              <ol className="relative flex flex-col gap-10 border-l border-line pl-8">
+              <ol className="relative flex flex-col gap-10 border-l border-rule pl-8">
                 {historia.map((h) => (
                   <li key={h.year} className="relative">
-                    <span className="absolute -left-[2.3rem] top-1.5 flex h-3 w-3 items-center justify-center rounded-full border border-accent bg-ivory">
+                    <span className="absolute -left-[2.3rem] top-1.5 flex h-3 w-3 items-center justify-center rounded-full border border-accent bg-paper">
                       <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                     </span>
-                    <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                    <span className="label text-accent">
                       {h.year}
                     </span>
-                    <h3 className="mt-1 font-display text-xl font-semibold text-ink">
+                    <h3 className="mt-1 display text-d4 font-semibold text-ink">
                       {h.title}
                     </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
+                    <p className="mt-1.5 text-ink-2">
                       {h.text}
                     </p>
                   </li>
@@ -501,20 +509,20 @@ export default async function DemoWeddingSite() {
         >
           <Naglowek eyebrow="Plan dnia" title="Godzina po godzinie" />
 
-          <div className="mt-12 divide-y divide-line border-y border-line">
+          <div className="mt-12 divide-y divide-rule border-y border-rule">
             {harmonogram.map((h) => (
               <div
                 key={h.time + h.title}
                 className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-8"
               >
-                <span className="font-display text-2xl font-semibold text-accent sm:w-24 sm:shrink-0">
+                <span className="display num text-d3 font-semibold text-accent sm:w-28 sm:shrink-0">
                   {h.time}
                 </span>
                 <div>
-                  <h3 className="font-display text-lg font-semibold text-ink">
+                  <h3 className="display text-d4 font-semibold text-ink">
                     {h.title}
                   </h3>
-                  <p className="mt-0.5 text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-0.5 text-ink-2">
                     {h.text}
                   </p>
                 </div>
@@ -524,36 +532,36 @@ export default async function DemoWeddingSite() {
         </section>
 
         {/* MIEJSCE */}
-        <section id="miejsce" className="border-y border-line bg-ivory-deep">
+        <section id="miejsce" className="border-y border-rule bg-paper-2">
           <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28">
             <Naglowek eyebrow="Dojazd" title="Gdzie się spotykamy" />
 
-            <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
               {miejsca.map((m) => {
                 const Icon = m.icon;
                 return (
                   <div
                     key={m.title}
-                    className="papier relative flex flex-col gap-4 rounded-[3px] border border-line bg-ivory p-8 sm:p-10"
+                    className="papier relative flex flex-col gap-4 rounded-[3px] border border-rule bg-paper p-8 sm:p-10"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent">
+                    <div className="flex h-11 w-11 items-center justify-center border border-rule text-accent">
                       <Icon />
                     </div>
-                    <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                    <span className="label text-accent">
                       {m.eyebrow}
                     </span>
-                    <h3 className="font-display text-2xl font-semibold text-ink">
+                    <h3 className="display text-d3 font-semibold text-ink">
                       {m.title}
                     </h3>
-                    <p className="text-sm text-ink-soft">{m.address}</p>
-                    <p className="text-sm leading-relaxed text-ink-soft">
+                    <p className="text-ink-2">{m.address}</p>
+                    <p className="text-ink-2">
                       {m.text}
                     </p>
                     <a
                       href={m.map}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+                      className="mt-2 inline-flex w-fit items-center gap-2 rounded-[2px] border border-rule px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
                     >
                       <IconMapPin size={17} />
                       Otwórz nawigację
@@ -572,21 +580,21 @@ export default async function DemoWeddingSite() {
         >
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <span className="text-xs font-medium uppercase tracking-[0.24em] text-accent">
+              <span className="label text-accent">
                 Nocleg
               </span>
-              <h2 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-5xl">
+              <h2 className="mt-4 display text-d2 font-semibold text-ink">
                 Zostańcie na dłużej
               </h2>
               <Galazka className="mt-5 w-28 text-sage" />
-              <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-soft">
+              <p className="mt-5 max-w-sm text-ink-2">
                 Zarezerwowaliśmy pokoje w trzech miejscach w okolicy. Dzwoniąc,
                 podajcie nasze hasło rezerwacji — cena będzie niższa, a pokoje
                 trzymamy do 30 kwietnia.
               </p>
             </div>
 
-            <div className="flex flex-col divide-y divide-line border-y border-line">
+            <div className="flex flex-col divide-y divide-rule border-y border-rule">
               {noclegi.map((n) => (
                 <div
                   key={n.name}
@@ -597,10 +605,10 @@ export default async function DemoWeddingSite() {
                       <IconBed size={20} />
                     </span>
                     <div>
-                      <h3 className="font-display text-lg font-semibold text-ink">
+                      <h3 className="display text-d4 font-semibold text-ink">
                         {n.name}
                       </h3>
-                      <p className="mt-0.5 text-sm text-ink-soft">{n.detail}</p>
+                      <p className="mt-0.5 text-sm text-ink-2">{n.detail}</p>
                       <p className="mt-0.5 text-xs uppercase tracking-[0.12em] text-accent">
                         {n.note}
                       </p>
@@ -613,16 +621,16 @@ export default async function DemoWeddingSite() {
         </section>
 
         {/* DRESS CODE I PREZENTY */}
-        <section className="border-y border-line bg-ivory-deep">
+        <section className="border-y border-rule bg-paper-2">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-6 py-20 sm:px-10 sm:py-24 md:grid-cols-2">
-            <div className="papier rounded-[3px] border border-line bg-ivory p-8 sm:p-10">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent">
+            <div className="papier rounded-[3px] border border-rule bg-paper p-8 sm:p-10">
+              <div className="flex h-11 w-11 items-center justify-center border border-rule text-accent">
                 <IconSparkle />
               </div>
-              <h3 className="mt-5 font-display text-2xl font-semibold text-ink">
+              <h3 className="mt-5 display text-d3 font-semibold text-ink">
                 Dress code
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-3 text-ink-2">
                 Strój formalny w zieleni, szałwii i naturalnych beżach — tych
                 samych, które znajdziecie na naszych zaproszeniach. Bardzo
                 prosimy o pozostawienie bieli i écru pannie młodej. Część
@@ -634,7 +642,7 @@ export default async function DemoWeddingSite() {
                   (c) => (
                     <span
                       key={c}
-                      className="h-7 w-7 rounded-full border border-line sm:h-8 sm:w-8"
+                      className="h-7 w-7 rounded-full border border-rule sm:h-8 sm:w-8"
                       style={{ background: c }}
                       title={c}
                     />
@@ -643,20 +651,20 @@ export default async function DemoWeddingSite() {
               </div>
             </div>
 
-            <div className="papier rounded-[3px] border border-line bg-ivory p-8 sm:p-10">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent">
+            <div className="papier rounded-[3px] border border-rule bg-paper p-8 sm:p-10">
+              <div className="flex h-11 w-11 items-center justify-center border border-rule text-accent">
                 <IconGift />
               </div>
-              <h3 className="mt-5 font-display text-2xl font-semibold text-ink">
+              <h3 className="mt-5 display text-d3 font-semibold text-ink">
                 Prezenty
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-3 text-ink-2">
                 Największym prezentem jest dla nas Wasza obecność. Jeśli jednak
                 chcecie sprawić nam przyjemność — zamiast kwiatów, które zwiędną
                 do poniedziałku, ucieszy nas drobny wkład do skarbonki na podróż
                 poślubną do Portugalii.
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-4 text-ink-2">
                 A jeśli macie ogród i nadmiar sadzonek — przyjmiemy z radością.
                 Nasz balkon wciąż czeka.
               </p>
@@ -670,14 +678,14 @@ export default async function DemoWeddingSite() {
           className="mx-auto max-w-6xl px-6 py-20 sm:px-10 sm:py-28"
         >
           <Naglowek eyebrow="Galeria" title="Zanim powiemy „tak”">
-            <p className="mt-5 text-sm leading-relaxed text-ink-soft">
+            <p className="mt-5 text-ink-2">
               Tutaj pojawi się nasza sesja narzeczeńska, a zdjęcia z samego
               wesela zbieramy niżej — we wspólnym albumie, do którego dorzucicie
               własne kadry.
             </p>
             <a
               href="#album"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent underline underline-offset-4 transition-colors hover:text-accent-deep"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent underline underline-offset-4 transition-colors hover:text-accent-2"
             >
               Przejdź do albumu gości
               <IconArrow size={15} />
@@ -685,17 +693,17 @@ export default async function DemoWeddingSite() {
           </Naglowek>
 
           {/* Wszystkie kadry w jednej proporcji — inaczej rzędy się rozjeżdżają */}
-          <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+          <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3 lg:gap-6">
             {galeria.map((podpis) => (
               <figure
                 key={podpis}
-                className="papier relative flex aspect-[4/5] flex-col items-center justify-center gap-3 rounded-[3px] border border-line bg-ivory p-4 text-center sm:p-6"
+                className="papier relative flex aspect-[4/5] flex-col items-center justify-center gap-3 rounded-[3px] border border-rule bg-paper p-4 text-center sm:p-6"
               >
-                <span className="pointer-events-none absolute inset-2.5 rounded-[2px] border border-line sm:inset-3" />
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent sm:h-11 sm:w-11">
+                <span className="pointer-events-none absolute inset-2.5 rounded-[2px] border border-rule sm:inset-3" />
+                <span className="flex h-10 w-10 items-center justify-center border border-rule text-accent sm:h-11 sm:w-11">
                   <IconCamera size={18} />
                 </span>
-                <figcaption className="text-[0.62rem] font-medium uppercase leading-relaxed tracking-[0.14em] text-ink-soft sm:text-[0.7rem] sm:tracking-[0.18em]">
+                <figcaption className="label text-ink-2">
                   {podpis}
                 </figcaption>
               </figure>
@@ -704,10 +712,10 @@ export default async function DemoWeddingSite() {
         </section>
 
         {/* ALBUM GOŚCI — działająca makieta: zdjęcia zostają w przeglądarce */}
-        <section id="album" className="border-y border-line bg-ivory-deep">
+        <section id="album" className="border-y border-rule bg-paper-2">
           <div className="mx-auto max-w-4xl px-6 py-20 sm:px-10 sm:py-28">
             <Naglowek eyebrow="Album gości" title="Wesele Waszymi oczami">
-              <p className="mt-5 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-5 text-ink-2">
                 Na każdym stole stoi tabliczka z kodem QR. Skanujecie,
                 wybieracie zdjęcia z telefonu i po chwili są tutaj — razem z
                 kadrami reszty gości.
@@ -716,11 +724,11 @@ export default async function DemoWeddingSite() {
 
             {/* Tabliczka, która na weselu stoi na stole — kod prowadzi
                 do tej samej sekcji, więc można go zeskanować z ekranu */}
-            <figure className="papier relative mx-auto mt-12 flex w-full max-w-sm flex-col items-center gap-5 rounded-[3px] border border-line bg-ivory px-8 py-10 text-center shadow-[0_35px_70px_-45px_rgba(30,40,33,0.6)]">
-              <span className="pointer-events-none absolute inset-2.5 rounded-[2px] border border-line" />
+            <figure className="papier relative mx-auto mt-12 flex w-full max-w-sm flex-col items-center gap-5 rounded-[3px] border border-rule bg-paper px-8 py-10 text-center shadow-[0_35px_70px_-45px_rgba(30,40,33,0.6)]">
+              <span className="pointer-events-none absolute inset-2.5 rounded-[2px] border border-rule" />
               <Galazka className="pointer-events-none absolute -left-3 top-5 w-20 -rotate-[22deg] text-sage" />
 
-              <span className="text-[0.6rem] uppercase tracking-[0.3em] text-ink-soft">
+              <span className="label text-ink-2">
                 Album gości
               </span>
 
@@ -729,10 +737,10 @@ export default async function DemoWeddingSite() {
                 dangerouslySetInnerHTML={{ __html: kodQr }}
               />
 
-              <figcaption className="font-display text-xl font-semibold text-ink">
+              <figcaption className="display text-d4 font-semibold text-ink">
                 Zeskanuj i dorzuć swoje zdjęcia
               </figcaption>
-              <p className="text-xs leading-relaxed text-ink-soft">
+              <p className="text-sm text-ink-2">
                 Aparat w telefonie wystarczy — nie trzeba żadnej aplikacji.
               </p>
             </figure>
@@ -742,10 +750,10 @@ export default async function DemoWeddingSite() {
         </section>
 
         {/* RSVP */}
-        <section id="rsvp" className="border-y border-line bg-ivory-deep">
+        <section id="rsvp" className="border-y border-rule bg-paper-2">
           <div className="mx-auto max-w-2xl px-6 py-20 sm:px-10 sm:py-28">
             <Naglowek eyebrow="RSVP" title="Dajcie znać, czy będziecie">
-              <p className="mt-5 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-5 text-ink-2">
                 Jeden formularz zamiast dziesięciu wiadomości. Wypełnijcie go
                 osobno dla każdego zaproszenia.
               </p>
@@ -764,19 +772,9 @@ export default async function DemoWeddingSite() {
         >
           <Naglowek eyebrow="Dobre pytania" title="Zanim zadzwonicie" />
 
-          <div className="mt-12 divide-y divide-line border-y border-line">
+          <div className="mt-12 divide-y divide-rule border-y border-rule">
             {pytania.map((p) => (
-              <details key={p.q} className="group">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-left font-display text-lg font-semibold text-ink transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
-                  {p.q}
-                  <span className="shrink-0 text-accent transition-transform duration-300 group-open:rotate-180">
-                    <IconChevronDown />
-                  </span>
-                </summary>
-                <p className="pb-6 text-sm leading-relaxed text-ink-soft">
-                  {p.a}
-                </p>
-              </details>
+              <Question key={p.q} q={p.q} a={p.a} />
             ))}
           </div>
         </section>
@@ -790,16 +788,16 @@ export default async function DemoWeddingSite() {
           <Galazka className="pointer-events-none absolute -left-10 bottom-10 -z-10 w-56 rotate-[10deg] text-sage/20 sm:w-72" />
           <Galazka className="pointer-events-none absolute -right-10 top-10 -z-10 w-56 rotate-[190deg] text-sage/20 sm:w-72" />
 
-          <div className="mx-auto flex max-w-2xl flex-col items-center px-6 py-24 text-center sm:px-10 sm:py-32">
+          <div className="mx-auto flex max-w-2xl flex-col items-center px-6 py-20 text-center sm:px-10 sm:py-28">
             <Pieczec size={64} />
             <p
-              className={`${kaligrafia} mt-8 text-[2.75rem] leading-snug text-ivory sm:text-6xl`}
+              className={`${kaligrafia} mt-8 text-[2.4rem] leading-snug text-paper sm:text-5xl`}
             >
               {bride}
-              <span className="mx-4 font-display text-3xl">&amp;</span>
+              <span className="mx-4 display text-3xl">&amp;</span>
               {groom}
             </p>
-            <p className="mt-6 text-xs uppercase tracking-[0.3em] text-ivory/70">
+            <p className="mt-6 label text-paper/70">
               Do zobaczenia {dateLabel}
             </p>
           </div>
@@ -808,15 +806,15 @@ export default async function DemoWeddingSite() {
 
       {/* STOPKA DEMO */}
       <footer className="bg-ink">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 border-t border-ivory/10 px-6 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-10">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 border-t border-paper/10 px-6 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-10">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-ivory/50">
+            <p className="label text-paper/60">
               Strona pokazowa
             </p>
-            <p className="mt-2 font-display text-xl font-semibold text-ivory">
+            <p className="mt-3 display text-d3 font-semibold text-paper">
               Chcecie taką stronę na swój ślub?
             </p>
-            <p className="mt-1 max-w-md text-sm leading-relaxed text-ivory/60">
+            <p className="mt-2 max-w-md text-paper/65">
               Projektujemy ją w stylu Waszej papeterii — z RSVP, harmonogramem i
               własnym adresem.
             </p>
@@ -824,7 +822,7 @@ export default async function DemoWeddingSite() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
               href="/strony-weselne"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-sage px-6 py-3 text-center text-sm font-medium text-ink transition-colors hover:bg-sage-deep"
+              className="inline-flex items-center justify-center gap-2 rounded-[2px] bg-paper px-6 py-3.5 text-center text-[0.9375rem] font-medium text-ink transition-colors hover:bg-sage hover:text-ink"
             >
               Zobacz ofertę
               <IconArrow />
@@ -833,13 +831,13 @@ export default async function DemoWeddingSite() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-ivory/25 px-6 py-3 text-sm font-medium text-ivory transition-colors hover:border-ivory"
+              className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-paper/30 px-6 py-3.5 text-[0.9375rem] font-medium text-paper transition-colors hover:border-paper hover:bg-paper/10"
             >
               Napisz do nas
             </a>
           </div>
         </div>
-        <div className="mx-auto w-full max-w-6xl px-6 pb-10 text-xs text-ivory/40 sm:px-10">
+        <div className="mx-auto w-full max-w-6xl px-6 pb-10 text-sm text-paper/60 sm:px-10">
           Projekt i wykonanie: Dom Zaproszeń · dane w demo są fikcyjne
         </div>
       </footer>

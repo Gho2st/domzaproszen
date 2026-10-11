@@ -6,15 +6,21 @@ export const alt = "Dom Zaproszeń — pracownia papeterii ślubnej";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const kaligrafia = await readFile(
-  join(process.cwd(), "assets/fonts/GreatVibes-Regular.ttf"),
+// satori nie czyta WOFF2, które pobiera next/font — stąd statyczne instancje
+// tych samych krojów, w tych samych ustawieniach osi co na stronie
+const fraunces = await readFile(
+  join(process.cwd(), "assets/fonts/Fraunces-Display-SemiBold.ttf"),
 );
-const antykwa = await readFile(
-  join(process.cwd(), "assets/fonts/CormorantGaramond-SemiBold.ttf"),
+const grotesk = await readFile(
+  join(process.cwd(), "assets/fonts/InstrumentSans-Medium.ttf"),
 );
 const tlo = await readFile(
   join(process.cwd(), "assets/og/papeteria-1200x630.jpg"),
 );
+
+const PAPER = "#f7f4ed";
+const INK = "#16150f";
+const ACCENT = "#b9573f";
 
 export default async function Image() {
   const tloUrl = `data:image/jpeg;base64,${tlo.toString("base64")}`;
@@ -27,7 +33,7 @@ export default async function Image() {
           height: "100%",
           display: "flex",
           position: "relative",
-          backgroundColor: "#2a2420",
+          backgroundColor: INK,
         }}
       >
         <img
@@ -45,7 +51,7 @@ export default async function Image() {
             width: size.width,
             height: size.height,
             backgroundImage:
-              "linear-gradient(100deg, rgba(34,28,24,0.95) 0%, rgba(34,28,24,0.88) 42%, rgba(34,28,24,0.5) 72%, rgba(34,28,24,0.3) 100%)",
+              "linear-gradient(100deg, rgba(22,21,15,0.96) 0%, rgba(22,21,15,0.9) 44%, rgba(22,21,15,0.45) 74%, rgba(22,21,15,0.25) 100%)",
           }}
         />
 
@@ -54,53 +60,73 @@ export default async function Image() {
             position: "relative",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
-            padding: "0 78px",
+            justifyContent: "space-between",
+            padding: "72px 78px",
             height: "100%",
-            width: "780px",
+            width: "820px",
           }}
         >
-          <div
-            style={{
-              fontFamily: "Great Vibes",
-              fontSize: 82,
-              color: "#f8f3ea",
-              lineHeight: 1.1,
-            }}
-          >
-            Dom Zaproszeń
+          <div style={{ display: "flex", alignItems: "baseline", gap: 18 }}>
+            <span
+              style={{
+                fontFamily: "Fraunces",
+                fontSize: 30,
+                color: PAPER,
+                letterSpacing: -0.5,
+              }}
+            >
+              Dom Zaproszeń
+            </span>
+            <span
+              style={{
+                fontFamily: "Instrument",
+                fontSize: 15,
+                letterSpacing: 2.4,
+                color: "rgba(247,244,237,0.55)",
+              }}
+            >
+              PRACOWNIA PAPETERII
+            </span>
           </div>
 
-          <div
-            style={{
-              width: 96,
-              height: 2,
-              backgroundColor: "#a9814a",
-              margin: "26px 0",
-            }}
-          />
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                fontFamily: "Fraunces",
+                fontSize: 86,
+                color: PAPER,
+                lineHeight: 1.04,
+                letterSpacing: -2.4,
+              }}
+            >
+              <span>Więcej niż</span>
+              <div style={{ display: "flex", alignItems: "baseline" }}>
+                <span>zaproszenia</span>
+                <span style={{ color: ACCENT }}>.</span>
+              </div>
+            </div>
 
-          <div
-            style={{
-              fontFamily: "Cormorant",
-              fontSize: 42,
-              color: "#f8f3ea",
-              lineHeight: 1.25,
-            }}
-          >
-            Więcej niż zaproszenia
-          </div>
+            <div
+              style={{
+                width: "100%",
+                height: 1,
+                backgroundColor: "rgba(247,244,237,0.25)",
+                margin: "38px 0 26px",
+              }}
+            />
 
-          <div
-            style={{
-              marginTop: 22,
-              fontFamily: "Cormorant",
-              fontSize: 22,
-              letterSpacing: 4,
-              color: "#d8c7a8",
-            }}
-          >
-            PAPETERIA ŚLUBNA · STRONY WESELNE
+            <div
+              style={{
+                fontFamily: "Instrument",
+                fontSize: 21,
+                letterSpacing: 2.8,
+                color: "rgba(247,244,237,0.75)",
+              }}
+            >
+              ZAPROSZENIA · WINIETKI · MENU · STRONY WESELNE
+            </div>
           </div>
         </div>
       </div>
@@ -108,8 +134,8 @@ export default async function Image() {
     {
       ...size,
       fonts: [
-        { name: "Great Vibes", data: kaligrafia, style: "normal", weight: 400 },
-        { name: "Cormorant", data: antykwa, style: "normal", weight: 600 },
+        { name: "Fraunces", data: fraunces, style: "normal", weight: 600 },
+        { name: "Instrument", data: grotesk, style: "normal", weight: 500 },
       ],
     },
   );
