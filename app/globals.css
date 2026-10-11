@@ -168,6 +168,25 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
+/* Pasek z usługami — powolny, ciągły przesuw; zatrzymywany przy
+   prefers-reduced-motion (reguła na końcu pliku). */
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* trzy kopie listy — przesuw o jedną daje bezszwową pętlę,
+       a dwie pozostałe zawsze pokrywają nawet szeroki ekran */
+    transform: translateX(-33.3333%);
+  }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 48s linear infinite;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -192,5 +211,8 @@ details > summary::-webkit-details-marker {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+  .ticker-track {
+    animation: none !important;
   }
 }

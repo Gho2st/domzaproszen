@@ -115,6 +115,16 @@ const wwwHighlights = [
   "Ten sam papier, ta sama typografia — strona wygląda jak Wasze zaproszenie",
 ];
 
+const uslugi = [
+  "Zaproszenia ślubne",
+  "Winietki i menu",
+  "Karty RSVP",
+  "Pieczęcie woskowe",
+  "Koperty i wstążki",
+  "Strony weselne",
+  "Album gości",
+];
+
 const dane = [
   { label: "Pracownia", value: "Kraków, projekty w całej Polsce" },
   { label: "Papeteria", value: "Zaproszenia, winietki, menu, dodatki" },
@@ -140,72 +150,140 @@ export default async function Home() {
 
       <main id="top" className="flex-1">
         {/* MASTHEAD */}
-        <section className={`${shell} pb-16 pt-12 sm:pb-20 sm:pt-16`}>
-          <p className="label text-ink-3">Papeteria ślubna · szyta na miarę</p>
+        <section className="border-b border-rule">
+          <div className={`${shell} pb-14 pt-10 sm:pb-16 sm:pt-14`}>
+            <div className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
+              <div>
+                <p className="rise label text-accent">
+                  Pracownia papeterii ślubnej · Kraków
+                </p>
 
-          <h1 className="display mt-9 max-w-[18ch] text-balance text-d1 font-semibold">
-            Więcej niż zaproszenia<span className="text-accent">.</span>
-          </h1>
+                {/* Kursywa w akcencie niesie uwagę — nie sam rozmiar liter */}
+                <h1 className="display rise mt-7 text-[clamp(2.7rem,7.6vw,5rem)] font-semibold leading-[0.95] tracking-[-0.03em]">
+                  Więcej niż
+                  <br />
+                  <em className="text-accent">zaproszenia</em>
+                  <span className="text-accent">.</span>
+                </h1>
 
-          <div className="mt-12 grid gap-10 border-t border-rule pt-9 md:grid-cols-[1.25fr_1fr] md:gap-16">
-            <div>
-              <p className="max-w-[56ch] text-pretty text-lede text-ink-2">
-                Projektujemy zaproszenia, winietki, menu i dodatki, w których
-                każdy detal — kolor wstążki, faktura papieru, odcisk pieczęci —
-                opowiada Waszą historię. A od teraz także strony weselne, które
-                wyglądają jak ich przedłużenie.
-              </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={btnSolid}
+                <p
+                  className="rise mt-8 max-w-[50ch] text-pretty text-lede text-ink-2"
+                  style={{ animationDelay: "120ms" }}
                 >
-                  Napisz do nas
-                </a>
-                <a href="#realizacje" className={btnOutline}>
-                  Zobacz realizacje
-                </a>
-              </div>
-            </div>
+                  Projektujemy zaproszenia, winietki, menu i dodatki, w których
+                  każdy detal — kolor wstążki, faktura papieru, odcisk pieczęci
+                  — opowiada Waszą historię. A od teraz także strony weselne,
+                  które wyglądają jak ich przedłużenie.
+                </p>
 
-            <dl className="grid gap-5 self-start md:border-l md:border-rule md:pl-10">
-              {dane.map((d) => (
-                <div key={d.label}>
-                  <dt className="label text-ink-3">{d.label}</dt>
-                  <dd className="mt-1.5 text-ink">{d.value}</dd>
+                <div
+                  className="rise mt-9 flex flex-col gap-3 sm:flex-row"
+                  style={{ animationDelay: "200ms" }}
+                >
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={btnSolid}
+                  >
+                    Napisz do nas
+                  </a>
+                  <a href="#realizacje" className={btnOutline}>
+                    Zobacz realizacje
+                  </a>
                 </div>
-              ))}
-            </dl>
+              </div>
+
+              {/* Najmocniejszy kadr z portfolio otwiera stronę */}
+              <figure
+                className="rise relative"
+                style={{ animationDelay: "90ms" }}
+              >
+                <div className="relative aspect-[4/5] overflow-hidden bg-paper-2 sm:aspect-[5/5] lg:aspect-[4/5]">
+                  <Image
+                    src="/images/post2.jpg"
+                    alt="Zaproszenie ślubne w czerni i kremie, z czarną kopertą i wstążką"
+                    fill
+                    sizes="(max-width: 1024px) 92vw, 44vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-rule pt-3">
+                  <span className="label text-accent">Realizacja</span>
+                  <span className="text-[0.9375rem] text-ink-2">
+                    Nowoczesna elegancja
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </section>
 
-        {/* PASEK ZDJĘĆ */}
-        <section className={`${shell} pb-16 sm:pb-24`}>
-          <div className="grid gap-6 sm:grid-cols-3 sm:gap-8">
+        {/* PASEK Z USŁUGAMI */}
+        <section
+          aria-label="Co robimy"
+          className="overflow-hidden border-b border-rule bg-ink py-3.5 text-paper"
+        >
+          <div className="ticker-track">
+            {[0, 1, 2].map((kopia) => (
+              <div
+                key={kopia}
+                aria-hidden={kopia > 0}
+                className="flex shrink-0"
+              >
+                {uslugi.map((u) => (
+                  <span
+                    key={u}
+                    className="label flex items-center gap-10 whitespace-nowrap px-5 text-paper/80"
+                  >
+                    {u}
+                    <span aria-hidden="true" className="text-accent">
+                      ✦
+                    </span>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* TRYPTYK NA CAŁĄ SZEROKOŚĆ */}
+        <section className="border-b border-rule">
+          <div className="grid sm:grid-cols-3">
             {realizacje.slice(0, 3).map((r, i) => (
               <figure
                 key={r.img}
-                className={i === 1 ? "sm:mt-10" : i === 2 ? "sm:mt-20" : ""}
+                className="relative border-b border-rule last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
               >
-                <div className="relative aspect-[4/5] overflow-hidden bg-paper-2">
+                <div className="relative aspect-[4/5] overflow-hidden bg-paper-2 sm:aspect-[3/4]">
                   <Image
                     src={r.img}
                     alt={r.title}
                     fill
-                    sizes="(max-width: 640px) 90vw, 31vw"
-                    className="object-cover"
-                    priority={i === 0}
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
-                <figcaption className="mt-4 flex items-baseline gap-4 border-t border-rule pt-3">
+                <figcaption className="flex items-baseline gap-4 px-5 py-4 sm:px-6">
                   <span className="label num text-ink-3">{nr(i)}</span>
                   <span className="text-[0.9375rem] text-ink-2">{r.title}</span>
                 </figcaption>
               </figure>
             ))}
           </div>
+        </section>
+
+        {/* DANE PRACOWNI */}
+        <section className={`${shell} py-10`}>
+          <dl className="grid gap-x-10 gap-y-6 sm:grid-cols-3">
+            {dane.map((d) => (
+              <div key={d.label}>
+                <dt className="label text-ink-3">{d.label}</dt>
+                <dd className="mt-1.5 text-ink">{d.value}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         {/* MANIFEST */}
