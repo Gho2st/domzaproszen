@@ -100,7 +100,7 @@ const albumKorzysci = [
 const pakiety = [
   {
     name: "Wizytówka",
-    price: "od 499 zł",
+    price: "299",
     tagline: "Najważniejsze informacje w jednym miejscu.",
     features: [
       "Strona jednoekranowa (one page)",
@@ -115,7 +115,7 @@ const pakiety = [
   },
   {
     name: "Komplet z RSVP",
-    price: "od 899 zł",
+    price: "599",
     tagline: "Najczęściej wybierany — strona plus zbieranie potwierdzeń.",
     features: [
       "Wszystko z pakietu Wizytówka",
@@ -131,7 +131,7 @@ const pakiety = [
   },
   {
     name: "Premium",
-    price: "od 1 299 zł",
+    price: "999",
     tagline: "Dla par, które chcą czegoś zupełnie własnego.",
     features: [
       "Wszystko z pakietu Komplet z RSVP",
@@ -429,32 +429,36 @@ export default function StronyWeselne() {
             lede="Ceny orientacyjne — ostateczną wycenę przygotowujemy po krótkiej rozmowie. Przy zamówieniu razem z papeterią strona jest tańsza o 15%."
           />
 
-          <div className="mt-12 grid border-t border-rule lg:grid-cols-3">
+          {/* subgrid: nazwa, lead, cena, lista i przycisk leżą w jednej linii
+              we wszystkich trzech kolumnach, mimo różnej długości treści */}
+          <div className="mt-12 grid border-t border-rule lg:grid-cols-3 lg:grid-rows-[auto_auto_auto_1fr_auto]">
             {pakiety.map((p) => (
               <div
                 key={p.name}
-                className={`flex flex-col border-b border-rule py-9 lg:border-r lg:px-8 lg:first:pl-0 lg:last:border-r-0 ${
-                  p.featured ? "bg-paper-2 px-6 lg:px-8" : "px-0"
-                }`}
+                className="grid gap-0 border-b border-rule py-8 lg:row-span-5 lg:grid-rows-subgrid lg:border-b-0 lg:border-r lg:px-9 lg:py-10 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
               >
-                <div className="flex items-baseline justify-between gap-4">
+                <p className="label text-accent">
+                  {p.featured ? "Najczęściej wybierany" : "\u00a0"}
+                </p>
+
+                <div className="mt-5">
                   <h3 className="display text-d3 font-semibold">{p.name}</h3>
-                  {p.featured ? (
-                    <span className="label shrink-0 text-accent">
-                      Najczęściej wybierany
-                    </span>
-                  ) : null}
+                  <p className="mt-2.5 max-w-[32ch] text-pretty text-ink-2">
+                    {p.tagline}
+                  </p>
                 </div>
 
-                <p className="mt-3 max-w-[34ch] text-pretty text-ink-2">
-                  {p.tagline}
+                <p className="mt-7 flex items-baseline gap-2">
+                  <span className="label text-ink-3">od</span>
+                  <span className="display num text-[2.35rem] font-semibold leading-none">
+                    {p.price}
+                  </span>
+                  <span className="display text-d4 font-semibold text-ink-3">
+                    zł
+                  </span>
                 </p>
 
-                <p className="display num mt-7 text-d2 font-semibold text-accent">
-                  {p.price}
-                </p>
-
-                <ul className="mt-7 flex flex-1 flex-col gap-3 border-t border-rule pt-7">
+                <ul className="mt-7 flex flex-col gap-3 border-t border-rule pt-7">
                   {p.features.map((f) => (
                     <li key={f} className="flex gap-3.5 text-ink-2">
                       <span aria-hidden="true" className="text-ink-3">
@@ -469,13 +473,18 @@ export default function StronyWeselne() {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${p.featured ? btnSolid : btnOutline} mt-9`}
+                  className={`${p.featured ? btnSolid : btnOutline} mt-9 w-full`}
                 >
                   Zapytaj o wycenę
                 </a>
               </div>
             ))}
           </div>
+
+          <p className="mt-8 border-t border-rule pt-6 text-sm text-ink-3">
+            Podane kwoty to ceny wyjściowe brutto. Zakres i termin ustalamy
+            indywidualnie — napiszcie, a odeślemy konkretną wycenę.
+          </p>
         </section>
 
         {/* PROCES */}
