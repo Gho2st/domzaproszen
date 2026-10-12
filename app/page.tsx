@@ -2,10 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { Reveal } from "@/components/reveal";
 import {
   SectionHead,
   btnOutline,
   btnOutlineInverse,
+  Etykieta,
   btnSolid,
   btnSolidInverse,
   shell,
@@ -115,16 +117,6 @@ const wwwHighlights = [
   "Ten sam papier, ta sama typografia — strona wygląda jak Wasze zaproszenie",
 ];
 
-const uslugi = [
-  "Zaproszenia ślubne",
-  "Winietki i menu",
-  "Karty RSVP",
-  "Pieczęcie woskowe",
-  "Koperty i wstążki",
-  "Strony weselne",
-  "Album gości",
-];
-
 const dane = [
   { label: "Pracownia", value: "Kraków, projekty w całej Polsce" },
   { label: "Papeteria", value: "Zaproszenia, winietki, menu, dodatki" },
@@ -150,383 +142,306 @@ export default async function Home() {
 
       <main id="top" className="flex-1">
         {/* MASTHEAD */}
-        <section className="border-b border-rule">
-          <div className={`${shell} pb-14 pt-10 sm:pb-16 sm:pt-14`}>
-            <div className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
-              <div>
-                <p className="rise label text-accent">
-                  Pracownia papeterii ślubnej · Kraków
-                </p>
+        <section className={`${shell} pb-16 pt-14 text-center sm:pb-20 sm:pt-20`}>
+          <p className="rise label text-accent">
+            Pracownia papeterii ślubnej · Kraków
+          </p>
 
-                {/* Kursywa w akcencie niesie uwagę — nie sam rozmiar liter */}
-                <h1 className="display rise mt-7 text-[clamp(2.3rem,6.5vw,4.25rem)] font-semibold leading-[0.95] tracking-[-0.03em]">
-                  Więcej niż
-                  <br />
-                  <em className="text-accent">zaproszenia</em>
-                  <span className="text-accent">.</span>
-                </h1>
+          {/* Kursywa w akcencie niesie uwagę — nie sam rozmiar liter */}
+          <h1 className="tytul rise mx-auto mt-6 max-w-[14ch] text-balance text-[clamp(2.3rem,6.5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
+            Więcej niż <span className="text-accent">zaproszenia</span>
+            <span className="text-accent">.</span>
+          </h1>
 
-                <p
-                  className="rise mt-8 max-w-[50ch] text-pretty text-lede text-ink-2"
-                  style={{ animationDelay: "120ms" }}
-                >
-                  Projektujemy zaproszenia, winietki, menu i dodatki, w których
-                  każdy detal — kolor wstążki, faktura papieru, odcisk pieczęci
-                  — opowiada Waszą historię. A od teraz także strony weselne,
-                  które wyglądają jak ich przedłużenie.
-                </p>
+          <p
+            className="rise mx-auto mt-6 max-w-[46ch] text-pretty text-lede text-ink-2"
+            style={{ animationDelay: "120ms" }}
+          >
+            Zaproszenia, winietki, menu i dodatki, w których każdy detal —
+            kolor wstążki, faktura papieru, odcisk pieczęci — opowiada Waszą
+            historię.
+          </p>
 
-                <div
-                  className="rise mt-9 flex flex-col gap-3 sm:flex-row"
-                  style={{ animationDelay: "200ms" }}
-                >
-                  <a
-                    href={INSTAGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={btnSolid}
-                  >
-                    Napisz do nas
-                  </a>
-                  <a href="#realizacje" className={btnOutline}>
-                    Zobacz realizacje
-                  </a>
-                </div>
-              </div>
+          <div
+            className="rise mt-8 flex flex-row items-center justify-center gap-3"
+            style={{ animationDelay: "200ms" }}
+          >
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${btnSolid} flex-1 sm:flex-none`}
+            >
+              Napisz do nas
+            </a>
+            <a
+              href="#realizacje"
+              className={`${btnOutline} flex-1 sm:flex-none`}
+            >
+              <Etykieta krotka="Realizacje" pelna="Zobacz realizacje" />
+            </a>
+          </div>
 
-              {/* Najmocniejszy kadr z portfolio otwiera stronę */}
-              <figure
-                className="rise relative"
-                style={{ animationDelay: "90ms" }}
-              >
-                <div className="relative aspect-[4/5] overflow-hidden bg-paper-2 sm:aspect-[5/5] lg:aspect-[4/5]">
-                  <Image
-                    src="/images/post2.jpg"
-                    alt="Zaproszenie ślubne w czerni i kremie, z czarną kopertą i wstążką"
-                    fill
-                    sizes="(max-width: 1024px) 92vw, 44vw"
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-rule pt-3">
-                  <span className="label text-accent">Realizacja</span>
-                  <span className="text-sm text-ink-2">
-                    Nowoczesna elegancja
-                  </span>
-                </figcaption>
-              </figure>
+          {/* Najmocniejszy kadr z portfolio otwiera stronę */}
+          <figure
+            className="rise mt-12 sm:mt-16"
+            style={{ animationDelay: "90ms" }}
+          >
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-paper-2 sm:aspect-[16/10] sm:rounded-[2.5rem]">
+              <Image
+                src="/images/post2.jpg"
+                alt="Zaproszenie ślubne w czerni i kremie, z czarną kopertą i wstążką"
+                fill
+                sizes="(max-width: 1180px) 92vw, 1100px"
+                className="object-cover"
+                priority
+              />
             </div>
-          </div>
-        </section>
-
-        {/* PASEK Z USŁUGAMI */}
-        <section
-          aria-label="Co robimy"
-          className="overflow-hidden border-b border-rule bg-ink py-3.5 text-paper"
-        >
-          <div className="ticker-track">
-            {[0, 1, 2].map((kopia) => (
-              <div
-                key={kopia}
-                aria-hidden={kopia > 0}
-                className="flex shrink-0"
-              >
-                {uslugi.map((u) => (
-                  <span
-                    key={u}
-                    className="label flex items-center gap-10 whitespace-nowrap px-5 text-paper/80"
-                  >
-                    {u}
-                    <span aria-hidden="true" className="text-accent">
-                      ✦
-                    </span>
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* TRYPTYK NA CAŁĄ SZEROKOŚĆ */}
-        <section className="border-b border-rule">
-          <div className="grid sm:grid-cols-3">
-            {realizacje.slice(0, 3).map((r, i) => (
-              <figure
-                key={r.img}
-                className="relative border-b border-rule last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden bg-paper-2 sm:aspect-[3/4]">
-                  <Image
-                    src={r.img}
-                    alt={r.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-700 hover:scale-[1.03]"
-                  />
-                </div>
-                <figcaption className="flex items-baseline gap-4 px-5 py-4 sm:px-6">
-                  <span className="label num text-ink-3">{nr(i)}</span>
-                  <span className="text-sm text-ink-2">{r.title}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-
-        {/* DANE PRACOWNI */}
-        <section className={`${shell} py-10`}>
-          <dl className="grid gap-x-10 gap-y-6 sm:grid-cols-3">
-            {dane.map((d) => (
-              <div key={d.label}>
-                <dt className="label text-ink-3">{d.label}</dt>
-                <dd className="mt-1.5 text-ink">{d.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
-        {/* MANIFEST */}
-        <section className="border-y border-rule bg-paper-2">
-          <div className={`${shell} py-16 sm:py-20`}>
-            <div className="grid gap-10 md:grid-cols-[auto_1fr] md:gap-16">
-              <p className="label text-ink-3 md:pt-3">Kim jesteśmy</p>
-              <p className="display max-w-[40ch] text-balance text-d2 font-semibold">
-                Dom Zaproszeń to mała pracownia papeterii ślubnej. Każdy projekt
-                tworzymy <em className="text-accent">indywidualnie</em> — od
-                pierwszej rozmowy, przez dobór papieru, aż po ostatni detal.
-              </p>
-            </div>
-          </div>
+            <figcaption className="mt-4 text-sm text-ink-3">
+              Realizacja — „Nowoczesna elegancja”
+            </figcaption>
+          </figure>
         </section>
 
         {/* OFERTA */}
-        <section id="oferta" className={`${shell} py-16 sm:py-24`}>
-          <SectionHead
-            index="01"
-            label="Co tworzymy"
-            title="Papeteria na każdy moment Waszego ślubu"
-          />
+        <section id="oferta" className={`${shell} py-20 sm:py-28`}>
+          <Reveal>
+            <SectionHead
+              label="Co tworzymy"
+              title="Papeteria na każdy moment Waszego ślubu"
+              lede="Jeden spójny komplet — od zaproszenia, przez stół, po ostatni detal wykończenia."
+            />
+          </Reveal>
 
-          <ol className="mt-12 border-t border-rule">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 sm:gap-6">
             {offer.map((item, i) => (
-              <li key={item.title} className="border-b border-rule">
-                <div className="grid gap-x-10 gap-y-3 py-8 md:grid-cols-[auto_minmax(0,20ch)_1fr] md:items-baseline">
-                  <span className="label num text-ink-3">{nr(i)}</span>
-                  <h3 className="display text-d3 font-semibold">
+              <Reveal key={item.title} delay={i * 70}>
+                <div className="h-full rounded-[1.5rem] bg-paper-2 p-8 sm:rounded-[2rem] sm:p-10">
+                  <h3 className="tytul text-d3 font-semibold">
                     {item.title}
                   </h3>
-                  <p className="max-w-[62ch] text-pretty text-ink-2">
+                  <p className="mt-3 max-w-[44ch] text-pretty text-ink-2">
                     {item.text}
                   </p>
                 </div>
-              </li>
+              </Reveal>
             ))}
-          </ol>
+          </div>
         </section>
 
         {/* REALIZACJE */}
-        <section
-          id="realizacje"
-          className="border-y border-rule bg-paper-2 py-16 sm:py-24"
-        >
+        <section id="realizacje" className="bg-paper-2 py-20 sm:py-28">
           <div className={shell}>
-            <SectionHead
-              index="02"
-              label="Realizacje"
-              title="Historie, które opowiedzieliśmy papierem"
-            />
+            <Reveal>
+              <SectionHead
+                label="Realizacje"
+                title="Historie, które opowiedzieliśmy papierem"
+              />
+            </Reveal>
 
-            <div className="mt-14 grid gap-x-10 gap-y-16 md:grid-cols-2">
+            <div className="mt-14 grid gap-x-8 gap-y-14 md:grid-cols-2">
               {realizacje.map((r, i) => (
-                <figure key={r.title} className={i % 2 === 1 ? "md:mt-24" : ""}>
-                  <div
-                    className={`relative overflow-hidden bg-paper ${
-                      i % 3 === 0 ? "aspect-[4/5]" : "aspect-[5/6]"
-                    }`}
-                  >
-                    <Image
-                      src={r.img}
-                      alt={r.title}
-                      fill
-                      sizes="(max-width: 768px) 90vw, 46vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <figcaption className="mt-5 flex gap-6 border-t border-rule pt-4">
-                    <span className="label num shrink-0 text-ink-3">
-                      {nr(i)}
-                    </span>
-                    <div>
-                      <p className="label text-accent">{r.eyebrow}</p>
-                      <h3 className="display mt-2.5 text-d3 font-semibold">
+                <Reveal key={r.title} delay={(i % 2) * 80}>
+                  <figure className={i % 2 === 1 ? "md:mt-16" : ""}>
+                    <div
+                      className={`relative overflow-hidden rounded-[1.5rem] bg-paper sm:rounded-[2rem] ${
+                        i % 3 === 0 ? "aspect-[4/5]" : "aspect-[5/6]"
+                      }`}
+                    >
+                      <Image
+                        src={r.img}
+                        alt={r.title}
+                        fill
+                        sizes="(max-width: 768px) 90vw, 46vw"
+                        className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                      />
+                    </div>
+                    <figcaption className="mt-5">
+                      <p className="kicker text-accent">{r.eyebrow}</p>
+                      <h3 className="tytul mt-2.5 text-d3 font-semibold">
                         {r.title}
                       </h3>
-                      <p className="mt-2 max-w-[48ch] text-pretty text-ink-2">
+                      <p className="mt-2 max-w-[46ch] text-pretty text-ink-2">
                         {r.text}
                       </p>
-                    </div>
-                  </figcaption>
-                </figure>
+                    </figcaption>
+                  </figure>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
         {/* STRONY WESELNE */}
-        <section id="strony-weselne" className="bg-ink py-20 text-paper sm:py-28">
-          <div className={shell}>
-            <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-20">
-              <div>
-                <SectionHead
-                  index="03"
-                  label="Nowość w ofercie"
-                  title="Strona weselna, która wygląda jak Wasze zaproszenie"
-                  lede="Papier robi pierwsze wrażenie, strona odpowiada na wszystko, co wydarzy się później. Jeden adres, który goście mają pod ręką przez cały rok przygotowań — i RSVP, które spływa do Was samo."
-                  inverse
-                />
+        <section id="strony-weselne" className={`${shell} py-20 sm:py-28`}>
+          <Reveal>
+            <div className="rounded-[1.75rem] bg-ink px-6 py-14 text-paper sm:rounded-[2.5rem] sm:px-12 sm:py-20">
+              <SectionHead
+                label="Nowość w ofercie"
+                title="Strona weselna, która wygląda jak Wasze zaproszenie"
+                lede="Jeden adres, który goście mają pod ręką przez cały rok przygotowań — z harmonogramem, dojazdem i RSVP, które spływa do Was samo."
+                inverse
+              />
 
-                <ul className="mt-10 border-t border-paper/15">
-                  {wwwHighlights.map((h) => (
-                    <li
-                      key={h}
-                      className="border-b border-paper/15 py-4 text-pretty text-paper/75"
-                    >
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                  <Link href="/strony-weselne" className={btnSolidInverse}>
-                    Poznaj szczegóły
-                  </Link>
-                  <Link href={DEMO_PATH} className={btnOutlineInverse}>
-                    Zobacz demo na żywo
-                  </Link>
-                </div>
+              <div className="mx-auto mt-10 flex flex-row items-center justify-center gap-3">
+                <Link
+                  href="/strony-weselne"
+                  className={`${btnSolidInverse} flex-1 sm:flex-none`}
+                >
+                  <Etykieta krotka="Szczegóły" pelna="Poznaj szczegóły" />
+                </Link>
+                <Link
+                  href={DEMO_PATH}
+                  className={`${btnOutlineInverse} flex-1 sm:flex-none`}
+                >
+                  <Etykieta krotka="Demo" pelna="Zobacz demo" />
+                </Link>
               </div>
 
-              <BrowserPreview />
+              <div className="mx-auto mt-14 max-w-3xl">
+                <BrowserPreview />
+              </div>
+
+              <ul className="mx-auto mt-12 grid max-w-3xl gap-x-10 gap-y-4 sm:grid-cols-2">
+                {wwwHighlights.map((h) => (
+                  <li key={h} className="flex gap-3 text-pretty text-paper/70">
+                    <span aria-hidden="true" className="text-accent">
+                      ✦
+                    </span>
+                    {h}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         {/* ALBUM GOŚCI */}
-        <section id="album-gosci" className={`${shell} py-16 sm:py-24`}>
-          <div className="grid items-start gap-14 lg:grid-cols-[1fr_0.95fr] lg:gap-20">
-            <div>
+        <section id="album-gosci" className="bg-paper-2 py-20 sm:py-28">
+          <div className={shell}>
+            <Reveal>
               <SectionHead
-                index="04"
                 label="Album gości · w każdym pakiecie"
                 title="Zdjęcia, których nigdy byście nie zobaczyli"
                 lede="Wasi goście zrobią tego dnia kilkaset zdjęć — i prawie wszystkie utkną w ich telefonach. Album zbiera je w jednym miejscu, jeszcze zanim skończy się wesele."
               />
+            </Reveal>
 
-              <ol className="mt-10 border-t border-rule">
-                {albumKroki.map((k, i) => (
-                  <li key={k.title} className="border-b border-rule py-6">
-                    <div className="flex gap-6">
-                      <span className="label num shrink-0 text-ink-3">
-                        {nr(i)}
-                      </span>
-                      <div>
-                        <h3 className="display text-d4 font-semibold">
-                          {k.title}
-                        </h3>
-                        <p className="mt-2 max-w-[52ch] text-pretty text-ink-2">
-                          {k.text}
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ol>
+            <div className="mt-14 grid items-center gap-12 lg:grid-cols-[1fr_0.95fr] lg:gap-20">
+              <Reveal>
+                <ol className="grid gap-5">
+                  {albumKroki.map((k, i) => (
+                    <li
+                      key={k.title}
+                      className="rounded-[1.25rem] bg-paper p-7 sm:rounded-[1.5rem] sm:p-8"
+                    >
+                      <span className="kicker num text-accent">{nr(i)}</span>
+                      <h3 className="tytul mt-3 text-d4 font-semibold">
+                        {k.title}
+                      </h3>
+                      <p className="mt-2 max-w-[50ch] text-pretty text-ink-2">
+                        {k.text}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
 
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <Link href={`${DEMO_PATH}#album`} className={btnSolid}>
-                  Wypróbujcie album w demo
-                </Link>
-                <Link href="/strony-weselne#album-gosci" className={btnOutline}>
-                  Co dostajecie
-                </Link>
-              </div>
+                <div className="mt-8 flex flex-row gap-3">
+                  <Link
+                    href={`${DEMO_PATH}#album`}
+                    className={`${btnSolid} flex-1 sm:flex-none`}
+                  >
+                    <Etykieta krotka="Demo" pelna="Wypróbujcie w demo" />
+                  </Link>
+                  <Link
+                    href="/strony-weselne#album-gosci"
+                    className={`${btnOutline} flex-1 sm:flex-none`}
+                  >
+                    <Etykieta krotka="Zakres" pelna="Co dostajecie" />
+                  </Link>
+                </div>
+              </Reveal>
+
+              <Reveal delay={100}>
+                <AlbumPreview kodQr={kodQr} />
+              </Reveal>
             </div>
-
-            <AlbumPreview kodQr={kodQr} />
           </div>
         </section>
 
         {/* JAK PRACUJEMY */}
-        <section
-          id="jak-to-dziala"
-          className="border-y border-rule bg-paper-2 py-16 sm:py-24"
-        >
-          <div className={shell}>
+        <section id="jak-to-dziala" className={`${shell} py-20 sm:py-28`}>
+          <Reveal>
             <SectionHead
-              index="05"
               label="Jak pracujemy"
               title="Od wiadomości do gotowej papeterii"
             />
+          </Reveal>
 
-            <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-3">
-              {proces.map((step, i) => (
-                <div
-                  key={step.title}
-                  className="border-t border-rule pt-6 sm:border-t-0 sm:border-l sm:pl-8 sm:pt-0 sm:first:border-l-0 sm:first:pl-0"
-                >
-                  <span className="display num block text-[1.8rem] font-semibold leading-none text-accent">
+          <div className="mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8">
+            {proces.map((step, i) => (
+              <Reveal key={step.title} delay={i * 80}>
+                <div className="text-center">
+                  <span className="tytul num block text-[1.8rem] leading-none text-accent">
                     {nr(i)}
                   </span>
-                  <h3 className="display mt-5 text-d3 font-semibold">
+                  <h3 className="tytul mt-4 text-d3 font-semibold">
                     {step.title}
                   </h3>
-                  <p className="mt-3 max-w-[40ch] text-pretty text-ink-2">
+                  <p className="mx-auto mt-3 max-w-[36ch] text-pretty text-ink-2">
                     {step.text}
                   </p>
                 </div>
-              ))}
-            </div>
+              </Reveal>
+            ))}
           </div>
         </section>
 
-        {/* KONTAKT */}
-        <section id="kontakt" className="bg-ink py-20 text-paper sm:py-28">
-          <div className={shell}>
-            <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:gap-20">
-              <div>
-                <p className="label text-paper/60">Kontakt</p>
-                <h2 className="display mt-8 max-w-[22ch] text-balance text-d1 font-semibold">
-                  Zaprojektujmy razem Wasze zaproszenia
-                </h2>
+        {/* DANE PRACOWNI */}
+        <section className={`${shell} pb-20 sm:pb-28`}>
+          <dl className="grid gap-8 rounded-[1.5rem] bg-paper-2 px-8 py-10 text-center sm:grid-cols-3 sm:rounded-[2rem] sm:px-10">
+            {dane.map((d) => (
+              <div key={d.label}>
+                <dt className="text-sm text-ink-3">{d.label}</dt>
+                <dd className="mt-2 text-ink">{d.value}</dd>
               </div>
-              <div className="self-end">
-                <p className="max-w-[46ch] text-pretty text-lede text-paper/70">
-                  Napiszcie do nas w wiadomości prywatnej — odpowiemy i wspólnie
-                  znajdziemy styl idealny na Wasz dzień.
-                </p>
-                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href={INSTAGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={btnSolidInverse}
-                  >
-                    @domzaproszen.pl
-                  </a>
-                  <a
-                    href={TIKTOK_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={btnOutlineInverse}
-                  >
-                    TikTok
-                  </a>
-                </div>
+            ))}
+          </dl>
+        </section>
+
+        {/* KONTAKT */}
+        <section id="kontakt" className={`${shell} pb-20 sm:pb-28`}>
+          <Reveal>
+            <div className="rounded-[1.75rem] bg-ink px-6 py-16 text-center text-paper sm:rounded-[2.5rem] sm:px-12 sm:py-24">
+              <h2 className="tytul mx-auto max-w-[18ch] text-balance text-d1">
+                Zaprojektujmy razem Wasze zaproszenia
+              </h2>
+              <p className="mx-auto mt-5 max-w-[44ch] text-pretty text-lede text-paper/70">
+                Napiszcie do nas w wiadomości prywatnej — odpowiemy i wspólnie
+                znajdziemy styl idealny na Wasz dzień.
+              </p>
+              <div className="mt-9 flex flex-row items-center justify-center gap-3">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${btnSolidInverse} flex-1 sm:flex-none`}
+                >
+                  <Etykieta krotka="Instagram" pelna="@domzaproszen.pl" />
+                </a>
+                <a
+                  href={TIKTOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${btnOutlineInverse} flex-1 sm:flex-none`}
+                >
+                  TikTok
+                </a>
               </div>
             </div>
-          </div>
+          </Reveal>
         </section>
+
       </main>
 
       <SiteFooter />
@@ -543,7 +458,7 @@ function AlbumPreview({ kodQr }: { kodQr: string }) {
   ];
 
   return (
-    <div className="border border-rule bg-paper-2 p-5 sm:p-7">
+    <div className="rounded-[1.5rem] bg-paper p-6 sm:rounded-[2rem] sm:p-8">
       <div className="flex items-baseline justify-between gap-4 border-b border-rule pb-4">
         <p className="label text-ink-3">Album gości · na żywo</p>
         <p className="label num text-ink-3">
@@ -553,7 +468,10 @@ function AlbumPreview({ kodQr }: { kodQr: string }) {
 
       <div className="mt-5 grid grid-cols-2 gap-4">
         {kadry.map((src) => (
-          <div key={src} className="relative aspect-[4/5] overflow-hidden">
+          <div
+            key={src}
+            className="relative aspect-[4/5] overflow-hidden rounded-[0.9rem]"
+          >
             <Image
               src={src}
               alt=""
@@ -564,8 +482,8 @@ function AlbumPreview({ kodQr }: { kodQr: string }) {
           </div>
         ))}
 
-        <div className="flex aspect-[4/5] flex-col items-center justify-center gap-2 border border-dashed border-rule px-4 text-center">
-          <span className="display text-d3 font-semibold text-ink-3">+</span>
+        <div className="flex aspect-[4/5] flex-col items-center justify-center gap-2 rounded-[0.9rem] border border-dashed border-rule px-4 text-center">
+          <span className="tytul text-d3 font-semibold text-ink-3">+</span>
           <span className="label text-ink-3">Miejsce na Wasz kadr</span>
         </div>
       </div>
@@ -574,12 +492,12 @@ function AlbumPreview({ kodQr }: { kodQr: string }) {
       <div className="mt-6 flex items-center gap-5 border-t border-rule pt-5">
         <span
           aria-hidden="true"
-          className="h-16 w-16 shrink-0 border border-rule p-1.5"
+          className="h-16 w-16 shrink-0 rounded-[0.75rem] border border-rule p-2"
           dangerouslySetInnerHTML={{ __html: kodQr }}
         />
         <div>
           <p className="label text-accent">Tabliczka na stole</p>
-          <p className="display mt-1.5 text-d4 font-semibold">
+          <p className="tytul mt-1.5 text-d4 font-semibold">
             Skanuj i dorzuć swoje zdjęcia
           </p>
         </div>
@@ -591,14 +509,14 @@ function AlbumPreview({ kodQr }: { kodQr: string }) {
 /* Statyczna makieta okna przeglądarki z miniaturą strony weselnej */
 function BrowserPreview() {
   return (
-    <div className="border border-paper/20 bg-paper">
+    <div className="overflow-hidden rounded-[1.25rem] bg-paper shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)] sm:rounded-[1.5rem]">
       <div className="flex items-center gap-3 border-b border-rule px-4 py-3">
         <span className="flex gap-1.5" aria-hidden="true">
           <span className="h-2 w-2 rounded-full bg-ink/15" />
           <span className="h-2 w-2 rounded-full bg-ink/15" />
           <span className="h-2 w-2 rounded-full bg-ink/15" />
         </span>
-        <span className="num flex-1 truncate border border-rule px-3 py-1.5 text-center text-xs text-ink-3">
+        <span className="num flex-1 truncate rounded-full bg-paper-2 px-3 py-1.5 text-center text-xs text-ink-3">
           {DEMO_WEDDING.hostname}
         </span>
       </div>
@@ -614,7 +532,7 @@ function BrowserPreview() {
         <div className="absolute inset-0 bg-ink/55" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-paper">
           <span className="label text-paper/75">Pobieramy się</span>
-          <p className="display mt-4 text-d2 font-semibold">
+          <p className="tytul mt-4 text-d2 font-semibold">
             {DEMO_WEDDING.bride}
             <em className="mx-2 font-normal">&amp;</em>
             {DEMO_WEDDING.groom}
@@ -630,7 +548,7 @@ function BrowserPreview() {
               { v: "38", l: "min" },
             ].map((c) => (
               <div key={c.l} className="px-5 py-3">
-                <p className="display num text-d4 font-semibold">{c.v}</p>
+                <p className="tytul num text-d4 font-semibold">{c.v}</p>
                 <p className="label mt-1 text-paper/70">{c.l}</p>
               </div>
             ))}

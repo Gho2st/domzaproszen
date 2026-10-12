@@ -401,7 +401,7 @@ export default async function DemoWeddingSite() {
 
               <a
                 href="#rsvp"
-                className="inline-flex items-center gap-2 rounded-[2px] border border-paper/40 bg-paper/10 px-7 py-3.5 text-sm font-medium text-paper backdrop-blur-sm transition-colors hover:bg-paper hover:text-ink"
+                className="inline-flex items-center gap-2 rounded-full border border-paper/40 bg-paper/10 px-7 py-3.5 text-sm font-medium text-paper backdrop-blur-sm transition-colors hover:bg-paper hover:text-ink"
               >
                 Potwierdź obecność
                 <IconArrow />
@@ -561,7 +561,7 @@ export default async function DemoWeddingSite() {
                       href={m.map}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-2 inline-flex w-fit items-center gap-2 rounded-[2px] border border-rule px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+                      className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-ink/40 hover:bg-ink/[0.04]"
                     >
                       <IconMapPin size={17} />
                       Otwórz nawigację
@@ -822,7 +822,7 @@ export default async function DemoWeddingSite() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
               href="/strony-weselne"
-              className="inline-flex items-center justify-center gap-2 rounded-[2px] bg-paper px-6 py-3.5 text-center text-sm font-medium text-ink transition-colors hover:bg-sage hover:text-ink"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-paper px-6 py-3.5 text-center text-sm font-medium text-ink transition-colors hover:bg-sage hover:text-ink"
             >
               Zobacz ofertę
               <IconArrow />
@@ -831,7 +831,7 @@ export default async function DemoWeddingSite() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-paper/30 px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:border-paper hover:bg-paper/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-paper/30 px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:border-paper/60 hover:bg-paper/10"
             >
               Napisz do nas
             </a>

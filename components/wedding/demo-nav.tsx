@@ -18,8 +18,8 @@ export function DemoNav({ monogram }: { monogram: string }) {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-rule bg-paper">
-        <nav className="mx-auto flex w-full max-w-[1180px] items-center justify-between gap-4 px-6 py-4 sm:px-10">
+      <header className="sticky top-0 z-40 border-b border-rule/60 bg-paper/80 backdrop-blur-xl">
+        <nav className="mx-auto flex w-full max-w-[1180px] items-center justify-between gap-4 px-6 py-3 sm:px-10">
           <a
             href="#gora"
             className="display text-[1.05rem] font-semibold tracking-[0.12em] text-ink"
@@ -32,7 +32,7 @@ export function DemoNav({ monogram }: { monogram: string }) {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm text-ink-2 decoration-ink/30 underline-offset-[6px] transition-colors hover:text-ink hover:underline"
+                className="text-[0.8125rem] text-ink-2 decoration-ink/30 underline-offset-[6px] transition-colors hover:text-ink hover:underline"
               >
                 {l.label}
               </a>
@@ -42,7 +42,7 @@ export function DemoNav({ monogram }: { monogram: string }) {
           <div className="flex items-center gap-4">
             <a
               href="#rsvp"
-              className="rounded-[2px] bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-accent"
+              className="rounded-full bg-ink px-4 py-2 text-[0.8125rem] font-medium text-paper transition-colors hover:bg-accent"
             >
               <span className="sm:hidden">RSVP</span>
               <span className="hidden sm:inline">Potwierdź obecność</span>
@@ -73,7 +73,7 @@ export function DemoNav({ monogram }: { monogram: string }) {
         <a
           href="#rsvp"
           onClick={() => setOpen(false)}
-          className="block w-full rounded-[2px] bg-paper px-5 py-3.5 text-center font-medium text-ink transition-colors hover:bg-accent hover:text-paper"
+          className="block w-full rounded-full bg-paper px-5 py-3.5 text-center text-sm font-medium text-ink transition-colors hover:bg-accent hover:text-paper"
         >
           Potwierdź obecność
         </a>

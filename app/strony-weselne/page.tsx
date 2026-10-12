@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { Reveal } from "@/components/reveal";
 import {
+  Etykieta,
   Question,
   SectionHead,
   btnOutline,
@@ -207,50 +209,59 @@ export default function StronyWeselne() {
 
       <main className="flex-1">
         {/* MASTHEAD */}
-        <section className={`${shell} pb-16 pt-12 sm:pb-20 sm:pt-16`}>
-          <p className="label text-accent">Nowość w Domu Zaproszeń</p>
+        <section className={`${shell} pb-16 pt-14 text-center sm:pb-20 sm:pt-20`}>
+          <p className="rise label text-accent">Nowość w Domu Zaproszeń</p>
 
-          <div className="mt-9 grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
-            <div>
-              <h1 className="display max-w-[16ch] text-balance text-d1 font-semibold">
-                Wasze wesele pod jednym adresem<span className="text-accent">.</span>
-              </h1>
+          <h1 className="tytul rise mx-auto mt-6 max-w-[15ch] text-balance text-[clamp(2.3rem,6.5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
+            Wasze wesele pod jednym adresem
+            <span className="text-accent">.</span>
+          </h1>
 
-              <p className="mt-10 max-w-[56ch] text-pretty text-lede text-ink-2">
-                Strona weselna to miejsce, w którym goście znajdą wszystko:
-                godziny, dojazd, nocleg, dress code — i gdzie jednym kliknięciem
-                potwierdzą obecność. Projektujemy ją w tym samym stylu, co Wasze
-                zaproszenia.
-              </p>
+          <p
+            className="rise mx-auto mt-6 max-w-[48ch] text-pretty text-lede text-ink-2"
+            style={{ animationDelay: "120ms" }}
+          >
+            Strona weselna to miejsce, w którym goście znajdą wszystko: godziny,
+            dojazd, nocleg, dress code — i gdzie jednym kliknięciem potwierdzą
+            obecność. Projektujemy ją w tym samym stylu, co Wasze zaproszenia.
+          </p>
 
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link href={DEMO_PATH} className={btnSolid}>
-                  Zobacz przykładową stronę
-                </Link>
-                <a href="#pakiety" className={btnOutline}>
-                  Pakiety i ceny
-                </a>
-              </div>
+          <div
+            className="rise mt-8 flex flex-row items-center justify-center gap-3"
+            style={{ animationDelay: "200ms" }}
+          >
+            <Link
+              href={DEMO_PATH}
+              className={`${btnSolid} flex-1 sm:flex-none`}
+            >
+              <Etykieta krotka="Demo" pelna="Zobacz demo" />
+            </Link>
+            <a
+              href="#pakiety"
+              className={`${btnOutline} flex-1 sm:flex-none`}
+            >
+              <Etykieta krotka="Pakiety" pelna="Pakiety i ceny" />
+            </a>
+          </div>
 
-              <dl className="mt-12 grid gap-x-10 gap-y-5 border-t border-rule pt-7 sm:grid-cols-3">
-                {fakty.map((f) => (
-                  <div key={f.label}>
-                    <dt className="label text-ink-3">{f.label}</dt>
-                    <dd className="mt-1.5 text-ink">{f.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-
+          <div className="rise mt-14" style={{ animationDelay: "90ms" }}>
             <PhoneMockup />
           </div>
+
+          <dl className="mx-auto mt-14 grid max-w-3xl gap-8 rounded-[1.5rem] bg-paper-2 px-8 py-10 sm:grid-cols-3 sm:rounded-[2rem]">
+            {fakty.map((f) => (
+              <div key={f.label}>
+                <dt className="text-sm text-ink-3">{f.label}</dt>
+                <dd className="mt-2 text-ink">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         {/* PO CO */}
-        <section className="border-y border-rule bg-paper-2 py-16 sm:py-24">
+        <section className="bg-paper-2 py-20 sm:py-28">
           <div className={shell}>
             <SectionHead
-              index="01"
               label="Po co Wam strona"
               title="Trzy rzeczy, które załatwia za Was"
             />
@@ -260,7 +271,7 @@ export default function StronyWeselne() {
                 <li key={p.title} className="border-b border-rule">
                   <div className="grid gap-x-10 gap-y-3 py-8 md:grid-cols-[auto_minmax(0,24ch)_1fr] md:items-baseline">
                     <span className="label num text-ink-3">{nr(i)}</span>
-                    <h3 className="display text-d3 font-semibold">{p.title}</h3>
+                    <h3 className="tytul text-d3 font-semibold">{p.title}</h3>
                     <p className="max-w-[62ch] text-pretty text-ink-2">
                       {p.text}
                     </p>
@@ -272,9 +283,8 @@ export default function StronyWeselne() {
         </section>
 
         {/* FUNKCJE */}
-        <section id="co-zawiera" className={`${shell} py-16 sm:py-24`}>
+        <section id="co-zawiera" className={`${shell} py-20 sm:py-28`}>
           <SectionHead
-            index="02"
             label="Co znajdzie się na stronie"
             title="Wszystko, o co goście i tak zapytają"
             lede="Sekcje dobieramy razem z Wami — bierzecie tyle, ile potrzebujecie, w kolejności, która ma sens dla Waszego dnia."
@@ -287,7 +297,7 @@ export default function StronyWeselne() {
                 className="border-b border-rule py-7 lg:border-r lg:pr-8 lg:[&:nth-child(3n)]:border-r-0"
               >
                 <span className="label num text-ink-3">{nr(i)}</span>
-                <h3 className="display mt-4 text-d4 font-semibold">
+                <h3 className="tytul mt-4 text-d4 font-semibold">
                   {f.title}
                 </h3>
                 <p className="mt-2.5 max-w-[42ch] text-pretty text-ink-2">
@@ -301,11 +311,10 @@ export default function StronyWeselne() {
         {/* ALBUM GOŚCI */}
         <section
           id="album-gosci"
-          className="border-y border-rule bg-paper-2 py-16 sm:py-24"
+          className="bg-paper-2 py-20 sm:py-28"
         >
           <div className={shell}>
             <SectionHead
-              index="03"
               label="Album gości · w każdym pakiecie"
               title="Wspólny album gości"
               lede="Wasi goście zrobią tego dnia kilkaset zdjęć, których nigdy nie zobaczycie — utkną w ich telefonach. Album zbiera je w jednym miejscu, jeszcze zanim skończy się wesele."
@@ -320,7 +329,7 @@ export default function StronyWeselne() {
                         {nr(i)}
                       </span>
                       <div>
-                        <h3 className="display text-d3 font-semibold">
+                        <h3 className="tytul text-d3 font-semibold">
                           {a.title}
                         </h3>
                         <p className="mt-2.5 max-w-[52ch] text-pretty text-ink-2">
@@ -365,16 +374,16 @@ export default function StronyWeselne() {
         </section>
 
         {/* PODGLĄD DEMO */}
-        <section className="bg-ink py-20 text-paper sm:py-28">
-          <div className={shell}>
+        <section className={`${shell} py-20 sm:py-28`}>
+          <div className="rounded-[1.75rem] bg-ink px-6 py-14 text-paper sm:rounded-[2.5rem] sm:px-12 sm:py-20">
             <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-20">
               <div>
                 <SectionHead
-                  index="04"
                   label="Przykładowa realizacja"
                   title="Zobaczcie, jak to działa na żywo"
                   lede="Przygotowaliśmy pełną, działającą stronę dla fikcyjnej pary — Aleksandry i Piotra. Możecie kliknąć wszystko: odliczanie, harmonogram, mapę i formularz RSVP. Wasza będzie wyglądać inaczej, bo powstanie na bazie Waszej papeterii."
                   inverse
+                  align="left"
                 />
                 <Link href={DEMO_PATH} className={`${btnSolidInverse} mt-10`}>
                   Otwórz demo
@@ -382,14 +391,14 @@ export default function StronyWeselne() {
               </div>
 
               <Link href={DEMO_PATH} className="group block">
-                <div className="border border-paper/20 bg-paper">
+                <div className="overflow-hidden rounded-[1.25rem] bg-paper shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)] sm:rounded-[1.5rem]">
                   <div className="flex items-center gap-3 border-b border-rule px-4 py-3">
                     <span className="flex gap-1.5" aria-hidden="true">
                       <span className="h-2 w-2 rounded-full bg-ink/15" />
                       <span className="h-2 w-2 rounded-full bg-ink/15" />
                       <span className="h-2 w-2 rounded-full bg-ink/15" />
                     </span>
-                    <span className="num flex-1 truncate border border-rule px-3 py-1.5 text-center text-xs text-ink-3">
+                    <span className="num flex-1 truncate rounded-full bg-paper-2 px-3 py-1.5 text-center text-xs text-ink-3">
                       {DEMO_WEDDING.hostname}
                     </span>
                   </div>
@@ -404,7 +413,7 @@ export default function StronyWeselne() {
                     <div className="absolute inset-0 bg-ink/50" />
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-paper">
                       <span className="label text-paper/75">Pobieramy się</span>
-                      <p className="display mt-4 text-d2 font-semibold">
+                      <p className="tytul mt-4 text-d2 font-semibold">
                         {DEMO_WEDDING.bride}
                         <em className="mx-2 font-normal">&amp;</em>
                         {DEMO_WEDDING.groom}
@@ -421,9 +430,8 @@ export default function StronyWeselne() {
         </section>
 
         {/* PAKIETY */}
-        <section id="pakiety" className={`${shell} py-16 sm:py-24`}>
+        <section id="pakiety" className={`${shell} py-20 sm:py-28`}>
           <SectionHead
-            index="05"
             label="Pakiety"
             title="Wybierzcie zakres, my zajmiemy się resztą"
             lede="Ceny orientacyjne — ostateczną wycenę przygotowujemy po krótkiej rozmowie. Przy zamówieniu razem z papeterią strona jest tańsza o 15%."
@@ -431,38 +439,63 @@ export default function StronyWeselne() {
 
           {/* subgrid: nazwa, lead, cena, lista i przycisk leżą w jednej linii
               we wszystkich trzech kolumnach, mimo różnej długości treści */}
-          <div className="mt-12 grid border-t border-rule lg:grid-cols-3 lg:grid-rows-[auto_auto_auto_1fr_auto]">
+          <div className="mt-14 grid gap-5 sm:gap-6 lg:grid-cols-3 lg:grid-rows-[auto_auto_auto_1fr_auto]">
             {pakiety.map((p) => (
               <div
                 key={p.name}
-                className="grid gap-0 border-b border-rule py-8 lg:row-span-5 lg:grid-rows-subgrid lg:border-b-0 lg:border-r lg:px-9 lg:py-10 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
+                className={`grid gap-0 rounded-[1.5rem] p-8 sm:rounded-[2rem] sm:p-9 lg:row-span-5 lg:grid-rows-subgrid ${
+                  p.featured ? "bg-ink text-paper" : "bg-paper-2"
+                }`}
               >
-                <p className="label text-accent">
+                <p
+                  className={`kicker ${p.featured ? "text-paper/70" : "text-accent"}`}
+                >
                   {p.featured ? "Najczęściej wybierany" : "\u00a0"}
                 </p>
 
                 <div className="mt-5">
-                  <h3 className="display text-d3 font-semibold">{p.name}</h3>
-                  <p className="mt-2.5 max-w-[32ch] text-pretty text-ink-2">
+                  <h3 className="tytul text-d3 font-semibold">{p.name}</h3>
+                  <p
+                    className={`mt-2.5 max-w-[32ch] text-pretty ${
+                      p.featured ? "text-paper/70" : "text-ink-2"
+                    }`}
+                  >
                     {p.tagline}
                   </p>
                 </div>
 
                 <p className="mt-7 flex items-baseline gap-2">
-                  <span className="label text-ink-3">od</span>
-                  <span className="display num text-[2rem] font-semibold leading-none">
+                  <span
+                    className={`label ${p.featured ? "text-paper/60" : "text-ink-3"}`}
+                  >
+                    od
+                  </span>
+                  <span className="tytul num text-[2rem] font-semibold leading-none">
                     {p.price}
                   </span>
-                  <span className="display text-d4 font-semibold text-ink-3">
+                  <span
+                    className={`tytul text-d4 font-semibold ${
+                      p.featured ? "text-paper/60" : "text-ink-3"
+                    }`}
+                  >
                     zł
                   </span>
                 </p>
 
-                <ul className="mt-7 flex flex-col gap-3 border-t border-rule pt-7">
+                <ul
+                  className={`mt-7 flex flex-col gap-3 border-t pt-7 ${
+                    p.featured ? "border-paper/20" : "border-rule"
+                  }`}
+                >
                   {p.features.map((f) => (
-                    <li key={f} className="flex gap-3.5 text-ink-2">
-                      <span aria-hidden="true" className="text-ink-3">
-                        —
+                    <li
+                      key={f}
+                      className={`flex gap-3.5 ${
+                        p.featured ? "text-paper/75" : "text-ink-2"
+                      }`}
+                    >
+                      <span aria-hidden="true" className="text-accent">
+                        ✦
                       </span>
                       <span className="text-pretty">{f}</span>
                     </li>
@@ -473,7 +506,9 @@ export default function StronyWeselne() {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${p.featured ? btnSolid : btnOutline} mt-9 w-full`}
+                  className={`${
+                    p.featured ? btnSolidInverse : btnOutline
+                  } mt-9 w-full`}
                 >
                   Zapytaj o wycenę
                 </a>
@@ -488,10 +523,9 @@ export default function StronyWeselne() {
         </section>
 
         {/* PROCES */}
-        <section className="border-y border-rule bg-paper-2 py-16 sm:py-24">
+        <section className="bg-paper-2 py-20 sm:py-28">
           <div className={shell}>
             <SectionHead
-              index="06"
               label="Jak pracujemy"
               title="Cztery kroki do własnego adresu"
             />
@@ -502,10 +536,10 @@ export default function StronyWeselne() {
                   key={k.title}
                   className="border-t border-rule pt-6 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0 lg:first:border-l-0 lg:first:pl-0"
                 >
-                  <span className="display num block text-[1.8rem] font-semibold leading-none text-accent">
+                  <span className="tytul num block text-[1.8rem] font-semibold leading-none text-accent">
                     {nr(i)}
                   </span>
-                  <h3 className="display mt-5 text-d3 font-semibold">
+                  <h3 className="tytul mt-5 text-d3 font-semibold">
                     {k.title}
                   </h3>
                   <p className="mt-3 max-w-[38ch] text-pretty text-ink-2">
@@ -518,10 +552,12 @@ export default function StronyWeselne() {
         </section>
 
         {/* FAQ */}
-        <section id="faq" className={`${shell} py-16 sm:py-24`}>
-          <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
-            <SectionHead index="07" label="Pytania" title="Najczęściej pytacie o to" />
+        <section id="faq" className={`${shell} py-20 sm:py-28`}>
+          <Reveal>
+            <SectionHead label="Pytania" title="Najczęściej pytacie o to" />
+          </Reveal>
 
+          <div className="mx-auto mt-12 max-w-[46rem]">
             <div className="divide-y divide-rule border-y border-rule">
               {faq.map((item) => (
                 <Question key={item.q} q={item.q} a={item.a} />
@@ -531,34 +567,36 @@ export default function StronyWeselne() {
         </section>
 
         {/* CTA */}
-        <section className="bg-ink py-20 text-paper sm:py-28">
-          <div className={shell}>
-            <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:gap-20">
-              <h2 className="display max-w-[24ch] text-balance text-d1 font-semibold">
+        <section className={`${shell} pb-20 sm:pb-28`}>
+          <Reveal>
+            <div className="rounded-[1.75rem] bg-ink px-6 py-16 text-center text-paper sm:rounded-[2.5rem] sm:px-12 sm:py-24">
+              <h2 className="tytul mx-auto max-w-[20ch] text-balance text-d1">
                 Zróbmy Wam stronę, którą goście zapiszą w telefonie
               </h2>
-              <div className="self-end">
-                <p className="max-w-[46ch] text-pretty text-lede text-paper/70">
-                  Napiszcie do nas datę ślubu i dwa zdania o tym, jaki ma być
-                  Wasz dzień. Odpowiemy z propozycją zakresu i wyceną.
-                </p>
-                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href={INSTAGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={btnSolidInverse}
-                  >
-                    Napisz na Instagramie
-                  </a>
-                  <Link href={DEMO_PATH} className={btnOutlineInverse}>
-                    Najpierw zobacz demo
-                  </Link>
-                </div>
+              <p className="mx-auto mt-5 max-w-[44ch] text-pretty text-lede text-paper/70">
+                Napiszcie do nas datę ślubu i dwa zdania o tym, jaki ma być Wasz
+                dzień. Odpowiemy z propozycją zakresu i wyceną.
+              </p>
+              <div className="mt-9 flex flex-row items-center justify-center gap-3">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${btnSolidInverse} flex-1 sm:flex-none`}
+                >
+                  <Etykieta krotka="Instagram" pelna="Napisz na Instagramie" />
+                </a>
+                <Link
+                  href={DEMO_PATH}
+                  className={`${btnOutlineInverse} flex-1 sm:flex-none`}
+                >
+                  <Etykieta krotka="Demo" pelna="Zobacz demo" />
+                </Link>
               </div>
             </div>
-          </div>
+          </Reveal>
         </section>
+
       </main>
 
       <SiteFooter />
@@ -570,8 +608,8 @@ export default function StronyWeselne() {
 function PhoneMockup() {
   return (
     <div className="mx-auto w-full max-w-[320px] lg:sticky lg:top-28">
-      <div className="border-[7px] border-ink bg-ink">
-        <div className="relative aspect-[9/18] overflow-hidden bg-paper">
+      <div className="overflow-hidden rounded-[2.5rem] border-[7px] border-ink bg-ink shadow-[0_30px_60px_-30px_rgba(22,21,15,0.45)]">
+        <div className="relative aspect-[9/18] overflow-hidden rounded-[1.9rem] bg-paper">
           <Image
             src="/images/post3.jpg"
             alt="Przykładowa strona weselna otwarta na telefonie"
@@ -584,7 +622,7 @@ function PhoneMockup() {
 
           <div className="absolute inset-x-0 top-[14%] px-6 text-center text-paper">
             <span className="label text-paper/75">Pobieramy się</span>
-            <p className="display mt-4 text-[1.95rem] font-semibold leading-[0.98]">
+            <p className="tytul mt-4 text-[1.95rem] font-semibold leading-[0.98]">
               {DEMO_WEDDING.bride}
               <br />
               <em className="font-normal">&amp;</em> {DEMO_WEDDING.groom}
@@ -602,14 +640,14 @@ function PhoneMockup() {
               { v: "12", l: "sek" },
             ].map((c) => (
               <div key={c.l} className="px-1 py-2.5">
-                <p className="display num text-base font-semibold">{c.v}</p>
+                <p className="tytul num text-base">{c.v}</p>
                 <p className="label mt-1 text-[0.5rem] text-paper/70">{c.l}</p>
               </div>
             ))}
           </div>
 
           <div className="absolute inset-x-5 bottom-6">
-            <div className="bg-paper py-3 text-center text-sm font-medium text-ink">
+            <div className="rounded-full bg-paper py-3 text-center text-sm font-medium text-ink">
               Potwierdź obecność
             </div>
           </div>

@@ -14,6 +14,9 @@ const fraunces = await readFile(
 const grotesk = await readFile(
   join(process.cwd(), "assets/fonts/InstrumentSans-Medium.ttf"),
 );
+const groteskGruby = await readFile(
+  join(process.cwd(), "assets/fonts/InstrumentSans-SemiBold.ttf"),
+);
 const tlo = await readFile(
   join(process.cwd(), "assets/og/papeteria-1200x630.jpg"),
 );
@@ -94,11 +97,11 @@ export default async function Image() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                fontFamily: "Fraunces",
-                fontSize: 86,
+                fontFamily: "InstrumentSemiBold",
+                fontSize: 80,
                 color: PAPER,
-                lineHeight: 1.04,
-                letterSpacing: -2.4,
+                lineHeight: 1.06,
+                letterSpacing: -2.8,
               }}
             >
               <span>Więcej niż</span>
@@ -136,6 +139,12 @@ export default async function Image() {
       fonts: [
         { name: "Fraunces", data: fraunces, style: "normal", weight: 600 },
         { name: "Instrument", data: grotesk, style: "normal", weight: 500 },
+        {
+          name: "InstrumentSemiBold",
+          data: groteskGruby,
+          style: "normal",
+          weight: 600,
+        },
       ],
     },
   );

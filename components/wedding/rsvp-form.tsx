@@ -16,7 +16,7 @@ export function RsvpForm() {
 
   if (sent) {
     return (
-      <div className="border border-rule bg-paper p-8 text-center sm:p-12">
+      <div className="rounded-[1.5rem] bg-paper-2 p-8 text-center sm:rounded-[2rem] sm:p-12">
         <div className="mx-auto flex h-14 w-14 items-center justify-center border border-rule text-accent">
           {attending === "yes" ? <IconHeart size={26} /> : <IconCheckCircle size={26} />}
         </div>
@@ -51,7 +51,7 @@ export function RsvpForm() {
         e.preventDefault();
         setSent(true);
       }}
-      className="flex flex-col gap-7 border border-rule bg-paper p-7 sm:p-10"
+      className="flex flex-col gap-7 rounded-[1.5rem] bg-paper-2 p-7 sm:rounded-[2rem] sm:p-10"
     >
       <div>
         <label className={labelClass} htmlFor="rsvp-name">
@@ -88,7 +88,7 @@ export function RsvpForm() {
           ].map((o) => (
             <label
               key={o.value}
-              className={`flex cursor-pointer items-center gap-3 rounded-[2px] border px-4 py-3.5 transition-colors ${
+              className={`flex cursor-pointer items-center gap-3 rounded-full border px-4 py-3.5 transition-colors ${
                 attending === o.value
                   ? "border-accent bg-accent/8 text-ink"
                   : "border-rule text-ink-2 hover:border-accent/50"
@@ -235,7 +235,7 @@ export function RsvpForm() {
 
       <button
         type="submit"
-        className="inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-ink px-6 py-4 text-sm font-medium text-paper transition-colors hover:bg-accent"
+        className="inline-flex items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-4 text-sm font-medium text-paper transition-colors hover:bg-accent"
       >
         Wyślij potwierdzenie
         <IconArrow />

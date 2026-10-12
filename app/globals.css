@@ -95,13 +95,30 @@
     color: var(--color-paper);
   }
 
+  /* Nagłówki stron pracowni: grotesk, ciasna interlitera, półgruby —
+     bliżej systemowej typografii sprzętu, z którego korzystają klienci. */
+  .tytul {
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+  }
+
+  /* Nadtytuł zamiast wersalikowej etykiety: zdanie, bez rozstrzelenia */
+  .kicker {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 }
 
-/* Fraunces z włączoną osią WONK i zmiękczonymi szeryfami — stąd charakter liter */
+/* Fraunces — zostaje na znaku słownym, akcentach i całym demo pary.
+   Na stronach pracowni nagłówki prowadzi grotesk (.tytul). */
 .display {
   font-family: var(--font-display);
   font-variation-settings: "SOFT" 50, "WONK" 1;
@@ -168,25 +185,6 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-/* Pasek z usługami — powolny, ciągły przesuw; zatrzymywany przy
-   prefers-reduced-motion (reguła na końcu pliku). */
-@keyframes ticker {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    /* trzy kopie listy — przesuw o jedną daje bezszwową pętlę,
-       a dwie pozostałe zawsze pokrywają nawet szeroki ekran */
-    transform: translateX(-33.3333%);
-  }
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker 48s linear infinite;
-}
-
 @keyframes fade {
   from {
     opacity: 0;
@@ -225,7 +223,9 @@ details > summary::-webkit-details-marker {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-  .ticker-track {
-    animation: none !important;
+  .odslon {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

@@ -205,7 +205,7 @@ export function AlbumGosci() {
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="inline-flex items-center gap-2 rounded-[2px] bg-ink px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent"
           >
             Dodaj zdjęcia
           </button>
@@ -214,7 +214,7 @@ export function AlbumGosci() {
             type="button"
             onClick={otworzPokaz}
             disabled={kadry.length === 0}
-            className="inline-flex items-center gap-2 rounded-[2px] border border-ink/30 px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink hover:bg-ink/[0.04] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-rule disabled:hover:text-ink"
+            className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/40 hover:bg-ink/[0.04] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-rule disabled:hover:text-ink"
           >
             <IconSparkle size={17} />
             Pokaz slajdów
@@ -317,7 +317,7 @@ export function AlbumGosci() {
               type="button"
               onClick={zamknijPokaz}
               aria-label="Zamknij pokaz slajdów"
-              className="flex h-10 w-10 items-center justify-center rounded-[2px] border border-paper/25 transition-colors hover:border-paper hover:text-paper"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-paper/30 transition-colors hover:border-paper hover:text-paper"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -349,7 +349,7 @@ export function AlbumGosci() {
               type="button"
               onClick={() => przesun(-1)}
               aria-label="Poprzednie zdjęcie"
-              className="flex h-12 w-12 items-center justify-center rounded-[2px] border border-paper/25 transition-colors hover:border-paper"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-paper/30 transition-colors hover:border-paper"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -373,7 +373,7 @@ export function AlbumGosci() {
               <button
                 type="button"
                 onClick={() => setGra((v) => !v)}
-                className="label min-w-40 rounded-[2px] border border-paper/30 px-5 py-3.5 text-paper/80 transition-colors hover:border-paper hover:bg-paper/10 hover:text-paper"
+                className="label min-w-40 rounded-full border border-paper/30 px-5 py-3.5 text-paper/80 transition-colors hover:border-paper hover:bg-paper/10 hover:text-paper"
               >
                 {gra ? "Zatrzymaj" : "Wznów"}
               </button>
@@ -383,7 +383,7 @@ export function AlbumGosci() {
               type="button"
               onClick={() => przesun(1)}
               aria-label="Następne zdjęcie"
-              className="flex h-12 w-12 items-center justify-center rounded-[2px] border border-paper/25 transition-colors hover:border-paper"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-paper/30 transition-colors hover:border-paper"
             >
               <svg
                 viewBox="0 0 24 24"

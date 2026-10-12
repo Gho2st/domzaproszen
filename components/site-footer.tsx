@@ -54,7 +54,7 @@ export function SiteFooter() {
 
           {kolumny.map((kol) => (
             <nav key={kol.label}>
-              <p className="label text-paper/60">{kol.label}</p>
+              <p className="kicker text-paper/60">{kol.label}</p>
               <ul className="mt-5 flex flex-col gap-3">
                 {kol.links.map((l) => (
                   <li key={l.href}>
@@ -71,18 +71,9 @@ export function SiteFooter() {
           ))}
         </div>
 
-        {/* Powiększony znak słowny — stopka zamyka stronę, zamiast ją urywać */}
-        <div className="border-t border-paper/15 py-10">
-          <p
-            aria-hidden="true"
-            className="display select-none text-[clamp(1.9rem,8.2vw,5.2rem)] font-semibold leading-none tracking-[-0.03em] text-paper/10"
-          >
-            Dom Zaproszeń
-          </p>
-          <div className="mt-8 flex flex-col gap-2 text-sm text-paper/60 sm:flex-row sm:justify-between">
-            <p>© {new Date().getFullYear()} Dom Zaproszeń</p>
-            <p>Kraków · papeteria i strony weselne</p>
-          </div>
+        <div className="flex flex-col gap-2 border-t border-paper/15 py-8 text-sm text-paper/60 sm:flex-row sm:justify-between">
+          <p>© {new Date().getFullYear()} Dom Zaproszeń</p>
+          <p>Kraków · papeteria i strony weselne</p>
         </div>
       </div>
     </footer>

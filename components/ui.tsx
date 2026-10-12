@@ -1,72 +1,98 @@
 import type { ReactNode } from "react";
 
-/* Przyciski: prostokątne, bez cieni i gradientów — bliżej druku niż aplikacji */
-export const btnSolid =
-  "inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-ink px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent";
+/* Przyciski pigułkowe, z wyraźnym polem dotyku i delikatnym podniesieniem */
+const btnBase =
+  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all duration-200 sm:px-6 sm:py-3.5";
 
-export const btnOutline =
-  "inline-flex items-center justify-center gap-2.5 rounded-[2px] border border-ink/30 px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink hover:bg-ink/[0.04]";
+export const btnSolid = `${btnBase} bg-ink text-paper hover:bg-accent`;
 
-export const btnSolidInverse =
-  "inline-flex items-center justify-center gap-2.5 rounded-[2px] bg-paper px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-accent hover:text-paper";
+export const btnOutline = `${btnBase} border border-ink/20 text-ink hover:border-ink/40 hover:bg-ink/[0.04]`;
 
-export const btnOutlineInverse =
-  "inline-flex items-center justify-center gap-2.5 rounded-[2px] border border-paper/30 px-6 py-3.5 text-sm font-medium text-paper transition-colors hover:border-paper hover:bg-paper/10";
+export const btnSolidInverse = `${btnBase} bg-paper text-ink hover:bg-accent hover:text-paper`;
 
-export const linkQuiet =
-  "text-accent underline decoration-accent/35 underline-offset-[5px] transition-colors hover:decoration-accent";
+export const btnOutlineInverse = `${btnBase} border border-paper/30 text-paper hover:border-paper/60 hover:bg-paper/10`;
+
+/** Link tekstowy ze strzałką — trzeci poziom, zamiast trzeciego przycisku */
+export const linkArrow =
+  "group inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent-2";
+
+export function ArrowGlyph() {
+  return (
+    <span
+      aria-hidden="true"
+      className="transition-transform duration-200 group-hover:translate-x-0.5"
+    >
+      ›
+    </span>
+  );
+}
+
+/**
+ * Dwie wersje napisu na przycisku: krótka na telefonie, pełna od sm.
+ * Przy przyciskach ustawionych w rzędzie długie etykiety nie mieszczą się
+ * na wąskich ekranach.
+ */
+export function Etykieta({ krotka, pelna }: { krotka: string; pelna: string }) {
+  return (
+    <>
+      <span className="sm:hidden">{krotka}</span>
+      <span className="hidden sm:inline">{pelna}</span>
+    </>
+  );
+}
 
 /** Stała szerokość łamu dla wszystkich sekcji */
 export const shell = "mx-auto w-full max-w-[1180px] px-6 sm:px-10";
 
+/** Węższy łam dla treści czytanej w całości */
+export const shellNarrow = "mx-auto w-full max-w-[52rem] px-6 sm:px-10";
+
 /**
- * Nagłówek sekcji: numer i etykieta na cienkiej linii, tytuł poniżej.
- * Wyrównany do lewej — zamiast wyśrodkowanego nadpisu nad każdą sekcją.
+ * Nagłówek sekcji. Domyślnie wyśrodkowany, z etykietą nad tytułem
+ * i dużym światłem — kompozycja spokojna, nie gazetowa.
  */
 export function SectionHead({
-  index,
   label,
   title,
   lede,
   inverse = false,
+  align = "center",
   className = "",
 }: {
-  index: string;
-  label: string;
+  label?: string;
   title: ReactNode;
   lede?: ReactNode;
   inverse?: boolean;
+  align?: "center" | "left";
   className?: string;
 }) {
+  const srodek = align === "center";
+
   return (
     <header
-      className={`border-t pt-5 ${
-        inverse ? "border-paper/20" : "border-rule"
-      } ${className}`}
+      className={`${srodek ? "mx-auto max-w-[46rem] text-center" : ""} ${className}`}
     >
-      <div className="flex items-baseline gap-5">
-        <span
-          className={`label ${inverse ? "text-paper/60" : "text-ink-3"}`}
-          aria-hidden="true"
+      {label ? (
+        <p
+          className={`kicker ${inverse ? "text-paper/70" : "text-accent"}`}
         >
-          {index}
-        </span>
-        <span className={`label ${inverse ? "text-paper/70" : "text-ink-2"}`}>
           {label}
-        </span>
-      </div>
+        </p>
+      ) : null}
       <h2
-        className={`display mt-7 max-w-[24ch] text-balance text-d2 font-semibold ${
-          inverse ? "text-paper" : "text-ink"
+        className={`tytul text-balance text-d2 ${
+          label ? "mt-4" : ""
+        } ${inverse ? "text-paper" : "text-ink"} ${
+          srodek ? "mx-auto max-w-[20ch]" : "max-w-[22ch]"
         }`}
       >
         {title}
       </h2>
       {lede ? (
         <p
-          className={`mt-5 max-w-[58ch] text-pretty text-lede ${
+          className={`mt-5 text-pretty text-lede ${
             inverse ? "text-paper/70" : "text-ink-2"
-          }`}
+          } ${srodek ? "mx-auto max-w-[46ch]" : "max-w-[52ch]"}`}
         >
           {lede}
         </p>
@@ -75,7 +101,7 @@ export function SectionHead({
   );
 }
 
-/** Rozwijane pytanie — znak „+” zamiast obracanej strzałki */
+/** Rozwijane pytanie — znak „+” obracany w „×” */
 export function Question({
   q,
   a,
@@ -88,16 +114,16 @@ export function Question({
   return (
     <details className="group">
       <summary
-        className={`flex items-start justify-between gap-6 py-6 text-left transition-colors ${
+        className={`flex items-start justify-between gap-6 py-5 text-left transition-colors ${
           inverse
             ? "text-paper hover:text-paper/70"
             : "text-ink hover:text-accent"
         }`}
       >
-        <span className="display max-w-[46ch] text-d4 font-semibold">{q}</span>
+        <span className="tytul max-w-[46ch] text-d4">{q}</span>
         <span
           aria-hidden="true"
-          className={`mt-1 shrink-0 text-lg leading-none transition-transform duration-300 group-open:rotate-45 ${
+          className={`mt-0.5 shrink-0 text-lg leading-none transition-transform duration-300 group-open:rotate-45 ${
             inverse ? "text-paper/60" : "text-ink-3"
           }`}
         >
@@ -105,7 +131,7 @@ export function Question({
         </span>
       </summary>
       <p
-        className={`max-w-[66ch] pb-7 text-pretty ${
+        className={`max-w-[66ch] pb-6 text-pretty ${
           inverse ? "text-paper/70" : "text-ink-2"
         }`}
       >

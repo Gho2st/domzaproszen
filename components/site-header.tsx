@@ -19,11 +19,11 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-rule bg-paper">
+      <header className="sticky top-0 z-40 border-b border-rule/60 bg-paper/80 backdrop-blur-xl">
         <div className={shell}>
-          <nav className="flex items-center justify-between gap-8 py-4">
+          <nav className="flex items-center justify-between gap-8 py-3">
             <Link href="/" className="flex items-baseline gap-3">
-              <span className="display text-[1.15rem] font-semibold leading-none tracking-[-0.02em]">
+              <span className="display text-[1.05rem] font-semibold leading-none tracking-[-0.02em]">
                 Dom Zaproszeń
               </span>
               <span className="label hidden text-ink-3 sm:block">
@@ -36,7 +36,7 @@ export function SiteHeader() {
                 <a
                   key={l.href}
                   href={l.href}
-                  className="text-sm text-ink-2 decoration-ink/30 underline-offset-[6px] transition-colors hover:text-ink hover:underline"
+                  className="text-[0.8125rem] text-ink-2 decoration-ink/30 underline-offset-[6px] transition-colors hover:text-ink hover:underline"
                 >
                   {l.label}
                 </a>
@@ -45,7 +45,7 @@ export function SiteHeader() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-[2px] bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                className="rounded-full bg-ink px-4 py-2 text-[0.8125rem] font-medium text-paper transition-colors hover:bg-accent"
               >
                 Napisz do nas
               </a>
@@ -79,7 +79,7 @@ export function SiteHeader() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setOpen(false)}
-          className="block w-full rounded-[2px] bg-paper px-5 py-3.5 text-center font-medium text-ink transition-colors hover:bg-accent hover:text-paper"
+          className="block w-full rounded-full bg-paper px-5 py-3.5 text-center text-sm font-medium text-ink transition-colors hover:bg-accent hover:text-paper"
         >
           Napisz do nas
         </a>

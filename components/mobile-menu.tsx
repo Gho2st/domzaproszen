@@ -136,7 +136,7 @@ export function MobileMenu({
                 <span className="label num text-paper/45" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="display text-[clamp(1.3rem,5vw,1.7rem)] font-semibold leading-none">
+                <span className="tytul text-[clamp(1.3rem,5vw,1.7rem)] leading-none">
                   {l.label}
                 </span>
               </a>
